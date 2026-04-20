@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camisale.work | Ingeniería y Servicios Tecnológicos</title>
+    <title>Camisale | Soluciones de Ingeniería para Minería e Industria</title>
     <style>
         * {
             margin: 0;
@@ -12,59 +12,179 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
-            background-color: #f5f7fa;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #1E293B;
+            background-color: #F8FAFC;
+            scroll-behavior: smooth;
         }
 
-        header {
-            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
+        /* Header y Navegación */
+        .top-bar {
+            background-color: #0F172A;
+            color: #94A3B8;
+            padding: 0.75rem 0;
+            font-size: 0.875rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .top-bar a {
+            color: #CBD5E1;
+            text-decoration: none;
+        }
+
+        .main-header {
+            background-color: white;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
-            color: #e94560;
+            color: #E11D48;
         }
 
-        .tagline {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-            opacity: 0.9;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .container {
-            max-width: 1200px;
+        .nav-links a {
+            text-decoration: none;
+            color: #1E293B;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #E11D48;
+        }
+
+        /* Botón CTA */
+        .btn {
+            display: inline-block;
+            background-color: #E11D48;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #E11D48;
+            color: #E11D48;
+        }
+
+        .btn-outline:hover {
+            background-color: #E11D48;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #BE123C;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .hero .container {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .services {
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: #FB7185;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #CBD5E1;
+            margin-bottom: 2rem;
+        }
+
+        /* Sección de Servicios */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #0F172A;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748B;
+            max-width: 700px;
+            margin: -1rem auto 3rem auto;
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .service-card {
             background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            text-align: center;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #E2E8F0;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
         }
 
         .service-icon {
@@ -73,148 +193,275 @@
         }
 
         .service-card h3 {
-            color: #0f3460;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: #0F172A;
         }
 
         .service-card p {
-            color: #555;
-            font-size: 0.9rem;
-        }
-
-        .about {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .about h2 {
-            color: #0f3460;
+            color: #475569;
             margin-bottom: 1rem;
         }
 
-        .contact {
-            background: #16213e;
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
+        /* Sección de Por qué elegirnos */
+        .why-us {
+            background-color: #F1F5F9;
+            border-radius: 2rem;
+            margin: 2rem auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             text-align: center;
-            margin: 2rem 0;
         }
 
-        .contact h2 {
+        .feature {
+            padding: 1.5rem;
+        }
+
+        .feature-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #E11D48;
+        }
+
+        /* Proyectos / Casos de Éxito */
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            border: 1px solid #E2E8F0;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background-color: #E11D48;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
             margin-bottom: 1rem;
         }
 
-        .contact-info {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-        }
-
-        .contact-info a {
-            color: #e94560;
-            text-decoration: none;
-        }
-
-        .btn-whatsapp {
-            display: inline-block;
-            background: #25D366;
+        /* Contacto */
+        .contact-section {
+            background-color: #0F172A;
             color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
         }
 
-        .btn-whatsapp:hover {
-            background: #128C7E;
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #1E293B;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
         }
 
         footer {
-            background: #0f3460;
-            color: white;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem;
+            color: #64748B;
+            font-size: 0.875rem;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            .logo {
-                font-size: 1.8rem;
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <div class="logo">Cami<span>Sale</span>.work</div>
-        <div class="tagline">Ingeniería · Tecnología · Soluciones</div>
-        <div class="tagline" style="font-size: 0.9rem; margin-top: 0.3rem;">Project Management · Software · Web · O&M</div>
-    </div>
-</header>
-
-<div class="container">
-    <!-- Services Section -->
-    <h2 style="text-align: center; color: #0f3460;">Nuestros Servicios</h2>
-    <div class="services">
-        <div class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Project Management</h3>
-            <p>+18 años de experiencia en Huawei. Gestión de proyectos, facturación, control de presupuesto, cierre de hitos y satisfacción del cliente.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">💻</div>
-            <h3>Software Development</h3>
-            <p>Desarrollo de aplicaciones web, sistemas internos ERP e integración tecnológica a medida de tu negocio.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">🌐</div>
-            <h3>Web Services</h3>
-            <p>Creación de páginas web profesionales, hosting, mantenimiento y posicionamiento. Desde 490 PEN.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">🔧</div>
-            <h3>Operación & Mantenimiento</h3>
-            <p>Soporte técnico, infraestructura TI y mantenimiento preventivo/correctivo para tu empresa.</p>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <div class="about">
-        <h2>¿Quiénes Somos?</h2>
-        <p>Ingeniero con 18 años de experiencia en Huawei, gestionando proyectos multimillonarios para las principales operadoras móviles del país. Ahora ofrecemos consultoría independiente para ayudar a pequeñas y medianas empresas en Perú a construir sistemas confiables y procesos eficientes.</p>
-        <p style="margin-top: 1rem;">🌟 <strong>+18 años</strong> en telecomunicaciones y gestión de proyectos</p>
-        <p>🌟 <strong>Expertos en RF</strong> con +12 años de experiencia</p>
-        <p>🌟 <strong>Atención personalizada</strong> y soluciones a tu medida</p>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="contact">
-        <h2>¿Listo para empezar?</h2>
-        <p>Contáctanos para una cotización sin compromiso</p>
-        <div class="contact-info">
-            📞 <strong>941463997</strong> | ✉️ <strong>kenneth.rangel@camisale.work</strong>
-        </div>
-        <a href="https://wa.me/51941463997?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" 
-           class="btn-whatsapp" 
-           target="_blank">
-            📲 Escríbenos por WhatsApp
-        </a>
+<!-- Barra superior -->
+<div class="top-bar">
+    <div class="container" style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+        <div>📍 Lima - Perú | Proyectos en todo el territorio nacional</div>
+        <div>📞 <a href="tel:+51941463997">+51 941 463 997</a> | ✉️ <a href="mailto:camisale.work@gmail.com">camisale.work@gmail.com</a></div>
     </div>
 </div>
 
+<!-- Header Principal -->
+<div class="main-header">
+    <div class="nav-container">
+        <div class="logo">Cami<span>Sale</span>.work</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#contacto" class="btn">Solicitar Propuesta →</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section id="inicio" class="hero">
+    <div class="container">
+        <div>
+            <h1>Gestión de proyectos e <span>instalaciones</span> para la industria minera</h1>
+            <p>Más de 18 años de experiencia en proyectos de telecomunicaciones, energía e infraestructura crítica. Entregamos soluciones con control de presupuesto, calidad y seguridad.</p>
+            <a href="#contacto" class="btn" style="background-color:#E11D48;">Cotizar Proyecto →</a>
+            <a href="#servicios" class="btn-outline" style="margin-left:1rem;">Ver Servicios</a>
+        </div>
+        <div>
+            <!-- Espacio para una imagen o ilustración. Puedes reemplazar con una imagen real después -->
+            <div style="background-color:#1E293B; border-radius:1rem; padding:2rem; text-align:center; border:1px solid #334155;">
+                <div style="font-size:4rem;">🏗️</div>
+                <p style="color:#94A3B8; margin-top:1rem;">Proyectos llave en mano<br>Cumplimiento garantizado</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios -->
+<section id="servicios" class="section">
+    <h2 class="section-title">Soluciones para tu operación</h2>
+    <div class="section-subtitle">Te ayudamos a ejecutar proyectos complejos con estándares internacionales</div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">📡</div>
+            <h3>Instalaciones Industriales</h3>
+            <p>Redes de datos, fibra óptica, sistemas de control, telecomunicaciones y energía para plantas mineras.</p>
+            <ul style="margin-top:1rem; list-style:none; color:#475569;">
+                <li>✓ Cableado estructurado</li>
+                <li>✓ Redes inalámbricas</li>
+                <li>✓ Sistemas de respaldo</li>
+            </ul>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Project Management</h3>
+            <p>Dirección técnica, control de costos, gestión de riesgos y cierre de hitos. Certificados en PMI/iPMP.</p>
+            <ul style="margin-top:1rem; list-style:none; color:#475569;">
+                <li>✓ Planificación y cronograma</li>
+                <li>✓ Control de presupuesto (FAC)</li>
+                <li>✓ Aseguramiento de calidad</li>
+            </ul>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Operación y Mantenimiento</h3>
+            <p>Aseguramos la continuidad operativa de tus sistemas con personal calificado y respuesta rápida.</p>
+            <ul style="margin-top:1rem; list-style:none; color:#475569;">
+                <li>✓ Mantenimiento preventivo</li>
+                <li>✓ Soporte 24/7</li>
+                <li>✓ Gestión de repuestos</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Por qué elegirnos -->
+<section class="section why-us">
+    <h2 class="section-title">¿Por qué trabajar con Camisale?</h2>
+    <div class="features-grid">
+        <div class="feature">
+            <div class="feature-number">18+</div>
+            <h3>Años de experiencia</h3>
+            <p>En proyectos de infraestructura crítica para Claro, Entel y Telefónica.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-number">100%</div>
+            <h3>Cumplimiento</h3>
+            <p>Entregamos en plazo y dentro del presupuesto acordado.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-number">24/7</div>
+            <h3>Soporte técnico</h3>
+            <p>Acompañamiento continuo para tu operación minera.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-number">+12</div>
+            <h3>Expertos en RF</h3>
+            <p>Ingenieros especializados en comunicaciones críticas.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Proyectos -->
+<section id="proyectos" class="section">
+    <h2 class="section-title">Casos de éxito</h2>
+    <div class="services-grid">
+        <div class="project-card">
+            <div class="project-content">
+                <div class="project-tag">Telecomunicaciones</div>
+                <h3>Modernización 5G para Entel</h3>
+                <p>+400 integraciones 5G, control de presupuesto y cierre de hitos (FAC). Proyecto ejecutado en tiempo récord.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-content">
+                <div class="project-tag">Core IP</div>
+                <h3>Migración IP / DWDM para Claro</h3>
+                <p>Gestión de 282 nodos y 150 sitios IPRAN. Sin afectar la operación comercial.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-content">
+                <div class="project-tag">Infraestructura</div>
+                <h3>Proyecto Pronatel</h3>
+                <p>Despliegue de red para zonas rurales en Lima Provincia. Gestión de recursos y proveedores.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="section">
+    <div class="contact-section">
+        <h2>¿Listo para ejecutar tu proyecto?</h2>
+        <p style="margin-bottom:1rem;">Contáctanos hoy y recibe una propuesta en 48 horas</p>
+        <div class="contact-details">
+            <div class="contact-item">📞 <a href="tel:+51941463997" style="color:white; text-decoration:none;">941 463 997</a></div>
+            <div class="contact-item">✉️ <a href="mailto:camisale.work@gmail.com" style="color:white; text-decoration:none;">camisale.work@gmail.com</a></div>
+            <div class="contact-item">💬 <a href="https://wa.me/51941463997?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios%20para%20miner%C3%ADa" style="color:white; text-decoration:none;">WhatsApp</a></div>
+        </div>
+        <a href="https://wa.me/51941463997?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios%20para%20miner%C3%ADa" class="btn" style="background-color:#25D366;">Escribir por WhatsApp →</a>
+    </div>
+</section>
+
 <footer>
-    <p>&copy; 2025 Camisale.work | Todos los derechos reservados</p>
-    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Ingeniería y Tecnología para tu negocio</p>
+    <p>© 2025 Camisale.work - Soluciones de Ingeniería para Minería e Industria</p>
+    <p style="margin-top:0.5rem;">RUC: [En trámite] | Todos los derechos reservados</p>
 </footer>
 
 </body>
