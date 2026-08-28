@@ -3,466 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camisale | Soluciones de Ingeniería para Minería e Industria</title>
+    <title>Camisale.work | Operación & Admin</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ===== GLOBAL & CAMISALE (base) ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; line-height: 1.5; color: #1E293B; background-color: #F8FAFC; scroll-behavior: smooth; }
+        .top-bar { background-color: #0F172A; color: #94A3B8; padding: 0.75rem 0; font-size: 0.875rem; }
+        .top-bar .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+        .top-bar a { color: #CBD5E1; text-decoration: none; }
+        .main-header { background-color: white; box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1280px; margin: 0 auto; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; color: #0F172A; }
+        .logo span { color: #E11D48; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: #1E293B; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #E11D48; }
+        .btn { display: inline-block; background-color: #E11D48; color: white; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; transition: background-color 0.2s; border: none; cursor: pointer; }
+        .btn-outline { background-color: transparent; border: 1px solid #E11D48; color: #E11D48; }
+        .btn-outline:hover { background-color: #E11D48; color: white; }
+        .btn:hover { background-color: #BE123C; }
+        .hero { background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 4rem 2rem; }
+        .hero .container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero h1 span { color: #FB7185; }
+        .hero p { font-size: 1.125rem; color: #CBD5E1; margin-bottom: 2rem; }
+        .section { padding: 4rem 2rem; max-width: 1280px; margin: 0 auto; }
+        .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: #0F172A; }
+        .section-subtitle { text-align: center; color: #64748B; max-width: 700px; margin: -1rem auto 3rem auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .service-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #E2E8F0; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #0F172A; }
+        .service-card p { color: #475569; margin-bottom: 1rem; }
+        .why-us { background-color: #F1F5F9; border-radius: 2rem; margin: 2rem auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center; }
+        .feature { padding: 1.5rem; }
+        .feature-number { font-size: 2.5rem; font-weight: 800; color: #E11D48; }
+        .project-card { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; }
+        .project-content { padding: 1.5rem; }
+        .project-tag { display: inline-block; background-color: #E11D48; color: white; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-bottom: 1rem; }
+        .contact-section { background-color: #0F172A; color: white; border-radius: 1.5rem; padding: 3rem; text-align: center; }
+        .contact-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .contact-details { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
+        .contact-item { display: flex; align-items: center; gap: 0.5rem; background-color: #1E293B; padding: 0.5rem 1rem; border-radius: 2rem; }
+        footer { text-align: center; padding: 2rem; color: #64748B; font-size: 0.875rem; }
+        @media (max-width: 768px) { .hero .container { grid-template-columns: 1fr; text-align: center; } .nav-container { flex-direction: column; gap: 1rem; } .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; } .section-title { font-size: 1.5rem; } }
 
-        body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            line-height: 1.5;
-            color: #1E293B;
-            background-color: #F8FAFC;
-            scroll-behavior: smooth;
+        /* ===== ADMIN DASHBOARD (integrated) ===== */
+        :root {
+            --primary: #1a237e; --primary-light: #283593; --primary-dark: #0d1445;
+            --accent: #E11D48; --accent-light: #ff6b8b;
+            --success: #2e7d32; --success-bg: #e8f5e9;
+            --warning: #f57f17; --warning-bg: #fff8e1;
+            --danger: #c62828; --danger-bg: #ffebee;
+            --info: #01579b; --info-bg: #e1f5fe;
+            --gray-50: #fafafa; --gray-100: #f5f5f5; --gray-200: #eeeeee; --gray-300: #e0e0e0;
+            --gray-400: #bdbdbd; --gray-500: #9e9e9e; --gray-600: #757575; --gray-700: #616161;
+            --gray-800: #424242; --gray-900: #212121;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1); --shadow-md: 0 4px 12px rgba(0,0,0,0.12); --shadow-lg: 0 8px 30px rgba(0,0,0,0.16);
+            --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-xl: 20px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
+        .admin-body { font-family: var(--font); background: #eef1f7; color: var(--gray-800); min-height: 100vh; display: flex; flex-direction: column; }
+        #app { display: none; flex: 1; flex-direction: column; }
+        #app.show { display: flex; }
+        #login-screen { position: fixed; inset: 0; z-index: 9999; background: linear-gradient(135deg, #0d1445 0%, #1a237e 40%, #283593 100%); display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        #login-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .login-card { background: #fff; border-radius: var(--radius-xl); padding: 48px 40px; width: 420px; max-width: 90vw; box-shadow: var(--shadow-lg); text-align: center; }
+        .login-logo { width: 72px; height: 72px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px; color: #fff; font-weight: 700; box-shadow: 0 8px 24px rgba(26,35,126,0.35); }
+        .login-card h1 { font-size: 24px; color: var(--gray-900); margin-bottom: 6px; }
+        .login-card p.subtitle { color: var(--gray-600); font-size: 14px; margin-bottom: 28px; }
+        .login-input-group { position: relative; margin-bottom: 16px; text-align: left; }
+        .login-input-group label { font-size: 12px; font-weight: 600; color: var(--gray-700); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 5px; }
+        .login-input-group input, .login-input-group select { width: 100%; padding: 12px 16px; border: 2px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 15px; font-family: var(--font); transition: var(--transition); background: var(--gray-50); color: var(--gray-800); }
+        .login-input-group input:focus, .login-input-group select:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(26,35,126,0.08); }
+        .login-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: var(--font); letter-spacing: 0.3px; margin-top: 8px; }
+        .login-btn:hover { box-shadow: 0 6px 20px rgba(26,35,126,0.4); transform: translateY(-1px); }
+        .login-error { color: var(--danger); font-size: 13px; margin-top: 10px; display: none; }
+        .login-error.show { display: block; }
 
-        /* Header y Navegación */
-        .top-bar {
-            background-color: #0F172A;
-            color: #94A3B8;
-            padding: 0.75rem 0;
-            font-size: 0.875rem;
-        }
+        .topbar { background: #fff; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-sm); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; flex-shrink: 0; }
+        .topbar-left { display: flex; align-items: center; gap: 16px; }
+        .topbar-logo { font-weight: 700; font-size: 20px; color: var(--primary); letter-spacing: -0.5px; }
+        .topbar-logo span { color: var(--accent); }
+        .building-selector { display: flex; align-items: center; gap: 6px; background: var(--gray-100); padding: 4px 6px; border-radius: 20px; margin-left: 12px; }
+        .building-btn { padding: 7px 16px; border-radius: 16px; border: none; background: transparent; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--gray-600); font-family: var(--font); transition: var(--transition); white-space: nowrap; }
+        .building-btn.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(26,35,126,0.25); }
+        .building-btn:hover:not(.active) { background: var(--gray-200); color: var(--gray-800); }
+        .topbar-right { display: flex; align-items: center; gap: 16px; }
+        .user-badge { display: flex; align-items: center; gap: 10px; padding: 6px 14px; background: var(--gray-100); border-radius: 20px; }
+        .user-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; font-size: 13px; }
+        .user-info { font-size: 13px; font-weight: 600; color: var(--gray-700); }
+        .user-role { font-size: 11px; color: var(--gray-500); font-weight: 400; }
+        .logout-btn { padding: 8px 16px; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); background: #fff; cursor: pointer; font-size: 13px; color: var(--gray-600); font-family: var(--font); transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+        .logout-btn:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-bg); }
 
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+        .tabs-bar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 0 28px; display: flex; gap: 4px; flex-shrink: 0; overflow-x: auto; scrollbar-width: none; }
+        .tabs-bar::-webkit-scrollbar { display: none; }
+        .tab-btn { padding: 14px 20px; border: none; background: transparent; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--gray-600); font-family: var(--font); border-bottom: 3px solid transparent; transition: var(--transition); white-space: nowrap; display: flex; align-items: center; gap: 7px; }
+        .tab-btn:hover { color: var(--primary); background: var(--gray-50); }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; background: var(--gray-50); }
+        .tab-badge { background: var(--danger); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; margin-left: 4px; }
 
-        .top-bar a {
-            color: #CBD5E1;
-            text-decoration: none;
-        }
+        .content-area { flex: 1; padding: 24px 28px; overflow-y: auto; max-width: 1400px; width: 100%; margin: 0 auto; }
+        .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        .main-header {
-            background-color: white;
-            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        .card { background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 22px; border: 1px solid var(--gray-200); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+        .card-title { font-size: 17px; font-weight: 600; color: var(--gray-900); display: flex; align-items: center; gap: 8px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: #fff; border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200); transition: var(--transition); cursor: pointer; }
+        .kpi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .kpi-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 12px; }
+        .kpi-value { font-size: 28px; font-weight: 700; color: var(--gray-900); line-height: 1.2; }
+        .kpi-label { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+        .kpi-trend { font-size: 12px; margin-top: 8px; font-weight: 500; }
+        .kpi-trend.up { color: var(--success); } .kpi-trend.down { color: var(--danger); }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+        .parking-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; }
+        .parking-spot { border-radius: var(--radius-md); padding: 18px 14px; text-align: center; border: 2px solid transparent; transition: var(--transition); cursor: pointer; }
+        .parking-spot.available { background: var(--success-bg); border-color: var(--success); }
+        .parking-spot.reserved { background: var(--warning-bg); border-color: var(--warning); }
+        .parking-spot.occupied { background: var(--danger-bg); border-color: var(--danger); }
+        .parking-spot.maintenance { background: var(--gray-100); border-color: var(--gray-400); }
+        .traffic-light { width: 20px; height: 20px; border-radius: 50%; margin: 0 auto 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .traffic-light.available { background: var(--success); } .traffic-light.reserved { background: var(--warning); }
+        .traffic-light.occupied { background: var(--danger); } .traffic-light.maintenance { background: var(--gray-500); }
+        .parking-spot-number { font-size: 18px; font-weight: 700; }
+        .parking-spot-status { font-size: 12px; font-weight: 500; margin-top: 4px; }
+        .parking-spot.resident-tag { font-size: 10px; background: var(--gray-200); padding: 2px 8px; border-radius: 8px; margin-top: 4px; display: inline-block; color: var(--gray-700); }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+        .areas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+        .area-card { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-200); background: #fff; transition: var(--transition); }
+        .area-image { height: 100px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); display: flex; align-items: center; justify-content: center; font-size: 38px; color: rgba(255,255,255,0.8); }
+        .area-image.pool { background: linear-gradient(135deg, #0277bd, #4fc3f7); } .area-image.sunroom { background: linear-gradient(135deg, #ef6c00, #ffb74d); }
+        .area-image.party { background: linear-gradient(135deg, #6a1b9a, #ce93d8); } .area-image.garden { background: linear-gradient(135deg, #2e7d32, #81c784); }
+        .area-image.gym { background: linear-gradient(135deg, #4527a0, #9575cd); } .area-image.bbq { background: linear-gradient(135deg, #bf360c, #ff7043); }
+        .area-card-body { padding: 16px; }
+        .area-name { font-size: 16px; font-weight: 600; } .area-details { font-size: 12px; color: var(--gray-500); margin-top: 4px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .area-actions { margin-top: 12px; }
 
-        .logo span {
-            color: #E11D48;
-        }
+        .table-wrapper { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--gray-200); }
+        .ticket-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .ticket-table th { background: var(--gray-100); padding: 12px 14px; text-align: left; font-weight: 600; color: var(--gray-700); border-bottom: 2px solid var(--gray-300); font-size: 12px; text-transform: uppercase; }
+        .ticket-table td { padding: 12px 14px; border-bottom: 1px solid var(--gray-200); }
+        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+        .status-badge.open { background: var(--danger-bg); color: var(--danger); } .status-badge.in-progress { background: var(--warning-bg); color: var(--warning); }
+        .status-badge.resolved { background: var(--success-bg); color: var(--success); } .status-badge.closed { background: var(--gray-200); color: var(--gray-600); }
+        .priority-badge { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .priority-badge.low { background: var(--gray-100); color: var(--gray-600); } .priority-badge.medium { background: var(--info-bg); color: var(--info); }
+        .priority-badge.high { background: var(--warning-bg); color: var(--warning); } .priority-badge.urgent { background: var(--danger-bg); color: var(--danger); }
+        .sla-ok { color: var(--success); font-weight: 600; } .sla-breached { color: var(--danger); font-weight: 600; } .sla-warning { color: var(--warning); font-weight: 600; }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1E293B;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #E11D48;
-        }
-
-        /* Botón CTA */
-        .btn {
-            display: inline-block;
-            background-color: #E11D48;
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            transition: background-color 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid #E11D48;
-            color: #E11D48;
-        }
-
-        .btn-outline:hover {
-            background-color: #E11D48;
-            color: white;
-        }
-
-        .btn:hover {
-            background-color: #BE123C;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-            color: white;
-            padding: 4rem 2rem;
-        }
-
-        .hero .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: #FB7185;
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: #CBD5E1;
-            margin-bottom: 2rem;
-        }
-
-        /* Sección de Servicios */
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #0F172A;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #64748B;
-            max-width: 700px;
-            margin: -1rem auto 3rem auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #E2E8F0;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #0F172A;
-        }
-
-        .service-card p {
-            color: #475569;
-            margin-bottom: 1rem;
-        }
-
-        /* Sección de Por qué elegirnos */
-        .why-us {
-            background-color: #F1F5F9;
-            border-radius: 2rem;
-            margin: 2rem auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .feature {
-            padding: 1.5rem;
-        }
-
-        .feature-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #E11D48;
-        }
-
-        /* Proyectos / Casos de Éxito */
-        .project-card {
-            background: white;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
-            border: 1px solid #E2E8F0;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-tag {
-            display: inline-block;
-            background-color: #E11D48;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
-
-        /* Contacto */
-        .contact-section {
-            background-color: #0F172A;
-            color: white;
-            border-radius: 1.5rem;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .contact-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: #1E293B;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #64748B;
-            font-size: 0.875rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-        }
+        .btn-sm { padding: 7px 12px; font-size: 12px; } .btn-xs { padding: 5px 9px; font-size: 11px; border-radius: 4px; }
+        .btn-primary { background: var(--primary); color: #fff; } .btn-primary:hover { background: var(--primary-light); }
+        .btn-success { background: var(--success); color: #fff; } .btn-warning { background: var(--warning); color: #fff; }
+        .btn-danger { background: var(--danger); color: #fff; } .btn-outline { background: transparent; border: 1.5px solid var(--gray-300); color: var(--gray-600); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--gray-50); }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .modal-overlay.show { opacity: 1; visibility: visible; }
+        .modal { background: #fff; border-radius: var(--radius-lg); padding: 28px; width: 520px; max-width: 92vw; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-lg); transform: translateY(16px); transition: var(--transition); }
+        .modal-overlay.show .modal { transform: translateY(0); }
+        .form-group { margin-bottom: 14px; } .form-group label { font-size: 13px; font-weight: 600; color: var(--gray-700); display: block; margin-bottom: 5px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1.5px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 14px; font-family: var(--font); transition: var(--transition); background: var(--gray-50); }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+        .toast { position: fixed; top: 80px; right: 20px; z-index: 9999; padding: 14px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg); animation: slideIn 0.3s ease; }
+        .toast.success { background: var(--success); color: #fff; } .toast.error { background: var(--danger); color: #fff; } .toast.info { background: var(--info); color: #fff; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .chart-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        @media (max-width: 768px) { .chart-container { grid-template-columns: 1fr; } }
+        .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 150px; padding: 16px 0; border-bottom: 2px solid var(--gray-300); }
+        .bar-chart .bar { flex: 1; border-radius: 4px 4px 0 0; min-width: 18px; position: relative; display: flex; align-items: flex-start; justify-content: center; }
+        .bar-chart .bar-label { position: absolute; bottom: -22px; font-size: 10px; color: var(--gray-500); }
+        .bar-chart .bar-value { position: absolute; top: -18px; font-size: 11px; font-weight: 600; }
+        .empty-state { text-align: center; padding: 30px 20px; color: var(--gray-500); }
+        .mt-8 { margin-top: 8px; } .mt-12 { margin-top: 12px; } .mt-16 { margin-top: 16px; } .mt-24 { margin-top: 24px; }
+        .mb-16 { margin-bottom: 16px; } .flex-between { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+        .text-muted { color: var(--gray-500); font-size: 13px; }
+        /* botón admin en nav */
+        .admin-tab-btn { background: #1a237e; color: white; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; border: none; cursor: pointer; font-family: var(--font); }
+        .admin-tab-btn:hover { background: #283593; }
     </style>
 </head>
 <body>
 
-<!-- Barra superior -->
-<div class="top-bar">
-    <div class="container" style="max-width:1280px; margin:0 auto; padding:0 2rem;">
-        <div>📍 Lima - Perú | Proyectos en todo el territorio nacional</div>
-        <div>📞 <a href="tel:+51941463997">+51 941 463 997</a> | ✉️ <a href="mailto:camisale.work@gmail.com">camisale.work@gmail.com</a></div>
+<!-- ===== LOGIN SCREEN (admin) ===== -->
+<div id="login-screen">
+    <div class="login-card">
+        <div class="login-logo">CM</div>
+        <h1>Camisale Admin</h1>
+        <p class="subtitle">Operación & Building Management</p>
+        <div class="login-input-group"><label>Usuario</label><input type="text" id="login-username" value="admin"></div>
+        <div class="login-input-group"><label>Contraseña</label><input type="password" id="login-password" value="admin123"></div>
+        <button class="login-btn" onclick="handleLogin()">Ingresar</button>
+        <div class="login-error" id="login-error">Credenciales inválidas. Prueba admin/admin123 o owner/owner123</div>
+        <p style="margin-top:16px;font-size:12px;color:var(--gray-500);">Demo: <strong>admin/admin123</strong> (Administrador) o <strong>owner/owner123</strong> (Dueño)</p>
     </div>
 </div>
 
-<!-- Header Principal -->
-<div class="main-header">
-    <div class="nav-container">
-        <div class="logo">Cami<span>Sale</span>.work</div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <a href="#contacto" class="btn">Solicitar Propuesta →</a>
+<!-- ===== MAIN APP (admin dashboard) ===== -->
+<div id="app">
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="topbar-logo">Cami<span>Sale</span>.work</div>
+            <div class="building-selector" id="building-selector"></div>
+        </div>
+        <div class="topbar-right">
+            <div class="user-badge">
+                <div class="user-avatar" id="user-avatar">A</div>
+                <div><div class="user-info" id="user-name">Admin</div><div class="user-role" id="user-role-text">Administrador</div></div>
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">⎋ Salir</button>
+        </div>
+    </div>
+    <div class="tabs-bar" id="tabs-bar">
+        <button class="tab-btn active" data-tab="dashboard" onclick="switchTab('dashboard')">📊 Dashboard</button>
+        <button class="tab-btn" data-tab="parking" onclick="switchTab('parking')">🅿️ Estacionamiento</button>
+        <button class="tab-btn" data-tab="reservations" onclick="switchTab('reservations')">🏊 Áreas</button>
+        <button class="tab-btn" data-tab="tickets" onclick="switchTab('tickets')">🎫 Tickets <span class="tab-badge" id="ticket-badge">0</span></button>
+        <button class="tab-btn" data-tab="users" onclick="switchTab('users')">👥 Usuarios</button>
+        <button class="tab-btn" data-tab="reports" onclick="switchTab('reports')">📈 KPIs</button>
+    </div>
+    <div class="content-area">
+        <div class="tab-panel active" id="tab-dashboard">
+            <div style="margin-bottom:20px;"><h2 style="font-size:22px;color:var(--gray-900);">Panel de Operación</h2><p class="text-muted">Resumen ejecutivo de Camisale.work</p></div>
+            <div class="kpi-grid" id="dashboard-kpis"></div>
+            <div class="card mt-16"><div class="card-header"><div><div class="card-title">📋 Actividad Reciente</div></div></div><div id="recent-activity"></div></div>
+        </div>
+        <div class="tab-panel" id="tab-parking">
+            <div class="flex-between mb-16"><div><h2 style="font-size:22px;color:var(--gray-900);">Gestión de Estacionamiento</h2><p class="text-muted">Indicadores de semáforo en tiempo real</p></div><button class="btn btn-primary" onclick="addParkingSpot()">+ Agregar</button></div>
+            <div class="card mb-16"><div class="flex-between"><span>🟢 Disponible</span><span>🟡 Reservado</span><span>🔴 Ocupado</span><span>⚫ Mantenimiento</span></div></div>
+            <div class="parking-grid" id="parking-grid"></div>
+        </div>
+        <div class="tab-panel" id="tab-reservations">
+            <div class="flex-between mb-16"><div><h2 style="font-size:22px;color:var(--gray-900);">Reservas de Áreas Comunes</h2></div><button class="btn btn-primary" onclick="openReservationModal()">+ Nueva Reserva</button></div>
+            <div class="areas-grid" id="areas-grid"></div>
+            <div class="card mt-24"><div class="card-header"><div class="card-title">📅 Próximas Reservas</div></div><div class="table-wrapper"><table class="ticket-table"><thead><tr><th>Área</th><th>Residente</th><th>Fecha</th><th>Hora</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="reservations-tbody"></tbody></table></div></div>
+        </div>
+        <div class="tab-panel" id="tab-tickets">
+            <div class="flex-between mb-16"><div><h2 style="font-size:22px;color:var(--gray-900);">Órdenes de Ticket</h2><p class="text-muted">Seguimiento de incidencias y SLA</p></div><button class="btn btn-primary" onclick="openTicketModal()">+ Nuevo Ticket</button></div>
+            <div class="card mb-16"><div class="flex-between"><select id="ticket-filter-status" onchange="renderTickets()"><option value="all">Todos</option><option value="open">Abierto</option><option value="in-progress">En progreso</option><option value="resolved">Resuelto</option><option value="closed">Cerrado</option></select><select id="ticket-filter-priority" onchange="renderTickets()"><option value="all">Prioridad</option><option value="low">Baja</option><option value="medium">Media</option><option value="high">Alta</option><option value="urgent">Urgente</option></select></div></div>
+            <div class="table-wrapper"><table class="ticket-table"><thead><tr><th>ID</th><th>Título</th><th>Edificio</th><th>Estado</th><th>Prioridad</th><th>Asignado</th><th>Creado</th><th>SLA</th><th>Acción</th></tr></thead><tbody id="tickets-tbody"></tbody></table></div>
+        </div>
+        <div class="tab-panel" id="tab-users">
+            <div class="flex-between mb-16"><div><h2 style="font-size:22px;color:var(--gray-900);">Gestión de Usuarios</h2></div><button class="btn btn-primary" onclick="openUserModal()">+ Agregar Usuario</button></div>
+            <div class="table-wrapper"><table class="ticket-table"><thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Edificio</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="users-tbody"></tbody></table></div>
+        </div>
+        <div class="tab-panel" id="tab-reports">
+            <div class="flex-between mb-16"><div><h2 style="font-size:22px;color:var(--gray-900);">Reportes KPI & SLA</h2></div><button class="btn btn-outline" onclick="exportReport()">📥 Exportar</button></div>
+            <div class="kpi-grid" id="owner-kpis"></div>
+            <div class="chart-container mt-16"><div class="card"><div class="card-title">📊 Tickets por Estado</div><div class="bar-chart" id="tickets-bar-chart"></div></div><div class="card"><div class="card-title">📊 SLA por Edificio</div><div class="bar-chart" id="sla-bar-chart"></div></div></div>
+            <div class="card mt-16"><div class="card-title">📋 Detalle SLA</div><div class="table-wrapper mt-12"><table class="ticket-table"><thead><tr><th>Edificio</th><th>Total</th><th>A tiempo</th><th>Incumplidos</th><th>Cumplimiento</th></tr></thead><tbody id="sla-details-tbody"></tbody></table></div></div>
+        </div>
     </div>
 </div>
 
-<!-- Hero Section -->
-<section id="inicio" class="hero">
-    <div class="container">
-        <div>
-            <h1>Gestión de proyectos e <span>instalaciones</span> para la industria minera</h1>
-            <p>Más de 18 años de experiencia en proyectos de telecomunicaciones, energía e infraestructura crítica. Entregamos soluciones con control de presupuesto, calidad y seguridad.</p>
-            <a href="#contacto" class="btn" style="background-color:#E11D48;">Cotizar Proyecto →</a>
-            <a href="#servicios" class="btn-outline" style="margin-left:1rem;">Ver Servicios</a>
-        </div>
-        <div>
-            <!-- Espacio para una imagen o ilustración. Puedes reemplazar con una imagen real después -->
-            <div style="background-color:#1E293B; border-radius:1rem; padding:2rem; text-align:center; border:1px solid #334155;">
-                <div style="font-size:4rem;">🏗️</div>
-                <p style="color:#94A3B8; margin-top:1rem;">Proyectos llave en mano<br>Cumplimiento garantizado</p>
-            </div>
+<!-- CAMISALE PUBLIC CONTENT (visible siempre, con botón para admin) -->
+<div id="public-site">
+    <div class="top-bar">
+        <div class="container" style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+            <div>📍 Lima - Perú | Proyectos en todo el territorio nacional</div>
+            <div>📞 <a href="tel:+51989666606">+51 989 666 606</a> | ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a></div>
         </div>
     </div>
-</section>
-
-<!-- Servicios -->
-<section id="servicios" class="section">
-    <h2 class="section-title">Soluciones para tu operación</h2>
-    <div class="section-subtitle">Te ayudamos a ejecutar proyectos complejos con estándares internacionales</div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon">📡</div>
-            <h3>Instalaciones Industriales</h3>
-            <p>Redes de datos, fibra óptica, sistemas de control, telecomunicaciones y energía para plantas mineras.</p>
-            <ul style="margin-top:1rem; list-style:none; color:#475569;">
-                <li>✓ Cableado estructurado</li>
-                <li>✓ Redes inalámbricas</li>
-                <li>✓ Sistemas de respaldo</li>
+    <div class="main-header">
+        <div class="nav-container">
+            <div class="logo">Cami<span>Sale</span>.work</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Project Management</h3>
-            <p>Dirección técnica, control de costos, gestión de riesgos y cierre de hitos. Certificados en PMI/iPMP.</p>
-            <ul style="margin-top:1rem; list-style:none; color:#475569;">
-                <li>✓ Planificación y cronograma</li>
-                <li>✓ Control de presupuesto (FAC)</li>
-                <li>✓ Aseguramiento de calidad</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">⚡</div>
-            <h3>Operación y Mantenimiento</h3>
-            <p>Aseguramos la continuidad operativa de tus sistemas con personal calificado y respuesta rápida.</p>
-            <ul style="margin-top:1rem; list-style:none; color:#475569;">
-                <li>✓ Mantenimiento preventivo</li>
-                <li>✓ Soporte 24/7</li>
-                <li>✓ Gestión de repuestos</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- Por qué elegirnos -->
-<section class="section why-us">
-    <h2 class="section-title">¿Por qué trabajar con Camisale?</h2>
-    <div class="features-grid">
-        <div class="feature">
-            <div class="feature-number">18+</div>
-            <h3>Años de experiencia</h3>
-            <p>En proyectos de infraestructura crítica para Claro, Entel y Telefónica.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-number">100%</div>
-            <h3>Cumplimiento</h3>
-            <p>Entregamos en plazo y dentro del presupuesto acordado.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-number">24/7</div>
-            <h3>Soporte técnico</h3>
-            <p>Acompañamiento continuo para tu operación minera.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-number">+12</div>
-            <h3>Expertos en RF</h3>
-            <p>Ingenieros especializados en comunicaciones críticas.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Proyectos -->
-<section id="proyectos" class="section">
-    <h2 class="section-title">Casos de éxito</h2>
-    <div class="services-grid">
-        <div class="project-card">
-            <div class="project-content">
-                <div class="project-tag">Telecomunicaciones</div>
-                <h3>Modernización 5G para Entel</h3>
-                <p>+400 integraciones 5G, control de presupuesto y cierre de hitos (FAC). Proyecto ejecutado en tiempo récord.</p>
-            </div>
-        </div>
-        <div class="project-card">
-            <div class="project-content">
-                <div class="project-tag">Core IP</div>
-                <h3>Migración IP / DWDM para Claro</h3>
-                <p>Gestión de 282 nodos y 150 sitios IPRAN. Sin afectar la operación comercial.</p>
-            </div>
-        </div>
-        <div class="project-card">
-            <div class="project-content">
-                <div class="project-tag">Infraestructura</div>
-                <h3>Proyecto Pronatel</h3>
-                <p>Despliegue de red para zonas rurales en Lima Provincia. Gestión de recursos y proveedores.</p>
+            <div style="display:flex; gap:0.8rem; align-items:center;">
+                <a href="#contacto" class="btn">Solicitar Propuesta →</a>
+                <button class="admin-tab-btn" onclick="showAdminLogin()">🔐 Admin</button>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Contacto -->
-<section id="contacto" class="section">
-    <div class="contact-section">
-        <h2>¿Listo para ejecutar tu proyecto?</h2>
-        <p style="margin-bottom:1rem;">Contáctanos hoy y recibe una propuesta en 48 horas</p>
-        <div class="contact-details">
-            <div class="contact-item">📞 <a href="tel:+51941463997" style="color:white; text-decoration:none;">941 463 997</a></div>
-            <div class="contact-item">✉️ <a href="mailto:camisale.work@gmail.com" style="color:white; text-decoration:none;">camisale.work@gmail.com</a></div>
-            <div class="contact-item">💬 <a href="https://wa.me/51941463997?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios%20para%20miner%C3%ADa" style="color:white; text-decoration:none;">WhatsApp</a></div>
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div><h1>Gestión de proyectos e <span>instalaciones</span> para la industria minera</h1><p>Más de 18 años de experiencia en proyectos de telecomunicaciones, energía e infraestructura crítica.</p><a href="#contacto" class="btn">Cotizar Proyecto →</a><a href="#servicios" class="btn-outline" style="margin-left:1rem;">Ver Servicios</a></div>
+            <div><div style="background-color:#1E293B; border-radius:1rem; padding:2rem; text-align:center; border:1px solid #334155;"><div style="font-size:4rem;">🏗️</div><p style="color:#94A3B8;">Proyectos llave en mano</p></div></div>
         </div>
-        <a href="https://wa.me/51941463997?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios%20para%20miner%C3%ADa" class="btn" style="background-color:#25D366;">Escribir por WhatsApp →</a>
-    </div>
-</section>
+    </section>
+    <section id="servicios" class="section">
+        <h2 class="section-title">Soluciones para tu operación</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-icon">📡</div><h3>Instalaciones Industriales</h3><p>Redes de datos, fibra óptica, sistemas de control, telecomunicaciones y energía.</p></div>
+            <div class="service-card"><div class="service-icon">📊</div><h3>Project Management</h3><p>Dirección técnica, control de costos, gestión de riesgos. Certificados PMI.</p></div>
+            <div class="service-card"><div class="service-icon">⚡</div><h3>Operación y Mantenimiento</h3><p>Aseguramos continuidad operativa con personal calificado y soporte 24/7.</p></div>
+        </div>
+    </section>
+    <section class="section why-us">
+        <h2 class="section-title">¿Por qué Camisale?</h2>
+        <div class="features-grid">
+            <div class="feature"><div class="feature-number">18+</div><h3>Años</h3><p>Experiencia con Claro, Entel, Telefónica.</p></div>
+            <div class="feature"><div class="feature-number">100%</div><h3>Cumplimiento</h3><p>Plazo y presupuesto garantizados.</p></div>
+            <div class="feature"><div class="feature-number">24/7</div><h3>Soporte</h3><p>Acompañamiento continuo.</p></div>
+            <div class="feature"><div class="feature-number">+12</div><h3>Expertos RF</h3><p>Ingenieros especializados.</p></div>
+        </div>
+    </section>
+    <section id="proyectos" class="section">
+        <h2 class="section-title">Casos de éxito</h2>
+        <div class="services-grid">
+            <div class="project-card"><div class="project-content"><div class="project-tag">Telecom</div><h3>5G Entel</h3><p>+400 integraciones, FAC en tiempo récord.</p></div></div>
+            <div class="project-card"><div class="project-content"><div class="project-tag">Core IP</div><h3>Claro DWDM</h3><p>282 nodos, 150 sitios IPRAN.</p></div></div>
+            <div class="project-card"><div class="project-content"><div class="project-tag">Infra</div><h3>Pronatel</h3><p>Red rural Lima Provincia.</p></div></div>
+        </div>
+    </section>
+    <section id="contacto" class="section">
+        <div class="contact-section">
+            <h2>¿Listo para ejecutar?</h2><p>Propuesta en 48 horas</p>
+            <div class="contact-details">
+                <div class="contact-item">📞 <a href="tel:+51989666606" style="color:white;">989 666 606</a></div>
+                <div class="contact-item">✉️ <a href="mailto:camisalework@gmail.com" style="color:white;">camisalework@gmail.com</a></div>
+                <div class="contact-item">💬 <a href="https://wa.me/51989666606" style="color:white;">WhatsApp</a></div>
+            </div>
+            <a href="https://wa.me/51989666606" class="btn" style="background:#25D366;">WhatsApp →</a>
+        </div>
+    </section>
+    <footer><p>© 2025 Camisale.work - Operación y Servicios para Minería y Telecomunicaciones</p><p>RUC: [En trámite]</p></footer>
+</div>
 
-<footer>
-    <p>© 2025 Camisale.work - Soluciones de Ingeniería para Minería e Industria</p>
-    <p style="margin-top:0.5rem;">RUC: [En trámite] | Todos los derechos reservados</p>
-</footer>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay"><div class="modal" id="modal-content"></div></div>
 
+<script>
+    // ============ DATA ============
+    const DEFAULT_USERS = [
+        { id:'u1', username:'admin', password:'admin123', name:'Administrador', role:'admin', building:'all', status:'active' },
+        { id:'u2', username:'owner', password:'owner123', name:'Dueño', role:'owner', building:'all', status:'active' },
+        { id:'u3', username:'jdoe', password:'jdoe123', name:'John Doe', role:'employee', building:'Tower A', status:'active' },
+        { id:'u4', username:'mrodriguez', password:'mrod123', name:'Maria Rodriguez', role:'resident', building:'Tower A', status:'active' },
+        { id:'u5', username:'rkim', password:'rkim123', name:'Robert Kim', role:'resident', building:'Tower B', status:'active' },
+        { id:'u6', username:'lchen', password:'lchen123', name:'Lisa Chen', role:'employee', building:'Tower B', status:'active' },
+        { id:'u7', username:'snguyen', password:'snguyen123', name:'Sam Nguyen', role:'resident', building:'Tower C', status:'active' },
+        { id:'u8', username:'garcia', password:'garcia123', name:'Ana Garcia', role:'resident', building:'Tower C', status:'active' },
+    ];
+    const DEFAULT_BUILDINGS = ['Tower A','Tower B','Tower C','Tower D'];
+    const DEFAULT_PARKING = [
+        { id:'p1', number:'A-01', building:'Tower A', status:'available', resident:'' },
+        { id:'p2', number:'A-02', building:'Tower A', status:'reserved', resident:'Maria Rodriguez' },
+        { id:'p3', number:'A-03', building:'Tower A', status:'occupied', resident:'John Doe' },
+        { id:'p4', number:'A-04', building:'Tower A', status:'available', resident:'' },
+        { id:'p5', number:'A-05', building:'Tower A', status:'maintenance', resident:'' },
+        { id:'p6', number:'B-01', building:'Tower B', status:'available', resident:'' },
+        { id:'p7', number:'B-02', building:'Tower B', status:'reserved', resident:'Robert Kim' },
+        { id:'p8', number:'B-03', building:'Tower B', status:'occupied', resident:'Lisa Chen' },
+        { id:'p9', number:'C-01', building:'Tower C', status:'available', resident:'' },
+        { id:'p10', number:'C-02', building:'Tower C', status:'occupied', resident:'Ana Garcia' },
+        { id:'p11', number:'D-01', building:'Tower D', status:'available', resident:'' },
+    ];
+    const DEFAULT_AREAS = [
+        { id:'a1', name:'Piscina', building:'Tower A', capacity:25, icon:'🏊', image_class:'pool' },
+        { id:'a2', name:'Solárium', building:'Tower A', capacity:15, icon:'☀️', image_class:'sunroom' },
+        { id:'a3', name:'Salón de Fiestas', building:'Tower A', capacity:40, icon:'🎉', image_class:'party' },
+        { id:'a4', name:'Jardín', building:'Tower B', capacity:30, icon:'🌿', image_class:'garden' },
+        { id:'a5', name:'Gimnasio', building:'Tower B', capacity:20, icon:'🏋️', image_class:'gym' },
+        { id:'a6', name:'BBQ', building:'Tower C', capacity:12, icon:'🍖', image_class:'bbq' },
+        { id:'a7', name:'Piscina', building:'Tower C', capacity:30, icon:'🏊‍♀️', image_class:'pool' },
+        { id:'a8', name:'Salón', building:'Tower D', capacity:45, icon:'🎪', image_class:'party' },
+    ];
+    const DEFAULT_TICKETS = [
+        { id:'T-1001', title:'Fuga de agua pasillo', building:'Tower A', status:'open', priority:'urgent', assignee:'John Doe', created:'2026-08-25', sla_target:'2026-08-27', sla_status:'warning' },
+        { id:'T-1002', title:'Ascensor dañado', building:'Tower B', status:'in-progress', priority:'high', assignee:'Lisa Chen', created:'2026-08-24', sla_target:'2026-08-28', sla_status:'ok' },
+        { id:'T-1003', title:'Aire acondicionado', building:'Tower A', status:'resolved', priority:'medium', assignee:'John Doe', created:'2026-08-22', sla_target:'2026-08-26', sla_status:'ok' },
+        { id:'T-1004', title:'Riego jardín', building:'Tower C', status:'open', priority:'low', assignee:'Ana Garcia', created:'2026-08-26', sla_target:'2026-08-30', sla_status:'ok' },
+        { id:'T-1005', title:'Sensor parking', building:'Tower B', status:'in-progress', priority:'high', assignee:'Lisa Chen', created:'2026-08-25', sla_target:'2026-08-27', sla_status:'breached' },
+        { id:'T-1006', title:'Luces lobby', building:'Tower D', status:'closed', priority:'low', assignee:'Robert Kim', created:'2026-08-20', sla_target:'2026-08-25', sla_status:'ok' },
+    ];
+    const DEFAULT_RESERVATIONS = [
+        { id:'r1', area_id:'a1', area_name:'Piscina', building:'Tower A', resident:'Maria Rodriguez', date:'2026-08-28', time:'10:00-12:00', status:'confirmed' },
+        { id:'r2', area_id:'a3', area_name:'Salón de Fiestas', building:'Tower A', resident:'John Doe', date:'2026-08-30', time:'18:00-22:00', status:'confirmed' },
+        { id:'r3', area_id:'a5', area_name:'Gimnasio', building:'Tower B', resident:'Robert Kim', date:'2026-08-28', time:'07:00-09:00', status:'pending' },
+    ];
+
+    let state = {
+        users: [], buildings: [...DEFAULT_BUILDINGS], parking: [], areas: [], tickets: [], reservations: [],
+        currentUser: null, currentBuilding: 'Tower A', currentTab: 'dashboard',
+        nextParkingId: 100, nextTicketId: 1011, nextReservationId: 10, nextUserId: 10,
+    };
+
+    function loadState() {
+        try { const saved = localStorage.getItem('camisale_admin_state'); if (saved) { state = {...state, ...JSON.parse(saved)}; } else { state.users=[...DEFAULT_USERS]; state.parking=[...DEFAULT_PARKING]; state.areas=[...DEFAULT_AREAS]; state.tickets=[...DEFAULT_TICKETS]; state.reservations=[...DEFAULT_RESERVATIONS]; saveState(); } } catch(e) { state.users=[...DEFAULT_USERS]; state.parking=[...DEFAULT_PARKING]; state.areas=[...DEFAULT_AREAS]; state.tickets=[...DEFAULT_TICKETS]; state.reservations=[...DEFAULT_RESERVATIONS]; }
+    }
+    function saveState() { try { localStorage.setItem('camisale_admin_state', JSON.stringify(state)); } catch(e) {} }
+
+    function showAdminLogin() {
+        document.getElementById('public-site').style.display = 'none';
+        document.getElementById('login-screen').classList.remove('hidden');
+    }
+    function handleLogin() {
+        const u = document.getElementById('login-username').value.trim();
+        const p = document.getElementById('login-password').value.trim();
+        const user = state.users.find(x => x.username === u && x.password === p);
+        if (user) {
+            state.currentUser = user;
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('app').classList.add('show');
+            document.getElementById('public-site').style.display = 'none';
+            initializeApp();
+            showToast('Bienvenido, '+user.name, 'success');
+        } else { document.getElementById('login-error').classList.add('show'); setTimeout(()=>document.getElementById('login-error').classList.remove('show'),3000); }
+    }
+    function handleLogout() {
+        state.currentUser = null;
+        document.getElementById('app').classList.remove('show');
+        document.getElementById('login-screen').classList.remove('hidden');
+        document.getElementById('public-site').style.display = 'block';
+    }
+
+    function initializeApp() {
+        updateUserBadge(); renderBuildingSelector(); renderDashboard(); renderParking(); renderAreas();
+        renderReservationsTable(); renderTickets(); renderUsers(); renderOwnerKPIs(); renderCharts(); renderSLADetails();
+        updateTicketBadge(); switchTab('dashboard');
+    }
+    function updateUserBadge() { if(!state.currentUser) return; document.getElementById('user-avatar').textContent = state.currentUser.name.charAt(0).toUpperCase(); document.getElementById('user-name').textContent = state.currentUser.name; const roleMap={admin:'Administrador',owner:'Dueño',employee:'Empleado',resident:'Residente'}; document.getElementById('user-role-text').textContent = roleMap[state.currentUser.role]||state.currentUser.role; }
+    function renderBuildingSelector() { const c = document.getElementById('building-selector'); c.innerHTML=''; state.buildings.forEach(b=>{ const btn=document.createElement('button'); btn.className='building-btn'+(b===state.currentBuilding?' active':''); btn.textContent=b; btn.onclick=()=>{state.currentBuilding=b; renderBuildingSelector(); renderParking(); renderAreas(); renderReservationsTable(); renderDashboard(); renderTickets();}; c.appendChild(btn); }); }
+    function showToast(msg, type='info') { const t=document.createElement('div'); t.className='toast '+type; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),3000); }
+    function switchTab(tab) { state.currentTab=tab; document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.getElementById('tab-'+tab).classList.add('active'); document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active'); if(tab==='dashboard') renderDashboard(); if(tab==='parking') renderParking(); if(tab==='reservations'){renderAreas();renderReservationsTable();} if(tab==='tickets') renderTickets(); if(tab==='users') renderUsers(); if(tab==='reports'){renderOwnerKPIs();renderCharts();renderSLADetails();} }
+    function renderDashboard() { const bt=state.tickets.filter(t=>t.building===state.currentBuilding); const open=bt.filter(t=>t.status==='open'||t.status==='in-progress').length; const tp=state.parking.filter(p=>p.building===state.currentBuilding).length; const avail=state.parking.filter(p=>p.building===state.currentBuilding&&p.status==='available').length; const upRes=state.reservations.filter(r=>r.building===state.currentBuilding).length; document.getElementById('dashboard-kpis').innerHTML=`<div class="kpi-card"><div class="kpi-icon" style="background:var(--danger-bg)">🎫</div><div class="kpi-value">${open}</div><div class="kpi-label">Tickets abiertos</div></div><div class="kpi-card"><div class="kpi-icon" style="background:var(--success-bg)">🅿️</div><div class="kpi-value">${avail}/${tp}</div><div class="kpi-label">Parking disponible</div></div><div class="kpi-card"><div class="kpi-icon" style="background:var(--info-bg)">📅</div><div class="kpi-value">${upRes}</div><div class="kpi-label">Reservas</div></div><div class="kpi-card"><div class="kpi-icon" style="background:var(--warning-bg)">📈</div><div class="kpi-value">${bt.filter(t=>t.sla_status==='breached').length}</div><div class="kpi-label">SLA incumplidos</div></div>`; const recent=[]; state.tickets.filter(t=>t.building===state.currentBuilding).slice(-2).forEach(t=>recent.push(`<div style="padding:8px 0;">🎫 ${t.title} (${t.id}) - ${t.status}</div>`)); state.reservations.filter(r=>r.building===state.currentBuilding).slice(-1).forEach(r=>recent.push(`<div style="padding:8px 0;">📅 ${r.area_name} por ${r.resident}</div>`)); document.getElementById('recent-activity').innerHTML = recent.length?recent.join(''):'<div class="empty-state">Sin actividad</div>'; }
+    function renderParking() { const spots=state.parking.filter(p=>p.building===state.currentBuilding); const grid=document.getElementById('parking-grid'); grid.innerHTML = spots.length?spots.map(s=>`<div class="parking-spot ${s.status}" onclick="cycleParkingStatus('${s.id}')"><div class="traffic-light ${s.status}"></div><div class="parking-spot-number">${s.number}</div><div class="parking-spot-status">${s.status}</div>${s.resident?`<div class="parking-spot resident-tag">${s.resident}</div>`:''}</div>`).join(''):'<div class="empty-state">Sin spots</div>'; }
+    function cycleParkingStatus(id){ const s=state.parking.find(p=>p.id===id); if(!s)return; const st=['available','reserved','occupied','maintenance']; const idx=st.indexOf(s.status); s.status=st[(idx+1)%st.length]; if(s.status==='available')s.resident=''; if(s.status==='reserved'&&!s.resident)s.resident='Residente'; saveState(); renderParking(); renderDashboard(); }
+    function addParkingSpot(){ const n=prompt('Número de spot (ej. A-07):'); if(!n)return; state.parking.push({id:'p'+(state.nextParkingId++), number:n, building:state.currentBuilding, status:'available', resident:''}); saveState(); renderParking(); }
+    function renderAreas(){ const areas=state.areas.filter(a=>a.building===state.currentBuilding); document.getElementById('areas-grid').innerHTML = areas.length?areas.map(a=>`<div class="area-card"><div class="area-image ${a.image_class}">${a.icon}</div><div class="area-card-body"><div class="area-name">${a.name}</div><div class="area-details">👥 ${a.capacity} ppl</div><button class="btn btn-primary btn-sm mt-8" onclick="openReservationModal('${a.id}')">Reservar</button></div></div>`).join(''):'<div class="empty-state">Sin áreas</div>'; }
+    function renderReservationsTable(){ const res=state.reservations.filter(r=>r.building===state.currentBuilding); document.getElementById('reservations-tbody').innerHTML = res.length?res.map(r=>`<tr><td>${r.area_name}</td><td>${r.resident}</td><td>${r.date}</td><td>${r.time}</td><td>${r.status}</td><td><button class="btn btn-xs btn-outline" onclick="toggleReservationStatus('${r.id}')">Cambiar</button></td></tr>`).join(''):'<tr><td colspan="6">Sin reservas</td></tr>'; }
+    function openReservationModal(areaId){ const areas=state.areas.filter(a=>a.building===state.currentBuilding); const residents=state.users.filter(u=>u.role==='resident'); const modal=document.getElementById('modal-content'); modal.innerHTML=`<div class="modal-title">Nueva Reserva</div><div class="form-group"><label>Área</label><select id="res-area">${areas.map(a=>`<option value="${a.id}" ${a.id===areaId?'selected':''}>${a.name}</option>`).join('')}</select></div><div class="form-group"><label>Residente</label><select id="res-resident">${residents.map(r=>`<option>${r.name}</option>`).join('')}</select></div><div class="form-group"><label>Fecha</label><input type="date" id="res-date" value="2026-08-28"></div><div class="form-group"><label>Hora</label><input type="text" id="res-time" value="14:00-16:00"></div><div class="modal-actions"><button class="btn btn-outline" onclick="closeModal()">Cancelar</button><button class="btn btn-primary" onclick="submitReservation()">Confirmar</button></div>`; document.getElementById('modal-overlay').classList.add('show'); }
+    function submitReservation(){ const a=document.getElementById('res-area').value; const r=document.getElementById('res-resident').value; const d=document.getElementById('res-date').value; const t=document.getElementById('res-time').value; const area=state.areas.find(x=>x.id===a); state.reservations.push({id:'r'+(state.nextReservationId++), area_id:a, area_name:area.name, building:state.currentBuilding, resident:r, date:d, time:t, status:'confirmed'}); saveState(); closeModal(); renderReservationsTable(); }
+    function toggleReservationStatus(id){ const r=state.reservations.find(x=>x.id===id); if(r){r.status=r.status==='confirmed'?'pending':'confirmed'; saveState(); renderReservationsTable();} }
+    function renderTickets(){ let t=state.tickets.filter(x=>x.building===state.currentBuilding); const sf=document.getElementById('ticket-filter-status')?.value||'all'; const pf=document.getElementById('ticket-filter-priority')?.value||'all'; if(sf!=='all')t=t.filter(x=>x.status===sf); if(pf!=='all')t=t.filter(x=>x.priority===pf); document.getElementById('tickets-tbody').innerHTML = t.length?t.map(tk=>`<tr><td>${tk.id}</td><td>${tk.title}</td><td>${tk.building}</td><td><span class="status-badge ${tk.status}">${tk.status}</span></td><td><span class="priority-badge ${tk.priority}">${tk.priority}</span></td><td>${tk.assignee}</td><td>${tk.created}</td><td class="${tk.sla_status==='ok'?'sla-ok':tk.sla_status==='warning'?'sla-warning':'sla-breached'}">${tk.sla_status.toUpperCase()}</td><td><button class="btn btn-xs btn-danger" onclick="deleteTicket('${tk.id}')">✕</button></td></tr>`).join(''):'<tr><td colspan="9">Sin tickets</td></tr>'; updateTicketBadge(); }
+    function updateTicketBadge(){ document.getElementById('ticket-badge').textContent = state.tickets.filter(t=>t.status==='open'||t.status==='in-progress').length; }
+    function openTicketModal(){ const modal=document.getElementById('modal-content'); modal.innerHTML=`<div class="modal-title">Nuevo Ticket</div><div class="form-group"><label>Título</label><input type="text" id="ticket-title"></div><div class="form-group"><label>Prioridad</label><select id="ticket-priority"><option value="low">Baja</option><option value="medium" selected>Media</option><option value="high">Alta</option><option value="urgent">Urgente</option></select></div><div class="form-group"><label>Asignado</label><select id="ticket-assignee">${state.users.filter(u=>u.role==='employee'||u.role==='admin').map(u=>`<option>${u.name}</option>`).join('')}</select></div><div class="modal-actions"><button class="btn btn-outline" onclick="closeModal()">Cancelar</button><button class="btn btn-primary" onclick="submitTicket()">Crear</button></div>`; document.getElementById('modal-overlay').classList.add('show'); }
+    function submitTicket(){ const title=document.getElementById('ticket-title').value; const pri=document.getElementById('ticket-priority').value; const assignee=document.getElementById('ticket-assignee').value; state.tickets.push({id:'T-'+(state.nextTicketId++), title, building:state.currentBuilding, status:'open', priority:pri, assignee, created:'2026-08-27', sla_target:'2026-08-29', sla_status:'ok'}); saveState(); closeModal(); renderTickets(); updateTicketBadge(); }
+    function deleteTicket(id){ state.tickets=state.tickets.filter(t=>t.id!==id); saveState(); renderTickets(); }
+    function renderUsers(){ document.getElementById('users-tbody').innerHTML = state.users.map(u=>`<tr><td>${u.username}</td><td>${u.name}</td><td><span class="status-badge ${u.role==='admin'?'open':u.role==='owner'?'urgent':'resolved'}">${u.role}</span></td><td>${u.building}</td><td>${u.status}</td><td><button class="btn btn-xs btn-danger" onclick="deleteUser('${u.id}')">✕</button></td></tr>`).join(''); }
+    function openUserModal(){ const modal=document.getElementById('modal-content'); modal.innerHTML=`<div class="modal-title">Agregar Usuario</div><div class="form-group"><label>Usuario</label><input type="text" id="new-user-username"></div><div class="form-group"><label>Contraseña</label><input type="password" id="new-user-password"></div><div class="form-group"><label>Nombre</label><input type="text" id="new-user-name"></div><div class="form-group"><label>Rol</label><select id="new-user-role"><option value="resident">Residente</option><option value="employee">Empleado</option><option value="admin">Admin</option><option value="owner">Dueño</option></select></div><div class="modal-actions"><button class="btn btn-outline" onclick="closeModal()">Cancelar</button><button class="btn btn-primary" onclick="submitUser()">Crear</button></div>`; document.getElementById('modal-overlay').classList.add('show'); }
+    function submitUser(){ const un=document.getElementById('new-user-username').value; const pw=document.getElementById('new-user-password').value; const nm=document.getElementById('new-user-name').value; const role=document.getElementById('new-user-role').value; state.users.push({id:'u'+(state.nextUserId++), username:un, password:pw, name:nm, role, building:'all', status:'active'}); saveState(); closeModal(); renderUsers(); }
+    function deleteUser(id){ state.users=state.users.filter(u=>u.id!==id); saveState(); renderUsers(); }
+    function renderOwnerKPIs(){ const total=state.tickets.length; const breaches=state.tickets.filter(t=>t.sla_status==='breached').length; const comp=total?Math.round((total-breaches)/total*100):100; document.getElementById('owner-kpis').innerHTML=`<div class="kpi-card"><div class="kpi-value">${total}</div><div class="kpi-label">Tickets totales</div></div><div class="kpi-card"><div class="kpi-value">${comp}%</div><div class="kpi-label">SLA cumplimiento</div></div><div class="kpi-card"><div class="kpi-value">${state.users.length}</div><div class="kpi-label">Usuarios</div></div><div class="kpi-card"><div class="kpi-value">${state.reservations.length}</div><div class="kpi-label">Reservas</div></div>`; }
+    function renderCharts(){ const sc={open:0,'in-progress':0,resolved:0,closed:0}; state.tickets.forEach(t=>{if(sc[t.status]!==undefined)sc[t.status]++;}); const max=Math.max(...Object.values(sc),1); document.getElementById('tickets-bar-chart').innerHTML=Object.entries(sc).map(([k,v])=>`<div class="bar" style="height:${(v/max)*120}px;background:${k==='open'?'#c62828':k==='in-progress'?'#f57f17':k==='resolved'?'#2e7d32':'#757575'}"><span class="bar-value">${v}</span><span class="bar-label">${k}</span></div>`).join(''); const bd={}; state.tickets.forEach(t=>{if(!bd[t.building])bd[t.building]={total:0,breached:0};bd[t.building].total++; if(t.sla_status==='breached')bd[t.building].breached++;}); const smax=Math.max(...Object.values(bd).map(d=>d.total),1); document.getElementById('sla-bar-chart').innerHTML=Object.entries(bd).map(([b,d])=>`<div class="bar" style="height:${(d.total/smax)*120}px;background:${d.breached>0?'var(--warning)':'var(--success)'}"><span class="bar-value">${d.total}</span><span class="bar-label">${b}</span></div>`).join(''); }
+    function renderSLADetails(){ const bd={}; state.tickets.forEach(t=>{if(!bd[t.building])bd[t.building]={total:0,breached:0};bd[t.building].total++; if(t.sla_status==='breached')bd[t.building].breached++;}); document.getElementById('sla-details-tbody').innerHTML=Object.entries(bd).map(([b,d])=>{const on=d.total-d.breached; const rate=d.total?Math.round(on/d.total*100):100; return `<tr><td>${b}</td><td>${d.total}</td><td>${on}</td><td>${d.breached}</td><td>${rate}%</td></tr>`;}).join('')||'<tr><td colspan="5">Sin datos</td></tr>'; }
+    function exportReport(){ let csv='Edificio,Total,A tiempo,Incumplidos,Cumplimiento\n'; const bd={}; state.tickets.forEach(t=>{if(!bd[t.building])bd[t.building]={total:0,breached:0};bd[t.building].total++; if(t.sla_status==='breached')bd[t.building].breached++;}); Object.entries(bd).forEach(([b,d])=>{const on=d.total-d.breached; csv+=`${b},${d.total},${on},${d.breached},${d.total?Math.round(on/d.total*100):100}%\n`;}); const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='camisale_sla.csv'; a.click(); }
+    function closeModal(){ document.getElementById('modal-overlay').classList.remove('show'); }
+    document.getElementById('modal-overlay').addEventListener('click',function(e){ if(e.target===this)closeModal(); });
+    document.getElementById('login-password').addEventListener('keypress',e=>{if(e.key==='Enter')handleLogin();});
+
+    // init
+    loadState();
+    document.getElementById('public-site').style.display = 'block';
+</script>
 </body>
 </html>
