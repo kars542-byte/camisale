@@ -14,29 +14,50 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; }
         
-        /* ============ LOGOS ============ */
-        .logo-camisale {
-            height: 50px;
-            width: auto;
-        }
-        .logo-pgi {
-            height: 40px;
-            width: auto;
+        /* ============ CAMISALE COLORS ============ */
+        :root {
+            --camisale-gold: #D4AF37;
+            --camisale-gold-light: #FFD700;
+            --camisale-dark: #1E293B;
+            --camisale-gray: #475569;
+            --camisale-white: #FFFFFF;
+            
+            --pgi-navy: #0A192F;
+            --pgi-navy-light: #1a365d;
+            --pgi-gray: #4A5568;
+            --pgi-white: #FFFFFF;
+            --pgi-accent: #E11D48;
         }
         
         /* ============ CAMISALE HOMEPAGE ============ */
-        #camisale-site { display: block; }
+        #camisale-site { display: block; background: var(--camisale-white); }
         
         .camisale-header {
-            background: #0F172A;
-            color: white;
-            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--camisale-gold) 0%, var(--camisale-gold-light) 100%);
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
+        .logo-camisale {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+        
+        .logo-camisale-fallback {
+            display: none;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--camisale-white);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .logo-camisale-fallback span { color: var(--camisale-dark); }
         
         .camisale-nav {
             display: flex;
@@ -46,30 +67,20 @@
         }
         
         .camisale-nav a {
-            color: white;
+            color: var(--camisale-dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            padding: 0.5rem 0;
         }
         
-        .camisale-nav a:hover { color: #E11D48; }
-        
-        .camisale-hero {
-            background: linear-gradient(135deg, #0F172A, #1E293B);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .camisale-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
+        .camisale-nav a:hover { color: var(--camisale-white); }
         
         .btn-camisale {
             display: inline-block;
-            background: #E11D48;
-            color: white;
+            background: var(--camisale-dark);
+            color: var(--camisale-gold-light);
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             text-decoration: none;
@@ -77,6 +88,51 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            transition: all 0.2s;
+        }
+        
+        .btn-camisale:hover {
+            background: var(--camisale-white);
+            color: var(--camisale-dark);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .camisale-hero {
+            background: linear-gradient(135deg, var(--camisale-dark) 0%, #2D3748 100%);
+            color: var(--camisale-white);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .camisale-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+        }
+        
+        .camisale-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .camisale-hero h1 span {
+            color: var(--camisale-gold-light);
+        }
+        
+        .camisale-hero p {
+            color: #CBD5E1;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
         }
         
         .camisale-section {
@@ -85,37 +141,165 @@
             margin: 0 auto;
         }
         
+        .camisale-section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--camisale-dark);
+            position: relative;
+        }
+        
+        .camisale-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--camisale-gold);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--camisale-white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 2px solid #F1F5F9;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--camisale-gold);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: var(--camisale-dark);
+        }
+        
+        .service-card p {
+            color: var(--camisale-gray);
+            line-height: 1.6;
+        }
+        
+        .why-us {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .feature-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--camisale-gold);
+        }
+        
         .projects-hub {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
         
         .project-link-card {
-            background: white;
+            background: var(--camisale-white);
             border-radius: 1rem;
-            padding: 1.5rem;
+            padding: 1.8rem 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-decoration: none;
-            color: #212121;
+            color: var(--camisale-dark);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             cursor: pointer;
-            border: 2px solid #eeeeee;
-            transition: transform 0.2s;
+            border: 2px solid #F1F5F9;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
         
         .project-link-card:hover {
-            transform: translateY(-4px);
-            border-color: #E11D48;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--camisale-gold);
         }
         
-        /* ============ PGI ADMIN ============ */
+        .project-link-icon {
+            font-size: 2.5rem;
+        }
+        
+        .project-link-card strong {
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .project-link-card span {
+            font-size: 0.75rem;
+            color: var(--camisale-gray);
+            text-align: center;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, var(--camisale-dark), #2D3748);
+            color: var(--camisale-white);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+        }
+        
+        .contact-item a {
+            color: var(--camisale-gold-light);
+            text-decoration: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--camisale-gray);
+            background: #F8FAFC;
+        }
+        
+        /* ============ PGI ADMIN THEME ============ */
         #pgi-admin {
             display: none;
-            background: #f8fafc;
+            background: #f5f5f5;
             min-height: 100vh;
         }
         
@@ -125,7 +309,7 @@
             position: fixed;
             inset: 0;
             z-index: 9999;
-            background: linear-gradient(135deg, #0d1445, #1a237e);
+            background: linear-gradient(135deg, var(--pgi-navy), var(--pgi-navy-light));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,61 +318,91 @@
         #pgi-login.hidden { display: none; }
         
         .pgi-login-card {
-            background: white;
+            background: var(--pgi-white);
             border-radius: 20px;
             padding: 40px;
             width: 400px;
             max-width: 90vw;
             text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
+        
+        .logo-pgi {
+            height: 45px;
+            width: auto;
+            display: block;
+            margin: 0 auto 16px;
+        }
+        
+        .logo-pgi-fallback {
+            display: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--pgi-navy);
+            margin-bottom: 16px;
+        }
+        
+        .logo-pgi-fallback span { color: var(--pgi-accent); }
         
         .pgi-input-group { margin-bottom: 14px; text-align: left; }
         
         .pgi-input-group label {
             font-size: 12px;
             font-weight: 600;
+            color: var(--pgi-gray);
             display: block;
             margin-bottom: 4px;
         }
         
-        .pgi-input-group input, .pgi-input-group select {
+        .pgi-input-group input {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #E2E8F0;
             border-radius: 6px;
             font-size: 14px;
             font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        .pgi-input-group input:focus {
+            outline: none;
+            border-color: var(--pgi-navy);
         }
         
         .btn-pgi {
             width: 100%;
             padding: 13px;
-            background: linear-gradient(135deg, #1a237e, #E11D48);
-            color: white;
+            background: var(--pgi-navy);
+            color: var(--pgi-white);
             border: none;
             border-radius: 6px;
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             font-family: inherit;
+            transition: background 0.2s;
+        }
+        
+        .btn-pgi:hover {
+            background: var(--pgi-navy-light);
         }
         
         .pgi-topbar {
-            background: white;
+            background: var(--pgi-white);
             padding: 0 24px;
             height: 65px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .pgi-tabs {
-            background: white;
+            background: var(--pgi-white);
             padding: 0 24px;
             display: flex;
             gap: 2px;
-            border-bottom: 1px solid #eeeeee;
+            border-bottom: 2px solid #E2E8F0;
             overflow-x: auto;
         }
         
@@ -201,11 +415,13 @@
             border-bottom: 3px solid transparent;
             white-space: nowrap;
             font-family: inherit;
+            color: var(--pgi-gray);
+            transition: color 0.2s, border-color 0.2s;
         }
         
         .pgi-tab-btn.active {
-            color: #1a237e;
-            border-bottom-color: #1a237e;
+            color: var(--pgi-navy);
+            border-bottom-color: var(--pgi-navy);
             font-weight: 600;
         }
         
@@ -218,7 +434,7 @@
         .pgi-tab-panel { display: none; }
         .pgi-tab-panel.active { display: block; }
         
-        /* ============ PARKING TICKET SYSTEM ============ */
+        /* Parking */
         .parking-container {
             display: flex;
             gap: 24px;
@@ -243,8 +459,7 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
-            position: relative;
-            border: 3px solid transparent;
+            border: 3px solid;
             min-height: 120px;
             display: flex;
             flex-direction: column;
@@ -253,18 +468,18 @@
         }
         
         .parking-spot.free {
-            background: #e8f5e9;
-            border-color: #4caf50;
+            background: #E8F5E9;
+            border-color: #4CAF50;
         }
         
         .parking-spot.reserved {
-            background: #fff3e0;
-            border-color: #ff9800;
+            background: #FFF3E0;
+            border-color: #FF9800;
         }
         
         .parking-spot.unavailable {
-            background: #ffebee;
-            border-color: #f44336;
+            background: #FFEBEE;
+            border-color: #F44336;
         }
         
         .parking-spot:hover {
@@ -276,6 +491,7 @@
             font-size: 24px;
             font-weight: 800;
             margin-bottom: 4px;
+            color: var(--pgi-navy);
         }
         
         .spot-status {
@@ -294,7 +510,7 @@
         
         .parking-form-panel {
             width: 350px;
-            background: white;
+            background: var(--pgi-white);
             border-radius: 16px;
             padding: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -313,6 +529,7 @@
             align-items: center;
             gap: 6px;
             font-size: 12px;
+            color: var(--pgi-gray);
         }
         
         .legend-dot {
@@ -322,9 +539,9 @@
             display: inline-block;
         }
         
-        .legend-dot.free { background: #4caf50; }
-        .legend-dot.reserved { background: #ff9800; }
-        .legend-dot.unavailable { background: #f44336; }
+        .legend-dot.free { background: #4CAF50; }
+        .legend-dot.reserved { background: #FF9800; }
+        .legend-dot.unavailable { background: #F44336; }
         
         .modal-overlay {
             position: fixed;
@@ -339,7 +556,7 @@
         .modal-overlay.show { display: flex; }
         
         .modal {
-            background: white;
+            background: var(--pgi-white);
             border-radius: 16px;
             padding: 24px;
             width: 420px;
@@ -353,7 +570,7 @@
             font-size: 12px;
             padding: 6px 12px;
             border-radius: 20px;
-            background: #f5f5f5;
+            background: #F1F5F9;
         }
         
         .status-dot {
@@ -364,9 +581,9 @@
             animation: pulse 2s infinite;
         }
         
-        .status-dot.online { background: #2e7d32; }
-        .status-dot.offline { background: #c62828; }
-        .status-dot.testing { background: #f57f17; }
+        .status-dot.online { background: #4CAF50; }
+        .status-dot.offline { background: #F44336; }
+        .status-dot.testing { background: #FF9800; }
         
         @keyframes pulse {
             0%, 100% { opacity: 1; }
@@ -377,6 +594,9 @@
             .parking-spots-grid { grid-template-columns: repeat(2, 1fr); }
             .parking-container { flex-direction: column; }
             .parking-form-panel { width: 100%; }
+            .camisale-header { flex-direction: column; text-align: center; }
+            .camisale-nav { justify-content: center; }
+            .camisale-hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -386,10 +606,11 @@
 <div id="camisale-site">
     <header class="camisale-header">
         <img src="camisale.jpg" alt="Camisale Logo" class="logo-camisale" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <div style="display:none; font-size:1.8rem; font-weight:800; color:white;">Cami<span style="color:#E11D48;">Sale</span>.work</div>
+        <div class="logo-camisale-fallback">Cami<span>Sale</span>.work</div>
         <ul class="camisale-nav">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#proyectos">Proyectos</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -397,44 +618,145 @@
     </header>
     
     <section class="camisale-hero" id="inicio">
-        <h1>Gestión de proyectos e <span style="color:#FB7185;">instalaciones</span></h1>
-        <p style="color:#CBD5E1; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">
-            Más de 18 años de experiencia en telecomunicaciones, energía e infraestructura.
+        <h1>Ingeniería y Consultoría para <span>Minería y Telecomunicaciones</span></h1>
+        <p>
+            Más de 18 años de experiencia en proyectos de infraestructura crítica.
+            Entregamos soluciones con control de presupuesto, calidad y seguridad.
         </p>
-        <a href="#contacto" class="btn-camisale">Cotizar Proyecto →</a>
+        <a href="#contacto" class="btn-camisale" style="font-size:1.1rem; padding:1rem 2rem;">Cotizar Proyecto →</a>
+    </section>
+    
+    <section class="camisale-section" id="servicios">
+        <h2>Soluciones para tu operación</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📡</div>
+                <h3>Instalaciones Industriales</h3>
+                <p>Redes de datos, fibra óptica, sistemas de control, telecomunicaciones y energía para plantas mineras.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Project Management</h3>
+                <p>Dirección técnica, control de costos, gestión de riesgos y cierre de hitos. Certificados en PMI.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Operación y Mantenimiento</h3>
+                <p>Aseguramos la continuidad operativa con personal calificado y respuesta rápida 24/7.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="camisale-section" id="nosotros">
+        <h2>¿Por qué trabajar con Camisale?</h2>
+        <div class="why-us">
+            <div class="features-grid">
+                <div>
+                    <div class="feature-number">18+</div>
+                    <h3>Años de experiencia</h3>
+                    <p style="color:#475569;">Claro, Entel y Telefónica.</p>
+                </div>
+                <div>
+                    <div class="feature-number">100%</div>
+                    <h3>Cumplimiento</h3>
+                    <p style="color:#475569;">Plazo y presupuesto garantizados.</p>
+                </div>
+                <div>
+                    <div class="feature-number">24/7</div>
+                    <h3>Soporte técnico</h3>
+                    <p style="color:#475569;">Acompañamiento continuo.</p>
+                </div>
+                <div>
+                    <div class="feature-number">+12</div>
+                    <h3>Expertos en RF</h3>
+                    <p style="color:#475569;">Ingenieros especializados.</p>
+                </div>
+            </div>
+        </div>
     </section>
     
     <section class="camisale-section" id="proyectos">
-        <h2 style="text-align:center; margin-bottom:2rem;">Nuestros Proyectos</h2>
+        <h2>Nuestros Proyectos y Plataformas</h2>
         <div class="projects-hub">
-            <a href="#" class="project-link-card" onclick="showPGIAdmin(); return false;" style="border-color:#E11D48;">
-                <div style="font-size:2rem;">🏢</div>
+            <a href="#" class="project-link-card" onclick="showPGIAdmin(); return false;" style="border-color:#D4AF37;">
+                <div class="project-link-icon">🏢</div>
                 <strong>Prime Gestión Inmobiliaria</strong>
-                <span style="font-size:11px; color:#64748B;">Building Admin Dashboard</span>
+                <span>Building Admin Dashboard</span>
             </a>
             <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div style="font-size:2rem;">🌄</div>
+                <div class="project-link-icon">🌄</div>
                 <strong>Ayllu Peru</strong>
-                <span style="font-size:11px; color:#64748B;">Turismo comunitario</span>
+                <span>Turismo comunitario</span>
             </a>
             <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div style="font-size:2rem;">🌊</div>
-                <strong>Aquamar</strong>
-                <span style="font-size:11px; color:#64748B;">Recursos hídricos</span>
+                <div class="project-link-icon">🌊</div>
+                <strong>Aquamar Project</strong>
+                <span>Recursos hídricos</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">🤖</div>
+                <strong>Agentic RR</strong>
+                <span>RRHH con IA</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">📡</div>
+                <strong>Pronatel</strong>
+                <span>Red rural</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">📶</div>
+                <strong>Claro 5G</strong>
+                <span>Modernización</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">⛏️</div>
+                <strong>Mining IoT</strong>
+                <span>Sensores y monitoreo</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">⚡</div>
+                <strong>Energy Pro</strong>
+                <span>Energía</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">🛡️</div>
+                <strong>Safety Hub</strong>
+                <span>Seguridad industrial</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">📇</div>
+                <strong>CRM Camisale</strong>
+                <span>Gestión de clientes</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">🔗</div>
+                <strong>Entel DWDM</strong>
+                <span>Telecom</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">📚</div>
+                <strong>Doc Center</strong>
+                <span>Documentación</span>
             </a>
         </div>
     </section>
     
     <section class="camisale-section" id="contacto">
-        <h2 style="text-align:center; margin-bottom:2rem;">Contacto</h2>
-        <p style="text-align:center;">
-            📞 <a href="tel:+51989666606">+51 989 666 606</a> | 
-            ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a>
-        </p>
+        <div class="contact-section">
+            <h2>¿Listo para ejecutar tu proyecto?</h2>
+            <p style="margin-bottom:1rem;">Contáctanos hoy y recibe una propuesta en 48 horas</p>
+            <div class="contact-details">
+                <div class="contact-item">📞 <a href="tel:+51989666606">+51 989 666 606</a></div>
+                <div class="contact-item">✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a></div>
+                <div class="contact-item">💬 <a href="https://wa.me/51989666606">WhatsApp</a></div>
+            </div>
+            <a href="https://wa.me/51989666606" class="btn-camisale" style="background:#25D366; color:white;">Escribir por WhatsApp →</a>
+        </div>
     </section>
     
-    <footer style="text-align:center; padding:2rem; color:#64748B;">
-        <p>© 2025 Camisale.work - Soluciones de Ingeniería</p>
+    <footer>
+        <p>© 2025 Camisale.work - Soluciones de Ingeniería para Minería e Industria</p>
+        <p style="margin-top:0.5rem;">RUC: [En trámite] | Todos los derechos reservados</p>
     </footer>
 </div>
 
@@ -443,9 +765,9 @@
     <!-- Login -->
     <div id="pgi-login" class="hidden">
         <div class="pgi-login-card">
-            <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" style="margin: 0 auto 16px; display:block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; font-size:1.5rem; font-weight:800; color:#1a237e; margin-bottom:16px;">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
-            <p style="color:#757575; font-size:14px; margin-bottom:20px;">Building Admin Dashboard</p>
+            <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="logo-pgi-fallback">Prime<span>Gestión</span> Inmobiliaria</div>
+            <p style="color:#4A5568; font-size:14px; margin-bottom:20px;">Building Admin Dashboard</p>
             
             <div class="pgi-input-group">
                 <label>Usuario</label>
@@ -457,7 +779,7 @@
             </div>
             <button class="btn-pgi" onclick="handlePGILogin()">Ingresar</button>
             
-            <p style="font-size:11px; color:#9e9e9e; margin-top:12px;">Powered by camisale.work</p>
+            <p style="font-size:11px; color:#9E9E9E; margin-top:12px;">Powered by camisale.work</p>
             
             <div class="supabase-status" style="margin-top:16px; justify-content:center;">
                 <span class="status-dot testing" id="pgi-login-status-dot"></span>
@@ -471,15 +793,15 @@
         <div class="pgi-topbar">
             <div style="display:flex; align-items:center; gap:12px;">
                 <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div style="display:none; font-weight:700; color:#1a237e;">Prime<span style="color:#E11D48;">Gestión</span></div>
+                <div class="logo-pgi-fallback" style="display:none; font-size:1.2rem;">Prime<span style="color:#E11D48;">Gestión</span></div>
             </div>
             <div style="display:flex; align-items:center; gap:12px;">
                 <div class="supabase-status">
                     <span class="status-dot testing" id="pgi-admin-status-dot"></span>
                     <span id="pgi-admin-status-text">Verificando...</span>
                 </div>
-                <span id="pgi-user-name" style="font-size:13px;"></span>
-                <button onclick="logoutPGI()" style="padding:7px 14px; border:1px solid #e0e0e0; border-radius:6px; background:white; cursor:pointer;">Salir</button>
+                <span id="pgi-user-name" style="font-size:13px; color:#4A5568;"></span>
+                <button onclick="logoutPGI()" style="padding:7px 14px; border:1px solid #E2E8F0; border-radius:6px; background:white; cursor:pointer; color:#4A5568;">Salir</button>
             </div>
         </div>
         
@@ -503,8 +825,8 @@
                 <div class="parking-container">
                     <div class="parking-diagram">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <h3 style="font-size:18px; color:#1a237e;">🅿️ Estacionamiento de Visitas</h3>
-                            <button onclick="openParkingReservation()" style="background:#1a237e; color:white; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; font-weight:600;">+ Nueva Reserva</button>
+                            <h3 style="font-size:18px; color:#0A192F;">🅿️ Estacionamiento de Visitas</h3>
+                            <button onclick="openParkingReservation()" style="background:#0A192F; color:white; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; font-weight:600;">+ Nueva Reserva</button>
                         </div>
                         
                         <div class="legend" style="margin-top:16px;">
@@ -517,23 +839,23 @@
                     </div>
                     
                     <div class="parking-form-panel" id="parking-info-panel">
-                        <h4 style="margin-bottom:12px; color:#1a237e;">📋 Información del Puesto</h4>
-                        <p style="color:#757575; font-size:13px;">Haz click en un puesto para ver detalles o en "Nueva Reserva" para crear una.</p>
+                        <h4 style="margin-bottom:12px; color:#0A192F;">📋 Información del Puesto</h4>
+                        <p style="color:#4A5568; font-size:13px;">Haz click en un puesto para ver detalles o en "Nueva Reserva" para crear una.</p>
                     </div>
                 </div>
             </div>
             
             <!-- Tickets -->
             <div class="pgi-tab-panel" id="pgi-tab-tickets">
-                <button onclick="openPGITicketModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
+                <button onclick="openPGITicketModal()" style="margin-bottom:12px; background:#0A192F; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
                 <div style="overflow-x:auto;">
-                    <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                    <table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:8px; overflow:hidden;">
                         <thead>
-                            <tr style="background:#f5f5f5;">
-                                <th style="padding:10px; text-align:left;">ID</th>
-                                <th style="padding:10px; text-align:left;">Título</th>
-                                <th style="padding:10px; text-align:left;">Estado</th>
-                                <th style="padding:10px; text-align:left;">Acción</th>
+                            <tr style="background:#F1F5F9;">
+                                <th style="padding:12px; text-align:left; color:#4A5568;">ID</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Título</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Estado</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Acción</th>
                             </tr>
                         </thead>
                         <tbody id="pgi-tickets-tbody"></tbody>
@@ -543,16 +865,16 @@
             
             <!-- Usuarios -->
             <div class="pgi-tab-panel" id="pgi-tab-users">
-                <button onclick="openPGIUserModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
-                <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#2e7d32; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
+                <button onclick="openPGIUserModal()" style="margin-bottom:12px; background:#0A192F; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
+                <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#4CAF50; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
                 <div style="overflow-x:auto;">
-                    <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                    <table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:8px; overflow:hidden;">
                         <thead>
-                            <tr style="background:#f5f5f5;">
-                                <th style="padding:10px; text-align:left;">Usuario</th>
-                                <th style="padding:10px; text-align:left;">Nombre</th>
-                                <th style="padding:10px; text-align:left;">Rol</th>
-                                <th style="padding:10px; text-align:left;">Acción</th>
+                            <tr style="background:#F1F5F9;">
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Usuario</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Nombre</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Rol</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Acción</th>
                             </tr>
                         </thead>
                         <tbody id="pgi-users-tbody"></tbody>
@@ -698,21 +1020,21 @@ function renderPGIDashboard() {
     const reservedParking = pgiState.parking.filter(p => p.status === 'reserved').length;
     
     document.getElementById('pgi-dashboard-kpis').innerHTML = `
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${openTickets}</div>
-            <div style="font-size:12px; color:#757575;">🎫 Tickets abiertos</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${openTickets}</div>
+            <div style="font-size:12px; color:#4A5568;">🎫 Tickets abiertos</div>
         </div>
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${freeParking}/${totalParking}</div>
-            <div style="font-size:12px; color:#757575;">🅿️ Parking libre</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${freeParking}/${totalParking}</div>
+            <div style="font-size:12px; color:#4A5568;">🅿️ Parking libre</div>
         </div>
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${reservedParking}</div>
-            <div style="font-size:12px; color:#757575;">📅 Reservas activas</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${reservedParking}</div>
+            <div style="font-size:12px; color:#4A5568;">📅 Reservas activas</div>
         </div>
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${pgiState.users.length}</div>
-            <div style="font-size:12px; color:#757575;">👥 Usuarios</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${pgiState.users.length}</div>
+            <div style="font-size:12px; color:#4A5568;">👥 Usuarios</div>
         </div>
     `;
 }
@@ -744,31 +1066,31 @@ function showParkingInfo(spotId) {
     
     if (spot.status === 'reserved' && spot.person) {
         panel.innerHTML = `
-            <h4 style="margin-bottom:12px; color:#1a237e;">📋 Información del Puesto ${spot.number}</h4>
-            <div style="background:#fff3e0; border-radius:8px; padding:16px;">
-                <p><strong>Estado:</strong> <span style="color:#ff9800;">Reservado</span></p>
-                <p><strong>Departamento:</strong> ${spot.department}</p>
-                <p><strong>Horario:</strong> ${spot.time}</p>
+            <h4 style="margin-bottom:12px; color:#0A192F;">📋 Puesto ${spot.number}</h4>
+            <div style="background:#FFF3E0; border-radius:8px; padding:16px;">
+                <p style="margin-bottom:4px;"><strong>Estado:</strong> <span style="color:#FF9800;">Reservado</span></p>
+                <p style="margin-bottom:4px;"><strong>Departamento:</strong> ${spot.department}</p>
+                <p style="margin-bottom:4px;"><strong>Horario:</strong> ${spot.time}</p>
                 <p><strong>Persona:</strong> ${spot.person}</p>
             </div>
-            <button onclick="releaseParkingSpot('${spot.id}')" style="margin-top:12px; width:100%; background:#c62828; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer;">Liberar Reserva</button>
+            <button onclick="releaseParkingSpot('${spot.id}')" style="margin-top:12px; width:100%; background:#F44336; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer;">Liberar Reserva</button>
         `;
     } else if (spot.status === 'unavailable') {
         panel.innerHTML = `
-            <h4 style="margin-bottom:12px; color:#1a237e;">📋 Puesto ${spot.number}</h4>
-            <div style="background:#ffebee; border-radius:8px; padding:16px;">
-                <p><strong>Estado:</strong> <span style="color:#f44336;">No disponible</span></p>
-                <p style="font-size:13px; color:#757575;">Este puesto está temporalmente fuera de servicio.</p>
+            <h4 style="margin-bottom:12px; color:#0A192F;">📋 Puesto ${spot.number}</h4>
+            <div style="background:#FFEBEE; border-radius:8px; padding:16px;">
+                <p><strong>Estado:</strong> <span style="color:#F44336;">No disponible</span></p>
+                <p style="font-size:13px; color:#4A5568; margin-top:4px;">Fuera de servicio.</p>
             </div>
         `;
     } else {
         panel.innerHTML = `
-            <h4 style="margin-bottom:12px; color:#1a237e;">📋 Puesto ${spot.number}</h4>
-            <div style="background:#e8f5e9; border-radius:8px; padding:16px;">
-                <p><strong>Estado:</strong> <span style="color:#4caf50;">Libre</span></p>
-                <p style="font-size:13px; color:#757575;">Disponible para reserva.</p>
+            <h4 style="margin-bottom:12px; color:#0A192F;">📋 Puesto ${spot.number}</h4>
+            <div style="background:#E8F5E9; border-radius:8px; padding:16px;">
+                <p><strong>Estado:</strong> <span style="color:#4CAF50;">Libre</span></p>
+                <p style="font-size:13px; color:#4A5568; margin-top:4px;">Disponible para reserva.</p>
             </div>
-            <button onclick="openParkingReservation('${spot.id}')" style="margin-top:12px; width:100%; background:#1a237e; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer;">Reservar este puesto</button>
+            <button onclick="openParkingReservation('${spot.id}')" style="margin-top:12px; width:100%; background:#0A192F; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer;">Reservar este puesto</button>
         `;
     }
 }
@@ -791,30 +1113,30 @@ function openParkingReservation(spotId) {
     const content = document.getElementById('pgi-modal-content');
     
     content.innerHTML = `
-        <h3 style="margin-bottom:16px; color:#1a237e;">🅿️ Nueva Reserva de Estacionamiento</h3>
+        <h3 style="margin-bottom:16px; color:#0A192F;">🅿️ Nueva Reserva</h3>
         <div style="margin-bottom:12px;">
-            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Puesto</label>
-            <select id="parking-spot-select" style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+            <label style="font-size:12px; font-weight:600; color:#4A5568; display:block; margin-bottom:4px;">Puesto</label>
+            <select id="parking-spot-select" style="width:100%; padding:10px; border:2px solid #E2E8F0; border-radius:6px; font-family:inherit;">
                 ${pgiState.parking.filter(s => s.status === 'free').map(s => 
                     `<option value="${s.id}" ${s.id === spotId ? 'selected' : ''}>${s.number} (Libre)</option>`
                 ).join('')}
             </select>
         </div>
         <div style="margin-bottom:12px;">
-            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Departamento</label>
-            <input type="text" id="parking-department" placeholder="Ej: 502, PH-A, etc." style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+            <label style="font-size:12px; font-weight:600; color:#4A5568; display:block; margin-bottom:4px;">Departamento</label>
+            <input type="text" id="parking-department" placeholder="Ej: 502, PH-A" style="width:100%; padding:10px; border:2px solid #E2E8F0; border-radius:6px; font-family:inherit;">
         </div>
         <div style="margin-bottom:12px;">
-            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Horario de Reserva</label>
-            <input type="text" id="parking-time" placeholder="Ej: 14:00 - 18:00" style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+            <label style="font-size:12px; font-weight:600; color:#4A5568; display:block; margin-bottom:4px;">Horario de Reserva</label>
+            <input type="text" id="parking-time" placeholder="Ej: 14:00 - 18:00" style="width:100%; padding:10px; border:2px solid #E2E8F0; border-radius:6px; font-family:inherit;">
         </div>
         <div style="margin-bottom:12px;">
-            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Nombre de la Persona</label>
-            <input type="text" id="parking-person" placeholder="Nombre completo" style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+            <label style="font-size:12px; font-weight:600; color:#4A5568; display:block; margin-bottom:4px;">Nombre de la Persona</label>
+            <input type="text" id="parking-person" placeholder="Nombre completo" style="width:100%; padding:10px; border:2px solid #E2E8F0; border-radius:6px; font-family:inherit;">
         </div>
         <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:16px;">
-            <button onclick="closeModal()" style="padding:10px 16px; border:1px solid #e0e0e0; border-radius:6px; background:white; cursor:pointer;">Cancelar</button>
-            <button onclick="createParkingReservation()" style="padding:10px 16px; background:#1a237e; color:white; border:none; border-radius:6px; cursor:pointer;">Crear Reserva</button>
+            <button onclick="closeModal()" style="padding:10px 16px; border:1px solid #E2E8F0; border-radius:6px; background:white; cursor:pointer; color:#4A5568;">Cancelar</button>
+            <button onclick="createParkingReservation()" style="padding:10px 16px; background:#0A192F; color:white; border:none; border-radius:6px; cursor:pointer;">Crear Reserva</button>
         </div>
     `;
     modal.classList.add('show');
@@ -861,11 +1183,11 @@ function switchPGITab(tab) {
 // ============ TICKETS ============
 function renderPGITickets() {
     document.getElementById('pgi-tickets-tbody').innerHTML = pgiState.tickets.map(t => `
-        <tr style="border-bottom:1px solid #eeeeee;">
-            <td style="padding:10px;">${t.id}</td>
-            <td style="padding:10px;">${t.title}</td>
-            <td style="padding:10px;">${t.status}</td>
-            <td style="padding:10px;"><button onclick="deletePGITicket('${t.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:12px; color:#4A5568;">${t.id}</td>
+            <td style="padding:12px; color:#1E293B;">${t.title}</td>
+            <td style="padding:12px;">${t.status}</td>
+            <td style="padding:12px;"><button onclick="deletePGITicket('${t.id}')" style="background:#F44336;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
         </tr>
     `).join('');
 }
@@ -874,9 +1196,9 @@ function openPGITicketModal() {
     const modal = document.getElementById('pgi-modal-overlay');
     const content = document.getElementById('pgi-modal-content');
     content.innerHTML = `
-        <h3 style="margin-bottom:16px;">🎫 Nuevo Ticket</h3>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
-        <button onclick="submitPGITicket()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Ticket</button>
+        <h3 style="margin-bottom:16px; color:#0A192F;">🎫 Nuevo Ticket</h3>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;color:#4A5568;display:block;">Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div>
+        <button onclick="submitPGITicket()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Ticket</button>
     `;
     modal.classList.add('show');
 }
@@ -904,11 +1226,11 @@ function deletePGITicket(id) {
 // ============ USUARIOS ============
 function renderPGIUsers() {
     document.getElementById('pgi-users-tbody').innerHTML = pgiState.users.map(u => `
-        <tr style="border-bottom:1px solid #eeeeee;">
-            <td style="padding:10px;">${u.username}</td>
-            <td style="padding:10px;">${u.name}</td>
-            <td style="padding:10px;">${u.role}</td>
-            <td style="padding:10px;"><button onclick="deletePGIUser('${u.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:12px; color:#4A5568;">${u.username}</td>
+            <td style="padding:12px; color:#1E293B;">${u.name}</td>
+            <td style="padding:12px; color:#4A5568;">${u.role}</td>
+            <td style="padding:12px;"><button onclick="deletePGIUser('${u.id}')" style="background:#F44336;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
         </tr>
     `).join('');
 }
@@ -917,12 +1239,12 @@ function openPGIUserModal() {
     const modal = document.getElementById('pgi-modal-overlay');
     const content = document.getElementById('pgi-modal-content');
     content.innerHTML = `
-        <h3 style="margin-bottom:16px;">👥 Nuevo Usuario</h3>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Rol</label><select id="pgi-new-role" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div>
-        <button onclick="submitPGIUser()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Usuario</button>
+        <h3 style="margin-bottom:16px; color:#0A192F;">👥 Nuevo Usuario</h3>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;color:#4A5568;display:block;">Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;color:#4A5568;display:block;">Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;color:#4A5568;display:block;">Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;color:#4A5568;display:block;">Rol</label><select id="pgi-new-role" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div>
+        <button onclick="submitPGIUser()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Usuario</button>
     `;
     modal.classList.add('show');
 }
@@ -957,17 +1279,17 @@ function renderPGIKPIs() {
     const reservedParking = pgiState.parking.filter(p => p.status === 'reserved').length;
     
     document.getElementById('pgi-owner-kpis').innerHTML = `
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${total}</div>
-            <div style="font-size:12px; color:#757575;">Tickets totales</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${total}</div>
+            <div style="font-size:12px; color:#4A5568;">Tickets totales</div>
         </div>
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${reservedParking}</div>
-            <div style="font-size:12px; color:#757575;">Reservas de parking</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${reservedParking}</div>
+            <div style="font-size:12px; color:#4A5568;">Reservas de parking</div>
         </div>
-        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-            <div style="font-size:24px; font-weight:700; color:#1a237e;">${freeParking}</div>
-            <div style="font-size:12px; color:#757575;">Puestos libres</div>
+        <div style="background:white; border-radius:10px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:28px; font-weight:700; color:#0A192F;">${freeParking}</div>
+            <div style="font-size:12px; color:#4A5568;">Puestos libres</div>
         </div>
     `;
 }
