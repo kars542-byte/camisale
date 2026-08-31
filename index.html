@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camisale.work | Operación & Admin</title>
+    <title>Prime Gestión Inmobiliaria | Admin Dashboard</title>
     
     <!-- ============ SUPABASE CONFIGURATION ============ -->
     <script>
-        // ⚠️ REEMPLAZA con tus credenciales reales de Supabase
-        // Ve a: Supabase Dashboard → Settings → API
-        const SUPABASE_URL = 'https://jvngqoqfregoqgrqojep.supabase.co/rest/v1/';
+        // ⚠️ REEMPLAZA con tus credenciales reales
+        // Formato correcto: https://xxxxx.supabase.co (sin / al final)
+        const SUPABASE_URL = 'https://jvngqoqfregoqgrqojep.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2bmdxb3FmcmVnb3FncnFvamVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4ODYxNDYsImV4cCI6MjEwMzQ2MjE0Nn0.fO7yDpC3pJrs6NSYGNqdN4oT_0IHiggTVTLudNkrqsc';
     </script>
     
@@ -18,29 +18,40 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #1E293B; background: #F8FAFC; }
         
-        /* ============ CAMISALE PUBLIC SITE ============ */
+        /* ============ PRIME GESTIÓN INMOBILIARIA ============ */
+        .prime-logo { font-size: 1.8rem; font-weight: 800; color: #1a237e; }
+        .prime-logo span { color: #E11D48; }
+        .powered-by { font-size: 0.7rem; color: #9e9e9e; margin-top: 2px; }
+        
+        /* ============ TOP BAR ============ */
         .top-bar { background: #0F172A; color: #94A3B8; padding: 0.75rem 0; font-size: 0.875rem; }
         .top-bar .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
         .top-bar a { color: #CBD5E1; text-decoration: none; }
+        
+        /* ============ HEADER ============ */
         .main-header { background: white; box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1280px; margin: 0 auto; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.8rem; font-weight: 800; color: #0F172A; }
-        .logo span { color: #E11D48; }
         .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
         .nav-links a { text-decoration: none; color: #1E293B; font-weight: 500; }
         .nav-links a:hover { color: #E11D48; }
+        
+        /* ============ BOTONES ============ */
         .btn { display: inline-block; background: #E11D48; color: white; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
         .btn:hover { background: #BE123C; }
+        
+        /* ============ HERO ============ */
         .hero { background: linear-gradient(135deg, #0F172A, #1E293B); color: white; padding: 4rem 2rem; }
         .hero .container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.5rem; }
         .hero h1 span { color: #FB7185; }
+        
+        /* ============ SECTIONS ============ */
         .section { padding: 4rem 2rem; max-width: 1280px; margin: 0 auto; }
         .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         .service-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         
-        /* Projects Hub */
+        /* ============ PROJECTS HUB ============ */
         .projects-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
         .project-link-card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-decoration: none; color: #1E293B; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; transition: transform 0.2s; cursor: pointer; border: 2px solid transparent; }
         .project-link-card:hover { transform: translateY(-4px); border-color: #E11D48; }
@@ -122,8 +133,8 @@
 <!-- ============ LOGIN SCREEN ============ -->
 <div id="login-screen" class="hidden">
     <div class="login-card">
-        <div class="login-logo">CM</div>
-        <h1 style="font-size:22px; margin-bottom:4px;">Camisale Admin</h1>
+        <div class="login-logo">PG</div>
+        <h1 style="font-size:22px; margin-bottom:4px;">Prime Gestión Inmobiliaria</h1>
         <p style="color:#757575; font-size:13px; margin-bottom:20px;">Centro de operaciones</p>
         <div class="login-input-group">
             <label>Usuario</label>
@@ -135,6 +146,7 @@
         </div>
         <button class="login-btn" onclick="handleLogin()">Ingresar</button>
         <p style="margin-top:12px; font-size:11px; color:#9e9e9e;">Demo: admin/admin123</p>
+        <p class="powered-by" style="margin-top:8px;">Powered by <strong>camisale.work</strong></p>
         <div class="supabase-status" id="login-supabase-status" style="margin-top:16px; justify-content:center;">
             <span class="status-dot testing" id="login-status-dot"></span>
             <span id="login-status-text">Verificando Supabase...</span>
@@ -146,7 +158,10 @@
 <div id="app">
     <div class="topbar">
         <div style="display:flex; align-items:center; gap:12px;">
-            <strong style="color:#1a237e;">Cami<span style="color:#E11D48;">Sale</span>.work</strong>
+            <div>
+                <div class="prime-logo" style="font-size:1.2rem;">Prime<span style="color:#E11D48;">Gestión</span></div>
+                <div class="powered-by">Powered by camisale.work</div>
+            </div>
             <div class="building-selector" id="building-selector"></div>
         </div>
         <div style="display:flex; align-items:center; gap:12px;">
@@ -198,11 +213,11 @@
     </div>
 </div>
 
-<!-- ============ CAMISALE PUBLIC SITE ============ -->
+<!-- ============ PÁGINA PÚBLICA PRIME GESTIÓN ============ -->
 <div id="public-site">
     <div class="top-bar">
         <div class="container">
-            <div>📍 Lima - Perú | Proyectos en todo el territorio nacional</div>
+            <div>📍 Lima - Perú | Gestión Inmobiliaria Profesional</div>
             <div>
                 <div class="supabase-status" id="public-supabase-status" style="display:inline-flex;">
                     <span class="status-dot testing" id="public-status-dot"></span>
@@ -214,7 +229,10 @@
     </div>
     <div class="main-header">
         <div class="nav-container">
-            <div class="logo">Cami<span>Sale</span>.work</div>
+            <div>
+                <div class="prime-logo">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
+                <div class="powered-by">Powered by camisale.work</div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -227,95 +245,65 @@
     <section id="inicio" class="hero">
         <div class="container">
             <div>
-                <h1>Gestión de proyectos e <span>instalaciones</span> para la industria minera</h1>
-                <p>Más de 18 años de experiencia en proyectos de telecomunicaciones, energía e infraestructura crítica.</p>
-                <a href="#contacto" class="btn">Cotizar Proyecto →</a>
+                <h1>Gestión inmobiliaria <span>profesional</span> para tu edificio</h1>
+                <p>Administración de estacionamientos, áreas comunes, tickets de mantenimiento y más.</p>
+                <a href="#contacto" class="btn">Cotizar Servicio →</a>
             </div>
             <div>
                 <div style="background:#1E293B; border-radius:1rem; padding:2rem; text-align:center;">
-                    <div style="font-size:4rem;">🏗️</div>
-                    <p style="color:#94A3B8;">Proyectos llave en mano</p>
+                    <div style="font-size:4rem;">🏢</div>
+                    <p style="color:#94A3B8;">Gestión integral de edificios</p>
                 </div>
             </div>
         </div>
     </section>
     <section id="servicios" class="section">
-        <h2 class="section-title">Soluciones para tu operación</h2>
+        <h2 class="section-title">Nuestros Servicios</h2>
         <div class="services-grid">
-            <div class="service-card"><h3>📡 Instalaciones Industriales</h3><p>Redes de datos, fibra óptica, telecomunicaciones.</p></div>
-            <div class="service-card"><h3>📊 Project Management</h3><p>Control de costos, gestión de riesgos.</p></div>
-            <div class="service-card"><h3>⚡ Operación y Mantenimiento</h3><p>Soporte 24/7 y continuidad operativa.</p></div>
+            <div class="service-card"><h3>🅿️ Estacionamientos</h3><p>Control de espacios y reservas.</p></div>
+            <div class="service-card"><h3>🎫 Tickets</h3><p>Gestión de incidencias y SLA.</p></div>
+            <div class="service-card"><h3>🏊 Áreas Comunes</h3><p>Reservas de piscina, gimnasio, etc.</p></div>
         </div>
     </section>
     <section id="proyectos" class="section">
-        <h2 class="section-title">Nuestros Proyectos</h2>
+        <h2 class="section-title">Accesos Rápidos</h2>
         <div class="projects-hub">
             <a href="#" class="project-link-card" onclick="showAdminLogin(); return false;" style="border:2px solid #E11D48;">
-                <div class="project-link-icon">🏢</div>
-                <strong>Building Admin</strong>
-                <span style="font-size:11px; color:#64748B;">Dashboard de gestión</span>
+                <div class="project-link-icon">🔐</div>
+                <strong>Panel Admin</strong>
+                <span style="font-size:11px; color:#64748B;">Gestión de edificios</span>
             </a>
-            <a href="https://aylluperu.work" target="_blank" class="project-link-card">
-                <div class="project-link-icon">🌄</div>
-                <strong>Ayllu Peru</strong>
-                <span style="font-size:11px; color:#64748B;">Turismo comunitario</span>
+            <a href="#" class="project-link-card" onclick="alert('Portal de residentes en desarrollo'); return false;">
+                <div class="project-link-icon">👥</div>
+                <strong>Portal Residentes</strong>
+                <span style="font-size:11px; color:#64748B;">Acceso residentes</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">🌊</div>
-                <strong>Aquamar</strong>
-                <span style="font-size:11px; color:#64748B;">Recursos hídricos</span>
+            <a href="#" class="project-link-card" onclick="alert('Reportes en desarrollo'); return false;">
+                <div class="project-link-icon">📊</div>
+                <strong>Reportes</strong>
+                <span style="font-size:11px; color:#64748B;">KPIs y análisis</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">🤖</div>
-                <strong>Agentic RR</strong>
-                <span style="font-size:11px; color:#64748B;">RRHH con IA</span>
+            <a href="#" class="project-link-card" onclick="alert('Pagos en desarrollo'); return false;">
+                <div class="project-link-icon">💳</div>
+                <strong>Pagos</strong>
+                <span style="font-size:11px; color:#64748B;">Cuotas y facturación</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">📡</div>
-                <strong>Pronatel</strong>
-                <span style="font-size:11px; color:#64748B;">Red rural</span>
+            <a href="#" class="project-link-card" onclick="alert('Mantenimiento en desarrollo'); return false;">
+                <div class="project-link-icon">🔧</div>
+                <strong>Mantenimiento</strong>
+                <span style="font-size:11px; color:#64748B;">Solicitudes</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">📶</div>
-                <strong>Claro 5G</strong>
-                <span style="font-size:11px; color:#64748B;">Modernización</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">⛏️</div>
-                <strong>Mining IoT</strong>
-                <span style="font-size:11px; color:#64748B;">Sensores</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">⚡</div>
-                <strong>Energy Pro</strong>
-                <span style="font-size:11px; color:#64748B;">Energía</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+            <a href="#" class="project-link-card" onclick="alert('Seguridad en desarrollo'); return false;">
                 <div class="project-link-icon">🛡️</div>
-                <strong>Safety Hub</strong>
-                <span style="font-size:11px; color:#64748B;">Seguridad</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">📇</div>
-                <strong>CRM Camisale</strong>
-                <span style="font-size:11px; color:#64748B;">Clientes</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">📚</div>
-                <strong>Doc Center</strong>
-                <span style="font-size:11px; color:#64748B;">Documentación</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div class="project-link-icon">🔗</div>
-                <strong>Entel DWDM</strong>
-                <span style="font-size:11px; color:#64748B;">Telecom</span>
+                <strong>Seguridad</strong>
+                <span style="font-size:11px; color:#64748B;">Control de acceso</span>
             </a>
         </div>
     </section>
     <section id="contacto" class="section">
         <div class="contact-section">
-            <h2>¿Listo para ejecutar?</h2>
-            <p>Propuesta en 48 horas</p>
+            <h2>¿Necesitas gestión para tu edificio?</h2>
+            <p>Contáctanos hoy</p>
             <div class="contact-details">
                 <div class="contact-item">📞 <a href="tel:+51989666606" style="color:white;">989 666 606</a></div>
                 <div class="contact-item">✉️ <a href="mailto:camisalework@gmail.com" style="color:white;">camisalework@gmail.com</a></div>
@@ -325,7 +313,8 @@
         </div>
     </section>
     <footer>
-        <p>© 2025 Camisale.work - Operación y Servicios para Minería y Telecomunicaciones</p>
+        <p>© 2025 Prime Gestión Inmobiliaria</p>
+        <p class="powered-by">Powered by <strong>camisale.work</strong> - Soluciones de Ingeniería</p>
     </footer>
 </div>
 
@@ -338,7 +327,7 @@
 // ============ DATOS INICIALES ============
 const DEFAULT_USERS = [
     { id:'u1', username:'admin', password:'admin123', name:'Administrador', role:'admin', building:'all', status:'active' },
-    { id:'u2', username:'owner', password:'owner123', name:'Dueño', role:'owner', building:'all', status:'active' },
+    { id:'u2', username:'owner', password:'owner123', name:'Propietario', role:'owner', building:'all', status:'active' },
     { id:'u3', username:'jdoe', password:'jdoe123', name:'John Doe', role:'worker', building:'Tower A', status:'active' },
 ];
 
@@ -358,12 +347,12 @@ const DEFAULT_PARKING = [
 // ============ STATE ============
 let state = {
     users: [...DEFAULT_USERS],
-    buildings: ['Tower A', 'Tower B', 'Tower C', 'Tower D'],
+    buildings: ['Torre A', 'Torre B', 'Torre C', 'Torre D'],
     parking: [...DEFAULT_PARKING],
     tickets: [...DEFAULT_TICKETS],
     reservations: [],
     currentUser: null,
-    currentBuilding: 'Tower A',
+    currentBuilding: 'Torre A',
     currentTab: 'dashboard',
     nextTicketId: 1003,
     nextUserId: 10,
@@ -372,10 +361,30 @@ let state = {
 // ============ FUNCIÓN TEST CONEXIÓN SUPABASE ============
 async function testSupabaseConnection() {
     console.log('🔍 Probando conexión a Supabase...');
+    console.log('URL:', SUPABASE_URL);
+    
     updateSupabaseStatus('testing');
     
     try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/users?select=count`, {
+        // Verificar que la URL esté bien formada
+        if (!SUPABASE_URL || SUPABASE_URL === 'https://TU-PROYECTO.supabase.co') {
+            console.error('❌ URL de Supabase no configurada. Reemplaza con tu URL real.');
+            updateSupabaseStatus('offline');
+            return false;
+        }
+        
+        // Verificar que la key esté configurada
+        if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === 'TU-ANON-KEY-AQUI') {
+            console.error('❌ ANON KEY de Supabase no configurada. Reemplaza con tu key real.');
+            updateSupabaseStatus('offline');
+            return false;
+        }
+        
+        // URL correcta para Supabase
+        const endpoint = `${SUPABASE_URL}/rest/v1/users?select=count`;
+        console.log('Endpoint:', endpoint);
+        
+        const response = await fetch(endpoint, {
             method: 'GET',
             headers: {
                 'apikey': SUPABASE_ANON_KEY,
@@ -384,6 +393,8 @@ async function testSupabaseConnection() {
             }
         });
         
+        console.log('Respuesta:', response.status, response.statusText);
+        
         if (response.ok) {
             const data = await response.json();
             console.log('✅ Conexión exitosa a Supabase!');
@@ -391,7 +402,8 @@ async function testSupabaseConnection() {
             updateSupabaseStatus('online');
             return true;
         } else {
-            console.error('❌ Error de conexión:', response.status, response.statusText);
+            console.error('❌ Error de conexión:', response.status);
+            console.error('Respuesta completa:', await response.text());
             updateSupabaseStatus('offline');
             return false;
         }
@@ -428,7 +440,6 @@ async function syncToSupabase() {
     updateSupabaseStatus('testing');
     
     try {
-        // Sync usuarios
         for (const user of state.users) {
             try {
                 await fetch(`${SUPABASE_URL}/rest/v1/users`, {
@@ -453,34 +464,6 @@ async function syncToSupabase() {
             }
         }
         console.log('✅ Usuarios sincronizados');
-        
-        // Sync tickets
-        for (const ticket of state.tickets) {
-            try {
-                await fetch(`${SUPABASE_URL}/rest/v1/tickets`, {
-                    method: 'POST',
-                    headers: {
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify({
-                        ticket_number: ticket.id,
-                        title: ticket.title,
-                        building: ticket.building,
-                        status: ticket.status,
-                        priority: ticket.priority,
-                        assignee: ticket.assignee,
-                        sla_status: ticket.sla_status
-                    })
-                });
-            } catch (e) {
-                console.log(`Ticket ${ticket.id} ya existe o error`);
-            }
-        }
-        console.log('✅ Tickets sincronizados');
-        
         updateSupabaseStatus('online');
         showToast('✅ Sincronización completada', 'success');
     } catch (error) {
@@ -503,16 +486,16 @@ async function exportCSV() {
         });
         const users = await response.json();
         
-        let csv = 'Username,Nombre,Rol,Edificio,Estado,Creado\n';
+        let csv = 'Username,Nombre,Rol,Edificio,Estado\n';
         users.forEach(u => {
-            csv += `${u.username},${u.full_name},${u.role},${u.building},${u.status},${u.created_at}\n`;
+            csv += `${u.username},${u.full_name},${u.role},${u.building},${u.status}\n`;
         });
         
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'usuarios_supabase.csv';
+        a.download = 'usuarios_prime.csv';
         a.click();
         URL.revokeObjectURL(url);
         showToast('✅ CSV exportado', 'success');
@@ -752,10 +735,10 @@ document.addEventListener('DOMContentLoaded', () => {
     testSupabaseConnection();
 });
 
-// Test connection every 30 seconds
+// Test connection every 60 seconds
 setInterval(() => {
     testSupabaseConnection();
-}, 30000);
+}, 60000);
 </script>
 
 </body>
