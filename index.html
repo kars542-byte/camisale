@@ -474,5 +474,35 @@
     document.getElementById('app').classList.remove('show');
 </script>
 <script src="supabase.js"></script>
+
+// Después de inicializar Supabase
+async function testConnection() {
+    console.log('🔍 Probando conexión a Supabase...');
+    
+    try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/users?select=count`, {
+            method: 'GET',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log('✅ Conexión exitosa!');
+            console.log('📊 Usuarios en base de datos:', data[0]?.count || 0);
+        } else {
+            console.error('❌ Error:', response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error('❌ Error de conexión:', error);
+    }
+}
+
+// Llamar a la función
+testConnection();
+
 </body>
 </html>
