@@ -6,37 +6,29 @@
     <title>Camisale.work | Ingeniería y Consultoría</title>
     
     <script>
-        const SUPABASE_URL = 'https://jvngqoqfregoqgrqojep.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2bmdxb3FmcmVnb3FncnFvamVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4ODYxNDYsImV4cCI6MjEwMzQ2MjE0Nn0.fO7yDpC3pJrs6NSYGNqdN4oT_0IHiggTVTLudNkrqsc';
+        const SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';
+        const SUPABASE_ANON_KEY = 'TU-ANON-KEY';
     </script>
     
     <style>
-        /* ============ VARIABLES ============ */
-        :root {
-            --camisale-dark: #0F172A;
-            --camisale-accent: #E11D48;
-            --camisale-gray: #64748B;
-            --pgi-primary: #1a237e;
-            --pgi-accent: #E11D48;
-            --pgi-success: #2e7d32;
-            --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #eeeeee;
-            --gray-300: #e0e0e0;
-            --gray-500: #9e9e9e;
-            --gray-600: #757575;
-            --gray-700: #616161;
-            --gray-900: #212121;
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; }
+        
+        /* ============ LOGOS ============ */
+        .logo-camisale {
+            height: 50px;
+            width: auto;
+        }
+        .logo-pgi {
+            height: 40px;
+            width: auto;
+        }
         
         /* ============ CAMISALE HOMEPAGE ============ */
         #camisale-site { display: block; }
         
         .camisale-header {
-            background: var(--camisale-dark);
+            background: #0F172A;
             color: white;
             padding: 1rem 2rem;
             display: flex;
@@ -45,14 +37,6 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        
-        .camisale-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-        }
-        
-        .camisale-logo span { color: var(--camisale-accent); }
         
         .camisale-nav {
             display: flex;
@@ -65,10 +49,9 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
         }
         
-        .camisale-nav a:hover { color: var(--camisale-accent); }
+        .camisale-nav a:hover { color: #E11D48; }
         
         .camisale-hero {
             background: linear-gradient(135deg, #0F172A, #1E293B);
@@ -78,16 +61,14 @@
         }
         
         .camisale-hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
         }
         
-        .camisale-hero h1 span { color: #FB7185; }
-        
         .btn-camisale {
             display: inline-block;
-            background: var(--camisale-accent);
+            background: #E11D48;
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
@@ -104,27 +85,6 @@
             margin: 0 auto;
         }
         
-        .camisale-section h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--camisale-dark);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid var(--gray-200);
-        }
-        
         .projects-hub {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -137,22 +97,22 @@
             padding: 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-decoration: none;
-            color: var(--gray-900);
+            color: #212121;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
-            transition: transform 0.2s;
             cursor: pointer;
-            border: 2px solid var(--gray-200);
+            border: 2px solid #eeeeee;
+            transition: transform 0.2s;
         }
         
         .project-link-card:hover {
             transform: translateY(-4px);
-            border-color: var(--camisale-accent);
+            border-color: #E11D48;
         }
         
-        /* ============ PGI ADMIN THEME ============ */
+        /* ============ PGI ADMIN ============ */
         #pgi-admin {
             display: none;
             background: #f8fafc;
@@ -182,35 +142,19 @@
             text-align: center;
         }
         
-        .pgi-logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--pgi-primary);
-            margin-bottom: 8px;
-        }
-        
-        .pgi-logo span { color: var(--pgi-accent); }
-        
-        .pgi-powered-by {
-            font-size: 0.7rem;
-            color: var(--gray-500);
-            margin-top: 4px;
-        }
-        
         .pgi-input-group { margin-bottom: 14px; text-align: left; }
         
         .pgi-input-group label {
             font-size: 12px;
             font-weight: 600;
-            color: var(--gray-700);
             display: block;
             margin-bottom: 4px;
         }
         
-        .pgi-input-group input {
+        .pgi-input-group input, .pgi-input-group select {
             width: 100%;
             padding: 12px;
-            border: 2px solid var(--gray-300);
+            border: 2px solid #e0e0e0;
             border-radius: 6px;
             font-size: 14px;
             font-family: inherit;
@@ -232,7 +176,7 @@
         .pgi-topbar {
             background: white;
             padding: 0 24px;
-            height: 60px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -244,7 +188,7 @@
             padding: 0 24px;
             display: flex;
             gap: 2px;
-            border-bottom: 1px solid var(--gray-200);
+            border-bottom: 1px solid #eeeeee;
             overflow-x: auto;
         }
         
@@ -260,8 +204,8 @@
         }
         
         .pgi-tab-btn.active {
-            color: var(--pgi-primary);
-            border-bottom-color: var(--pgi-primary);
+            color: #1a237e;
+            border-bottom-color: #1a237e;
             font-weight: 600;
         }
         
@@ -274,50 +218,133 @@
         .pgi-tab-panel { display: none; }
         .pgi-tab-panel.active { display: block; }
         
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
-            margin-bottom: 20px;
+        /* ============ PARKING TICKET SYSTEM ============ */
+        .parking-container {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
         }
         
-        .kpi-card {
-            background: white;
-            border-radius: 10px;
-            padding: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        .parking-diagram {
+            flex: 1;
+            min-width: 300px;
         }
         
-        .kpi-value { font-size: 24px; font-weight: 700; color: var(--pgi-primary); }
-        
-        .parking-grid {
+        .parking-spots-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 12px;
+            margin-top: 16px;
         }
         
         .parking-spot {
-            border-radius: 10px;
-            padding: 14px;
+            border-radius: 12px;
+            padding: 20px 12px;
             text-align: center;
-            border: 2px solid;
             cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            border: 3px solid transparent;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
-        .parking-spot.available { background: #e8f5e9; border-color: #2e7d32; }
-        .parking-spot.reserved { background: #fff8e1; border-color: #f57f17; }
-        .parking-spot.occupied { background: #ffebee; border-color: #c62828; }
-        
-        .traffic-light {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            margin: 0 auto 6px;
+        .parking-spot.free {
+            background: #e8f5e9;
+            border-color: #4caf50;
         }
         
-        .traffic-light.available { background: #2e7d32; }
-        .traffic-light.reserved { background: #f57f17; }
-        .traffic-light.occupied { background: #c62828; }
+        .parking-spot.reserved {
+            background: #fff3e0;
+            border-color: #ff9800;
+        }
+        
+        .parking-spot.unavailable {
+            background: #ffebee;
+            border-color: #f44336;
+        }
+        
+        .parking-spot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .spot-number {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .spot-status {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .spot-info {
+            font-size: 10px;
+            margin-top: 4px;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .parking-form-panel {
+            width: 350px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+        
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .legend-dot.free { background: #4caf50; }
+        .legend-dot.reserved { background: #ff9800; }
+        .legend-dot.unavailable { background: #f44336; }
+        
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay.show { display: flex; }
+        
+        .modal {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            width: 420px;
+            max-width: 92vw;
+        }
         
         .supabase-status {
             display: flex;
@@ -326,7 +353,7 @@
             font-size: 12px;
             padding: 6px 12px;
             border-radius: 20px;
-            background: var(--gray-100);
+            background: #f5f5f5;
         }
         
         .status-dot {
@@ -346,11 +373,10 @@
             50% { opacity: 0.5; }
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .camisale-header { flex-direction: column; text-align: center; }
-            .camisale-nav { justify-content: center; }
-            .camisale-hero h1 { font-size: 2rem; }
+            .parking-spots-grid { grid-template-columns: repeat(2, 1fr); }
+            .parking-container { flex-direction: column; }
+            .parking-form-panel { width: 100%; }
         }
     </style>
 </head>
@@ -359,7 +385,8 @@
 <!-- ============ CAMISALE HOMEPAGE ============ -->
 <div id="camisale-site">
     <header class="camisale-header">
-        <div class="camisale-logo">Cami<span>Sale</span>.work</div>
+        <img src="camisale.jpg" alt="Camisale Logo" class="logo-camisale" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div style="display:none; font-size:1.8rem; font-weight:800; color:white;">Cami<span style="color:#E11D48;">Sale</span>.work</div>
         <ul class="camisale-nav">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
@@ -370,43 +397,22 @@
     </header>
     
     <section class="camisale-hero" id="inicio">
-        <h1>Gestión de proyectos e <span>instalaciones</span></h1>
+        <h1>Gestión de proyectos e <span style="color:#FB7185;">instalaciones</span></h1>
         <p style="color:#CBD5E1; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">
-            Más de 18 años de experiencia en proyectos de telecomunicaciones, energía e infraestructura crítica.
+            Más de 18 años de experiencia en telecomunicaciones, energía e infraestructura.
         </p>
         <a href="#contacto" class="btn-camisale">Cotizar Proyecto →</a>
     </section>
     
-    <section class="camisale-section" id="servicios">
-        <h2>Soluciones para tu operación</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>📡 Instalaciones Industriales</h3>
-                <p>Redes de datos, fibra óptica, telecomunicaciones y energía.</p>
-            </div>
-            <div class="service-card">
-                <h3>📊 Project Management</h3>
-                <p>Dirección técnica, control de costos, gestión de riesgos.</p>
-            </div>
-            <div class="service-card">
-                <h3>⚡ Operación y Mantenimiento</h3>
-                <p>Soporte 24/7 y continuidad operativa.</p>
-            </div>
-        </div>
-    </section>
-    
     <section class="camisale-section" id="proyectos">
-        <h2>Nuestros Proyectos</h2>
+        <h2 style="text-align:center; margin-bottom:2rem;">Nuestros Proyectos</h2>
         <div class="projects-hub">
-            <!-- Link a PGI Admin -->
             <a href="#" class="project-link-card" onclick="showPGIAdmin(); return false;" style="border-color:#E11D48;">
                 <div style="font-size:2rem;">🏢</div>
                 <strong>Prime Gestión Inmobiliaria</strong>
                 <span style="font-size:11px; color:#64748B;">Building Admin Dashboard</span>
             </a>
-            
-            <!-- Otros proyectos -->
-            <a href="https://aylluperu.work" target="_blank" class="project-link-card">
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
                 <div style="font-size:2rem;">🌄</div>
                 <strong>Ayllu Peru</strong>
                 <span style="font-size:11px; color:#64748B;">Turismo comunitario</span>
@@ -416,33 +422,15 @@
                 <strong>Aquamar</strong>
                 <span style="font-size:11px; color:#64748B;">Recursos hídricos</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div style="font-size:2rem;">🤖</div>
-                <strong>Agentic RR</strong>
-                <span style="font-size:11px; color:#64748B;">RRHH con IA</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div style="font-size:2rem;">📡</div>
-                <strong>Pronatel</strong>
-                <span style="font-size:11px; color:#64748B;">Red rural</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
-                <div style="font-size:2rem;">📶</div>
-                <strong>Claro 5G</strong>
-                <span style="font-size:11px; color:#64748B;">Modernización</span>
-            </a>
         </div>
     </section>
     
     <section class="camisale-section" id="contacto">
-        <h2>Contacto</h2>
-        <p style="text-align:center; margin-bottom:2rem;">
+        <h2 style="text-align:center; margin-bottom:2rem;">Contacto</h2>
+        <p style="text-align:center;">
             📞 <a href="tel:+51989666606">+51 989 666 606</a> | 
             ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a>
         </p>
-        <div style="text-align:center;">
-            <a href="https://wa.me/51989666606" class="btn-camisale" style="background:#25D366;">WhatsApp →</a>
-        </div>
     </section>
     
     <footer style="text-align:center; padding:2rem; color:#64748B;">
@@ -452,10 +440,11 @@
 
 <!-- ============ PGI BUILDING ADMIN ============ -->
 <div id="pgi-admin">
-    <!-- Login PGI -->
+    <!-- Login -->
     <div id="pgi-login" class="hidden">
         <div class="pgi-login-card">
-            <div class="pgi-logo">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
+            <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" style="margin: 0 auto 16px; display:block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; font-size:1.5rem; font-weight:800; color:#1a237e; margin-bottom:16px;">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
             <p style="color:#757575; font-size:14px; margin-bottom:20px;">Building Admin Dashboard</p>
             
             <div class="pgi-input-group">
@@ -468,9 +457,7 @@
             </div>
             <button class="btn-pgi" onclick="handlePGILogin()">Ingresar</button>
             
-            <p class="pgi-powered-by" style="margin-top:12px;">
-                Powered by <strong>camisale.work</strong>
-            </p>
+            <p style="font-size:11px; color:#9e9e9e; margin-top:12px;">Powered by camisale.work</p>
             
             <div class="supabase-status" style="margin-top:16px; justify-content:center;">
                 <span class="status-dot testing" id="pgi-login-status-dot"></span>
@@ -479,12 +466,12 @@
         </div>
     </div>
     
-    <!-- Dashboard PGI -->
+    <!-- Dashboard -->
     <div id="pgi-dashboard" class="hidden">
         <div class="pgi-topbar">
-            <div>
-                <div style="font-weight:700; color:#1a237e;">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
-                <div class="pgi-powered-by">Powered by camisale.work</div>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; font-weight:700; color:#1a237e;">Prime<span style="color:#E11D48;">Gestión</span></div>
             </div>
             <div style="display:flex; align-items:center; gap:12px;">
                 <div class="supabase-status">
@@ -506,12 +493,37 @@
         </div>
         
         <div class="pgi-content">
+            <!-- Dashboard -->
             <div class="pgi-tab-panel active" id="pgi-tab-dashboard">
-                <div class="kpi-grid" id="pgi-dashboard-kpis"></div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px; margin-bottom:20px;" id="pgi-dashboard-kpis"></div>
             </div>
+            
+            <!-- Parking -->
             <div class="pgi-tab-panel" id="pgi-tab-parking">
-                <div class="parking-grid" id="pgi-parking-grid"></div>
+                <div class="parking-container">
+                    <div class="parking-diagram">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size:18px; color:#1a237e;">🅿️ Estacionamiento de Visitas</h3>
+                            <button onclick="openParkingReservation()" style="background:#1a237e; color:white; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; font-weight:600;">+ Nueva Reserva</button>
+                        </div>
+                        
+                        <div class="legend" style="margin-top:16px;">
+                            <div class="legend-item"><span class="legend-dot free"></span> Libre</div>
+                            <div class="legend-item"><span class="legend-dot reserved"></span> Reservado</div>
+                            <div class="legend-item"><span class="legend-dot unavailable"></span> No disponible</div>
+                        </div>
+                        
+                        <div class="parking-spots-grid" id="pgi-parking-grid"></div>
+                    </div>
+                    
+                    <div class="parking-form-panel" id="parking-info-panel">
+                        <h4 style="margin-bottom:12px; color:#1a237e;">📋 Información del Puesto</h4>
+                        <p style="color:#757575; font-size:13px;">Haz click en un puesto para ver detalles o en "Nueva Reserva" para crear una.</p>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Tickets -->
             <div class="pgi-tab-panel" id="pgi-tab-tickets">
                 <button onclick="openPGITicketModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
                 <div style="overflow-x:auto;">
@@ -521,7 +533,6 @@
                                 <th style="padding:10px; text-align:left;">ID</th>
                                 <th style="padding:10px; text-align:left;">Título</th>
                                 <th style="padding:10px; text-align:left;">Estado</th>
-                                <th style="padding:10px; text-align:left;">Prioridad</th>
                                 <th style="padding:10px; text-align:left;">Acción</th>
                             </tr>
                         </thead>
@@ -529,6 +540,8 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- Usuarios -->
             <div class="pgi-tab-panel" id="pgi-tab-users">
                 <button onclick="openPGIUserModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
                 <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#2e7d32; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
@@ -546,16 +559,18 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- KPIs -->
             <div class="pgi-tab-panel" id="pgi-tab-reports">
-                <div class="kpi-grid" id="pgi-owner-kpis"></div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px;" id="pgi-owner-kpis"></div>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal -->
-<div id="pgi-modal-overlay" style="position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1000; display:none; align-items:center; justify-content:center;">
-    <div id="pgi-modal-content" style="background:white; border-radius:16px; padding:24px; width:480px; max-width:92vw;"></div>
+<div class="modal-overlay" id="pgi-modal-overlay">
+    <div class="modal" id="pgi-modal-content"></div>
 </div>
 
 <script>
@@ -568,18 +583,17 @@ let pgiState = {
     ],
     buildings: ['Torre A', 'Torre B', 'Torre C', 'Torre D'],
     parking: [
-        { id:'p1', number:'A-01', building:'Torre A', status:'available', resident:'' },
-        { id:'p2', number:'A-02', building:'Torre A', status:'reserved', resident:'Maria' },
-        { id:'p3', number:'A-03', building:'Torre A', status:'occupied', resident:'John' },
-        { id:'p4', number:'B-01', building:'Torre B', status:'available', resident:'' },
-        { id:'p5', number:'B-02', building:'Torre B', status:'reserved', resident:'Lisa' },
+        { id:'pv1', number:'V-01', status:'free', department:'', time:'', person:'' },
+        { id:'pv2', number:'V-02', status:'free', department:'', time:'', person:'' },
+        { id:'pv3', number:'V-03', status:'free', department:'', time:'', person:'' },
+        { id:'pv4', number:'V-04', status:'free', department:'', time:'', person:'' },
+        { id:'pv5', number:'V-05', status:'free', department:'', time:'', person:'' },
     ],
     tickets: [
-        { id:'T-1001', title:'Fuga de agua', building:'Torre A', status:'open', priority:'urgent', assignee:'John Doe', sla_status:'warning' },
-        { id:'T-1002', title:'Ascensor dañado', building:'Torre B', status:'in-progress', priority:'high', assignee:'John Doe', sla_status:'ok' },
+        { id:'T-1001', title:'Fuga de agua', status:'open', priority:'urgent', sla_status:'warning' },
+        { id:'T-1002', title:'Ascensor dañado', status:'in-progress', priority:'high', sla_status:'ok' },
     ],
     currentUser: null,
-    currentBuilding: 'Torre A',
     currentTab: 'dashboard',
     nextTicketId: 1003,
     nextUserId: 10,
@@ -680,70 +694,159 @@ function renderPGIAll() {
 function renderPGIDashboard() {
     const openTickets = pgiState.tickets.filter(t => t.status === 'open' || t.status === 'in-progress').length;
     const totalParking = pgiState.parking.length;
-    const availParking = pgiState.parking.filter(p => p.status === 'available').length;
+    const freeParking = pgiState.parking.filter(p => p.status === 'free').length;
+    const reservedParking = pgiState.parking.filter(p => p.status === 'reserved').length;
     
     document.getElementById('pgi-dashboard-kpis').innerHTML = `
-        <div class="kpi-card"><div class="kpi-value">${openTickets}</div><div>🎫 Tickets abiertos</div></div>
-        <div class="kpi-card"><div class="kpi-value">${availParking}/${totalParking}</div><div>🅿️ Parking disponible</div></div>
-        <div class="kpi-card"><div class="kpi-value">${pgiState.users.length}</div><div>👥 Usuarios</div></div>
-        <div class="kpi-card"><div class="kpi-value">${pgiState.tickets.filter(t => t.sla_status === 'breached').length}</div><div>📈 SLA incumplidos</div></div>
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${openTickets}</div>
+            <div style="font-size:12px; color:#757575;">🎫 Tickets abiertos</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${freeParking}/${totalParking}</div>
+            <div style="font-size:12px; color:#757575;">🅿️ Parking libre</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${reservedParking}</div>
+            <div style="font-size:12px; color:#757575;">📅 Reservas activas</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${pgiState.users.length}</div>
+            <div style="font-size:12px; color:#757575;">👥 Usuarios</div>
+        </div>
     `;
 }
 
 function renderPGIParking() {
-    const spots = pgiState.parking.filter(p => p.building === pgiState.currentBuilding);
-    document.getElementById('pgi-parking-grid').innerHTML = spots.map(s => `
-        <div class="parking-spot ${s.status}" onclick="cyclePGIParking('${s.id}')">
-            <div class="traffic-light ${s.status}"></div>
-            <strong>${s.number}</strong>
-            <div style="font-size:10px;">${s.status}</div>
-            ${s.resident ? `<div style="font-size:10px;">${s.resident}</div>` : ''}
+    const grid = document.getElementById('pgi-parking-grid');
+    grid.innerHTML = pgiState.parking.map(spot => {
+        const statusLabel = spot.status === 'free' ? 'Libre' : spot.status === 'reserved' ? 'Reservado' : 'No disponible';
+        const infoHTML = spot.status === 'reserved' && spot.person ? 
+            `<div class="spot-info">
+                <strong>${spot.department}</strong><br>
+                ${spot.time}<br>
+                ${spot.person}
+            </div>` : '';
+        
+        return `
+            <div class="parking-spot ${spot.status}" onclick="showParkingInfo('${spot.id}')">
+                <div class="spot-number">${spot.number}</div>
+                <div class="spot-status">${statusLabel}</div>
+                ${infoHTML}
+            </div>
+        `;
+    }).join('');
+}
+
+function showParkingInfo(spotId) {
+    const spot = pgiState.parking.find(s => s.id === spotId);
+    const panel = document.getElementById('parking-info-panel');
+    
+    if (spot.status === 'reserved' && spot.person) {
+        panel.innerHTML = `
+            <h4 style="margin-bottom:12px; color:#1a237e;">📋 Información del Puesto ${spot.number}</h4>
+            <div style="background:#fff3e0; border-radius:8px; padding:16px;">
+                <p><strong>Estado:</strong> <span style="color:#ff9800;">Reservado</span></p>
+                <p><strong>Departamento:</strong> ${spot.department}</p>
+                <p><strong>Horario:</strong> ${spot.time}</p>
+                <p><strong>Persona:</strong> ${spot.person}</p>
+            </div>
+            <button onclick="releaseParkingSpot('${spot.id}')" style="margin-top:12px; width:100%; background:#c62828; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer;">Liberar Reserva</button>
+        `;
+    } else if (spot.status === 'unavailable') {
+        panel.innerHTML = `
+            <h4 style="margin-bottom:12px; color:#1a237e;">📋 Puesto ${spot.number}</h4>
+            <div style="background:#ffebee; border-radius:8px; padding:16px;">
+                <p><strong>Estado:</strong> <span style="color:#f44336;">No disponible</span></p>
+                <p style="font-size:13px; color:#757575;">Este puesto está temporalmente fuera de servicio.</p>
+            </div>
+        `;
+    } else {
+        panel.innerHTML = `
+            <h4 style="margin-bottom:12px; color:#1a237e;">📋 Puesto ${spot.number}</h4>
+            <div style="background:#e8f5e9; border-radius:8px; padding:16px;">
+                <p><strong>Estado:</strong> <span style="color:#4caf50;">Libre</span></p>
+                <p style="font-size:13px; color:#757575;">Disponible para reserva.</p>
+            </div>
+            <button onclick="openParkingReservation('${spot.id}')" style="margin-top:12px; width:100%; background:#1a237e; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer;">Reservar este puesto</button>
+        `;
+    }
+}
+
+function releaseParkingSpot(spotId) {
+    const spot = pgiState.parking.find(s => s.id === spotId);
+    if (spot) {
+        spot.status = 'free';
+        spot.department = '';
+        spot.time = '';
+        spot.person = '';
+        renderPGIParking();
+        renderPGIDashboard();
+        showParkingInfo(spotId);
+    }
+}
+
+function openParkingReservation(spotId) {
+    const modal = document.getElementById('pgi-modal-overlay');
+    const content = document.getElementById('pgi-modal-content');
+    
+    content.innerHTML = `
+        <h3 style="margin-bottom:16px; color:#1a237e;">🅿️ Nueva Reserva de Estacionamiento</h3>
+        <div style="margin-bottom:12px;">
+            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Puesto</label>
+            <select id="parking-spot-select" style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+                ${pgiState.parking.filter(s => s.status === 'free').map(s => 
+                    `<option value="${s.id}" ${s.id === spotId ? 'selected' : ''}>${s.number} (Libre)</option>`
+                ).join('')}
+            </select>
         </div>
-    `).join('');
-}
-
-function cyclePGIParking(id) {
-    const spot = pgiState.parking.find(p => p.id === id);
-    const statuses = ['available', 'reserved', 'occupied', 'maintenance'];
-    const idx = statuses.indexOf(spot.status);
-    spot.status = statuses[(idx + 1) % statuses.length];
-    if (spot.status === 'available') spot.resident = '';
-    renderPGIParking();
-    renderPGIDashboard();
-}
-
-function renderPGITickets() {
-    document.getElementById('pgi-tickets-tbody').innerHTML = pgiState.tickets.map(t => `
-        <tr style="border-bottom:1px solid #eeeeee;">
-            <td style="padding:10px;">${t.id}</td>
-            <td style="padding:10px;">${t.title}</td>
-            <td style="padding:10px;">${t.status}</td>
-            <td style="padding:10px;">${t.priority}</td>
-            <td style="padding:10px;"><button onclick="deletePGITicket('${t.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
-        </tr>
-    `).join('');
-}
-
-function renderPGIUsers() {
-    document.getElementById('pgi-users-tbody').innerHTML = pgiState.users.map(u => `
-        <tr style="border-bottom:1px solid #eeeeee;">
-            <td style="padding:10px;">${u.username}</td>
-            <td style="padding:10px;">${u.name}</td>
-            <td style="padding:10px;">${u.role}</td>
-            <td style="padding:10px;"><button onclick="deletePGIUser('${u.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
-        </tr>
-    `).join('');
-}
-
-function renderPGIKPIs() {
-    const total = pgiState.tickets.length;
-    const breaches = pgiState.tickets.filter(t => t.sla_status === 'breached').length;
-    const compliance = total ? Math.round((total - breaches) / total * 100) : 100;
-    document.getElementById('pgi-owner-kpis').innerHTML = `
-        <div class="kpi-card"><div class="kpi-value">${total}</div><div>Tickets totales</div></div>
-        <div class="kpi-card"><div class="kpi-value">${compliance}%</div><div>SLA compliance</div></div>
-        <div class="kpi-card"><div class="kpi-value">${pgiState.users.length}</div><div>Usuarios</div></div>
+        <div style="margin-bottom:12px;">
+            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Departamento</label>
+            <input type="text" id="parking-department" placeholder="Ej: 502, PH-A, etc." style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+        </div>
+        <div style="margin-bottom:12px;">
+            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Horario de Reserva</label>
+            <input type="text" id="parking-time" placeholder="Ej: 14:00 - 18:00" style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+        </div>
+        <div style="margin-bottom:12px;">
+            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;">Nombre de la Persona</label>
+            <input type="text" id="parking-person" placeholder="Nombre completo" style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:6px; font-family:inherit;">
+        </div>
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:16px;">
+            <button onclick="closeModal()" style="padding:10px 16px; border:1px solid #e0e0e0; border-radius:6px; background:white; cursor:pointer;">Cancelar</button>
+            <button onclick="createParkingReservation()" style="padding:10px 16px; background:#1a237e; color:white; border:none; border-radius:6px; cursor:pointer;">Crear Reserva</button>
+        </div>
     `;
+    modal.classList.add('show');
+}
+
+function createParkingReservation() {
+    const spotId = document.getElementById('parking-spot-select').value;
+    const department = document.getElementById('parking-department').value;
+    const time = document.getElementById('parking-time').value;
+    const person = document.getElementById('parking-person').value;
+    
+    if (!department || !time || !person) {
+        alert('Por favor completa todos los campos');
+        return;
+    }
+    
+    const spot = pgiState.parking.find(s => s.id === spotId);
+    if (spot) {
+        spot.status = 'reserved';
+        spot.department = department;
+        spot.time = time;
+        spot.person = person;
+        
+        closeModal();
+        renderPGIParking();
+        renderPGIDashboard();
+        showParkingInfo(spotId);
+    }
+}
+
+function closeModal() {
+    document.getElementById('pgi-modal-overlay').classList.remove('show');
 }
 
 // ============ TABS ============
@@ -755,48 +858,73 @@ function switchPGITab(tab) {
     event.target.classList.add('active');
 }
 
-// ============ MODALS ============
+// ============ TICKETS ============
+function renderPGITickets() {
+    document.getElementById('pgi-tickets-tbody').innerHTML = pgiState.tickets.map(t => `
+        <tr style="border-bottom:1px solid #eeeeee;">
+            <td style="padding:10px;">${t.id}</td>
+            <td style="padding:10px;">${t.title}</td>
+            <td style="padding:10px;">${t.status}</td>
+            <td style="padding:10px;"><button onclick="deletePGITicket('${t.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        </tr>
+    `).join('');
+}
+
 function openPGITicketModal() {
     const modal = document.getElementById('pgi-modal-overlay');
     const content = document.getElementById('pgi-modal-content');
     content.innerHTML = `
-        <h3 style="margin-bottom:16px;">Nuevo Ticket</h3>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Prioridad</label><select id="pgi-ticket-priority" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"><option value="low">Baja</option><option value="medium" selected>Media</option><option value="high">Alta</option><option value="urgent">Urgente</option></select></div>
+        <h3 style="margin-bottom:16px;">🎫 Nuevo Ticket</h3>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
         <button onclick="submitPGITicket()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Ticket</button>
     `;
-    modal.style.display = 'flex';
+    modal.classList.add('show');
 }
 
 function submitPGITicket() {
     const title = document.getElementById('pgi-ticket-title').value;
-    const priority = document.getElementById('pgi-ticket-priority').value;
     pgiState.tickets.push({
         id: 'T-' + (pgiState.nextTicketId++),
         title,
-        building: pgiState.currentBuilding,
         status: 'open',
-        priority,
-        assignee: 'John Doe',
+        priority: 'medium',
         sla_status: 'ok'
     });
-    document.getElementById('pgi-modal-overlay').style.display = 'none';
+    closeModal();
     renderPGITickets();
     renderPGIDashboard();
+}
+
+function deletePGITicket(id) {
+    pgiState.tickets = pgiState.tickets.filter(t => t.id !== id);
+    renderPGITickets();
+    renderPGIDashboard();
+}
+
+// ============ USUARIOS ============
+function renderPGIUsers() {
+    document.getElementById('pgi-users-tbody').innerHTML = pgiState.users.map(u => `
+        <tr style="border-bottom:1px solid #eeeeee;">
+            <td style="padding:10px;">${u.username}</td>
+            <td style="padding:10px;">${u.name}</td>
+            <td style="padding:10px;">${u.role}</td>
+            <td style="padding:10px;"><button onclick="deletePGIUser('${u.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        </tr>
+    `).join('');
 }
 
 function openPGIUserModal() {
     const modal = document.getElementById('pgi-modal-overlay');
     const content = document.getElementById('pgi-modal-content');
     content.innerHTML = `
-        <h3 style="margin-bottom:16px;">Nuevo Usuario</h3>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Rol</label><select id="pgi-new-role" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div>
+        <h3 style="margin-bottom:16px;">👥 Nuevo Usuario</h3>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Rol</label><select id="pgi-new-role" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div>
         <button onclick="submitPGIUser()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Usuario</button>
     `;
-    modal.style.display = 'flex';
+    modal.classList.add('show');
 }
 
 function submitPGIUser() {
@@ -813,14 +941,8 @@ function submitPGIUser() {
         building: 'all',
         status: 'active'
     });
-    document.getElementById('pgi-modal-overlay').style.display = 'none';
+    closeModal();
     renderPGIUsers();
-}
-
-function deletePGITicket(id) {
-    pgiState.tickets = pgiState.tickets.filter(t => t.id !== id);
-    renderPGITickets();
-    renderPGIDashboard();
 }
 
 function deletePGIUser(id) {
@@ -828,12 +950,27 @@ function deletePGIUser(id) {
     renderPGIUsers();
 }
 
-// Close modal on click outside
-document.getElementById('pgi-modal-overlay').addEventListener('click', function(e) {
-    if (e.target === this) {
-        this.style.display = 'none';
-    }
-});
+// ============ KPIs ============
+function renderPGIKPIs() {
+    const total = pgiState.tickets.length;
+    const freeParking = pgiState.parking.filter(p => p.status === 'free').length;
+    const reservedParking = pgiState.parking.filter(p => p.status === 'reserved').length;
+    
+    document.getElementById('pgi-owner-kpis').innerHTML = `
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${total}</div>
+            <div style="font-size:12px; color:#757575;">Tickets totales</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${reservedParking}</div>
+            <div style="font-size:12px; color:#757575;">Reservas de parking</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <div style="font-size:24px; font-weight:700; color:#1a237e;">${freeParking}</div>
+            <div style="font-size:12px; color:#757575;">Puestos libres</div>
+        </div>
+    `;
+}
 
 // ============ SYNC ============
 async function syncToSupabase() {
@@ -898,16 +1035,20 @@ async function exportCSV() {
     }
 }
 
+// Close modal on click outside
+document.getElementById('pgi-modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.remove('show');
+    }
+});
+
 // ============ INIT ============
 document.getElementById('camisale-site').style.display = 'block';
 document.getElementById('pgi-admin').classList.remove('show');
 document.getElementById('pgi-login').classList.add('hidden');
 document.getElementById('pgi-dashboard').classList.add('hidden');
 
-// Test connection on load
 testSupabaseConnection();
-
-// Test every 60 seconds
 setInterval(testSupabaseConnection, 60000);
 </script>
 
