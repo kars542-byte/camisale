@@ -14,11 +14,11 @@
     </script>
     
     <style>
-        /* ============ TODOS LOS ESTILOS (Camisale + Admin) ============ */
+        /* ============ ESTILOS GENERALES ============ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #1E293B; background: #F8FAFC; }
         
-        /* Camisale public styles */
+        /* ============ CAMISALE PUBLIC SITE ============ */
         .top-bar { background: #0F172A; color: #94A3B8; padding: 0.75rem 0; font-size: 0.875rem; }
         .top-bar .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
         .top-bar a { color: #CBD5E1; text-decoration: none; }
@@ -30,7 +30,6 @@
         .nav-links a { text-decoration: none; color: #1E293B; font-weight: 500; }
         .nav-links a:hover { color: #E11D48; }
         .btn { display: inline-block; background: #E11D48; color: white; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
-        .btn-outline { background: transparent; border: 1px solid #E11D48; color: #E11D48; }
         .btn:hover { background: #BE123C; }
         .hero { background: linear-gradient(135deg, #0F172A, #1E293B); color: white; padding: 4rem 2rem; }
         .hero .container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
@@ -40,12 +39,22 @@
         .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         .service-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .project-link-card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-decoration: none; color: #1E293B; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; transition: transform 0.2s; }
-        .project-link-card:hover { transform: translateY(-4px); }
-        .project-link-icon { font-size: 2rem; }
-        .projects-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
         
-        /* Admin Dashboard styles */
+        /* Projects Hub */
+        .projects-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .project-link-card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-decoration: none; color: #1E293B; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; transition: transform 0.2s; cursor: pointer; border: 2px solid transparent; }
+        .project-link-card:hover { transform: translateY(-4px); border-color: #E11D48; }
+        .project-link-icon { font-size: 2rem; }
+        
+        /* ============ INDICADOR SUPABASE ============ */
+        .supabase-status { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 12px; border-radius: 20px; background: #f5f5f5; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+        .status-dot.online { background: #2e7d32; box-shadow: 0 0 8px #2e7d32; }
+        .status-dot.offline { background: #c62828; box-shadow: 0 0 8px #c62828; }
+        .status-dot.testing { background: #f57f17; box-shadow: 0 0 8px #f57f17; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        /* ============ ADMIN DASHBOARD ============ */
         :root { --primary: #1a237e; --accent: #E11D48; --success: #2e7d32; --warning: #f57f17; --danger: #c62828; --gray-100: #f5f5f5; --gray-200: #eeeeee; --gray-300: #e0e0e0; --gray-500: #9e9e9e; --gray-600: #757575; --gray-700: #616161; --gray-900: #212121; }
         #login-screen { position: fixed; inset: 0; z-index: 9999; background: linear-gradient(135deg, #0d1445, #1a237e); display: flex; align-items: center; justify-content: center; }
         #login-screen.hidden { display: none; }
@@ -61,8 +70,8 @@
         .building-selector { display: flex; gap: 4px; background: #f5f5f5; padding: 3px 5px; border-radius: 18px; }
         .building-btn { padding: 6px 14px; border-radius: 15px; border: none; background: transparent; cursor: pointer; font-size: 12px; }
         .building-btn.active { background: #1a237e; color: white; }
-        .tabs-bar { background: white; padding: 0 24px; display: flex; gap: 2px; border-bottom: 1px solid #eeeeee; }
-        .tab-btn { padding: 12px 16px; border: none; background: transparent; cursor: pointer; font-size: 13px; border-bottom: 3px solid transparent; }
+        .tabs-bar { background: white; padding: 0 24px; display: flex; gap: 2px; border-bottom: 1px solid #eeeeee; overflow-x: auto; }
+        .tab-btn { padding: 12px 16px; border: none; background: transparent; cursor: pointer; font-size: 13px; border-bottom: 3px solid transparent; white-space: nowrap; }
         .tab-btn.active { color: #1a237e; border-bottom-color: #1a237e; font-weight: 600; }
         .content-area { padding: 24px; max-width: 1300px; margin: 0 auto; }
         .tab-panel { display: none; }
@@ -75,10 +84,12 @@
         .parking-spot.available { background: #e8f5e9; border-color: #2e7d32; }
         .parking-spot.reserved { background: #fff8e1; border-color: #f57f17; }
         .parking-spot.occupied { background: #ffebee; border-color: #c62828; }
+        .parking-spot.maintenance { background: #f5f5f5; border-color: #9e9e9e; }
         .traffic-light { width: 16px; height: 16px; border-radius: 50%; margin: 0 auto 6px; }
         .traffic-light.available { background: #2e7d32; }
         .traffic-light.reserved { background: #f57f17; }
         .traffic-light.occupied { background: #c62828; }
+        .traffic-light.maintenance { background: #9e9e9e; }
         .table-wrapper { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; font-size: 12px; }
         th { background: #f5f5f5; padding: 10px; text-align: left; }
@@ -87,16 +98,18 @@
         .status-badge.open { background: #ffebee; color: #c62828; }
         .status-badge.in-progress { background: #fff8e1; color: #f57f17; }
         .status-badge.resolved { background: #e8f5e9; color: #2e7d32; }
+        .status-badge.closed { background: #eeeeee; color: #757575; }
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1000; display: none; align-items: center; justify-content: center; }
         .modal-overlay.show { display: flex; }
         .modal { background: white; border-radius: 16px; padding: 24px; width: 480px; max-width: 92vw; }
         .form-group { margin-bottom: 12px; }
         .form-group label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; }
         .form-group input, .form-group select { width: 100%; padding: 9px 12px; border: 1.5px solid #e0e0e0; border-radius: 6px; font-size: 13px; }
-        .toast { position: fixed; top: 70px; right: 20px; z-index: 9999; padding: 12px 18px; border-radius: 6px; font-size: 13px; color: white; }
+        .toast { position: fixed; top: 70px; right: 20px; z-index: 9999; padding: 12px 18px; border-radius: 6px; font-size: 13px; color: white; animation: slideIn 0.3s; }
         .toast.success { background: #2e7d32; }
         .toast.error { background: #c62828; }
         .toast.info { background: #01579b; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         .contact-section { background: #0F172A; color: white; border-radius: 1.5rem; padding: 3rem; text-align: center; }
         .contact-details { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
         .contact-item { display: flex; align-items: center; gap: 0.5rem; background: #1E293B; padding: 0.5rem 1rem; border-radius: 2rem; }
@@ -122,6 +135,10 @@
         </div>
         <button class="login-btn" onclick="handleLogin()">Ingresar</button>
         <p style="margin-top:12px; font-size:11px; color:#9e9e9e;">Demo: admin/admin123</p>
+        <div class="supabase-status" id="login-supabase-status" style="margin-top:16px; justify-content:center;">
+            <span class="status-dot testing" id="login-status-dot"></span>
+            <span id="login-status-text">Verificando Supabase...</span>
+        </div>
     </div>
 </div>
 
@@ -133,6 +150,10 @@
             <div class="building-selector" id="building-selector"></div>
         </div>
         <div style="display:flex; align-items:center; gap:12px;">
+            <div class="supabase-status" id="admin-supabase-status">
+                <span class="status-dot testing" id="admin-status-dot"></span>
+                <span id="admin-status-text">Verificando...</span>
+            </div>
             <span id="user-name" style="font-size:13px;"></span>
             <button onclick="handleLogout()" style="padding:7px 14px; border:1px solid #e0e0e0; border-radius:6px; background:white; cursor:pointer;">Salir</button>
         </div>
@@ -182,7 +203,13 @@
     <div class="top-bar">
         <div class="container">
             <div>📍 Lima - Perú | Proyectos en todo el territorio nacional</div>
-            <div>📞 <a href="tel:+51989666606">+51 989 666 606</a> | ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a></div>
+            <div>
+                <div class="supabase-status" id="public-supabase-status" style="display:inline-flex;">
+                    <span class="status-dot testing" id="public-status-dot"></span>
+                    <span id="public-status-text">Supabase: Verificando...</span>
+                </div>
+                &nbsp;|&nbsp; 📞 <a href="tel:+51989666606">+51 989 666 606</a> &nbsp;|&nbsp; ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a>
+            </div>
         </div>
     </div>
     <div class="main-header">
@@ -324,6 +351,8 @@ const DEFAULT_PARKING = [
     { id:'p1', number:'A-01', building:'Tower A', status:'available', resident:'' },
     { id:'p2', number:'A-02', building:'Tower A', status:'reserved', resident:'Maria' },
     { id:'p3', number:'A-03', building:'Tower A', status:'occupied', resident:'John' },
+    { id:'p4', number:'B-01', building:'Tower B', status:'available', resident:'' },
+    { id:'p5', number:'B-02', building:'Tower B', status:'reserved', resident:'Lisa' },
 ];
 
 // ============ STATE ============
@@ -340,9 +369,11 @@ let state = {
     nextUserId: 10,
 };
 
-// ============ SUPABASE SYNC ============
-async function testConnection() {
+// ============ FUNCIÓN TEST CONEXIÓN SUPABASE ============
+async function testSupabaseConnection() {
     console.log('🔍 Probando conexión a Supabase...');
+    updateSupabaseStatus('testing');
+    
     try {
         const response = await fetch(`${SUPABASE_URL}/rest/v1/users?select=count`, {
             method: 'GET',
@@ -352,77 +383,114 @@ async function testConnection() {
                 'Content-Type': 'application/json'
             }
         });
+        
         if (response.ok) {
             const data = await response.json();
-            console.log('✅ Conexión exitosa!');
+            console.log('✅ Conexión exitosa a Supabase!');
             console.log('📊 Usuarios en Supabase:', data[0]?.count || 0);
+            updateSupabaseStatus('online');
+            return true;
         } else {
-            console.error('❌ Error:', response.status, response.statusText);
+            console.error('❌ Error de conexión:', response.status, response.statusText);
+            updateSupabaseStatus('offline');
+            return false;
         }
     } catch (error) {
         console.error('❌ Error de conexión:', error);
+        updateSupabaseStatus('offline');
+        return false;
     }
 }
 
+// ============ ACTUALIZAR INDICADOR VISUAL ============
+function updateSupabaseStatus(status) {
+    const dots = document.querySelectorAll('.status-dot');
+    const texts = document.querySelectorAll('#login-status-text, #admin-status-text, #public-status-text');
+    
+    dots.forEach(dot => {
+        dot.className = 'status-dot ' + status;
+    });
+    
+    const statusMessages = {
+        online: '🟢 Supabase: Online',
+        offline: '🔴 Supabase: Offline',
+        testing: '🟡 Supabase: Verificando...'
+    };
+    
+    texts.forEach(text => {
+        text.textContent = statusMessages[status] || 'Supabase: Desconocido';
+    });
+}
+
+// ============ SINCRONIZAR CON SUPABASE ============
 async function syncToSupabase() {
     console.log('🔄 Sincronizando con Supabase...');
+    updateSupabaseStatus('testing');
     
-    // Sync users
-    for (const user of state.users) {
-        try {
-            await fetch(`${SUPABASE_URL}/rest/v1/users`, {
-                method: 'POST',
-                headers: {
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                    'Content-Type': 'application/json',
-                    'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify({
-                    username: user.username,
-                    password_hash: user.password,
-                    full_name: user.name,
-                    role: user.role,
-                    building: user.building,
-                    status: user.status
-                })
-            });
-        } catch (e) {
-            console.log(`Usuario ${user.username} ya existe o error`);
+    try {
+        // Sync usuarios
+        for (const user of state.users) {
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        username: user.username,
+                        password_hash: user.password,
+                        full_name: user.name,
+                        role: user.role,
+                        building: user.building,
+                        status: user.status
+                    })
+                });
+            } catch (e) {
+                console.log(`Usuario ${user.username} ya existe o error`);
+            }
         }
-    }
-    console.log('✅ Usuarios sincronizados');
-    
-    // Sync tickets
-    for (const ticket of state.tickets) {
-        try {
-            await fetch(`${SUPABASE_URL}/rest/v1/tickets`, {
-                method: 'POST',
-                headers: {
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                    'Content-Type': 'application/json',
-                    'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify({
-                    ticket_number: ticket.id,
-                    title: ticket.title,
-                    building: ticket.building,
-                    status: ticket.status,
-                    priority: ticket.priority,
-                    assignee: ticket.assignee,
-                    sla_status: ticket.sla_status
-                })
-            });
-        } catch (e) {
-            console.log(`Ticket ${ticket.id} ya existe o error`);
+        console.log('✅ Usuarios sincronizados');
+        
+        // Sync tickets
+        for (const ticket of state.tickets) {
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/tickets`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        ticket_number: ticket.id,
+                        title: ticket.title,
+                        building: ticket.building,
+                        status: ticket.status,
+                        priority: ticket.priority,
+                        assignee: ticket.assignee,
+                        sla_status: ticket.sla_status
+                    })
+                });
+            } catch (e) {
+                console.log(`Ticket ${ticket.id} ya existe o error`);
+            }
         }
+        console.log('✅ Tickets sincronizados');
+        
+        updateSupabaseStatus('online');
+        showToast('✅ Sincronización completada', 'success');
+    } catch (error) {
+        console.error('Error en sincronización:', error);
+        updateSupabaseStatus('offline');
+        showToast('❌ Error en sincronización', 'error');
     }
-    console.log('✅ Tickets sincronizados');
-    
-    alert('✅ Sincronización completada. Revisa la consola (F12) para más detalles.');
 }
 
+// ============ EXPORTAR CSV ============
 async function exportCSV() {
     try {
         const response = await fetch(`${SUPABASE_URL}/rest/v1/users?select=*`, {
@@ -435,9 +503,9 @@ async function exportCSV() {
         });
         const users = await response.json();
         
-        let csv = 'Username,Nombre,Rol,Edificio,Estado\n';
+        let csv = 'Username,Nombre,Rol,Edificio,Estado,Creado\n';
         users.forEach(u => {
-            csv += `${u.username},${u.full_name},${u.role},${u.building},${u.status}\n`;
+            csv += `${u.username},${u.full_name},${u.role},${u.building},${u.status},${u.created_at}\n`;
         });
         
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -447,16 +515,27 @@ async function exportCSV() {
         a.download = 'usuarios_supabase.csv';
         a.click();
         URL.revokeObjectURL(url);
+        showToast('✅ CSV exportado', 'success');
     } catch (error) {
         console.error('Error exportando:', error);
-        alert('Error exportando. Revisa la consola.');
+        showToast('❌ Error exportando CSV', 'error');
     }
+}
+
+// ============ TOAST ============
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = 'toast ' + type;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
 }
 
 // ============ AUTH ============
 function showAdminLogin() {
     document.getElementById('public-site').style.display = 'none';
     document.getElementById('login-screen').classList.remove('hidden');
+    testSupabaseConnection();
 }
 
 function handleLogin() {
@@ -470,9 +549,9 @@ function handleLogin() {
         document.getElementById('public-site').style.display = 'none';
         document.getElementById('user-name').textContent = user.name;
         renderAll();
-        testConnection();
+        testSupabaseConnection();
     } else {
-        alert('Credenciales inválidas');
+        showToast('❌ Credenciales inválidas', 'error');
     }
 }
 
@@ -525,6 +604,7 @@ function renderParking() {
             <div class="traffic-light ${s.status}"></div>
             <strong>${s.number}</strong>
             <div style="font-size:10px;">${s.status}</div>
+            ${s.resident ? `<div style="font-size:10px;">${s.resident}</div>` : ''}
         </div>
     `).join('');
 }
@@ -534,6 +614,7 @@ function cycleParking(id) {
     const statuses = ['available', 'reserved', 'occupied', 'maintenance'];
     const idx = statuses.indexOf(spot.status);
     spot.status = statuses[(idx + 1) % statuses.length];
+    if (spot.status === 'available') spot.resident = '';
     renderParking();
     renderDashboard();
 }
@@ -609,6 +690,7 @@ function submitTicket() {
     document.getElementById('modal-overlay').classList.remove('show');
     renderTickets();
     renderDashboard();
+    showToast('✅ Ticket creado', 'success');
 }
 
 function openUserModal() {
@@ -639,6 +721,7 @@ function submitUser() {
     });
     document.getElementById('modal-overlay').classList.remove('show');
     renderUsers();
+    showToast('✅ Usuario creado', 'success');
 }
 
 function deleteTicket(id) {
@@ -650,6 +733,7 @@ function deleteTicket(id) {
 function deleteUser(id) {
     state.users = state.users.filter(u => u.id !== id);
     renderUsers();
+    showToast('🗑️ Usuario eliminado', 'info');
 }
 
 // Close modal on click outside
@@ -665,8 +749,13 @@ document.getElementById('login-screen').classList.add('hidden');
 
 // Test Supabase connection on load
 document.addEventListener('DOMContentLoaded', () => {
-    testConnection();
+    testSupabaseConnection();
 });
+
+// Test connection every 30 seconds
+setInterval(() => {
+    testSupabaseConnection();
+}, 30000);
 </script>
 
 </body>
