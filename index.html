@@ -21,19 +21,18 @@
             --camisale-gold-light: #FFD700;
             --camisale-dark: #1E293B;
             --camisale-gray: #475569;
-            --camisale-white: #FFFFFF;
             --pgi-navy: #0A192F;
             --pgi-navy-light: #1a365d;
             --pgi-gray: #4A5568;
-            --pgi-white: #FFFFFF;
             --pgi-accent: #E11D48;
         }
         
-        #camisale-site { display: block; background: var(--camisale-white); }
+        /* ============ CAMISALE HOMEPAGE ============ */
+        #camisale-site { display: block; background: #FFFFFF; }
         
         .camisale-header {
             background: linear-gradient(135deg, var(--camisale-gold) 0%, var(--camisale-gold-light) 100%);
-            padding: 1.2rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,16 +41,17 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .logo-camisale { height: 55px; width: auto; display: block; }
-        .logo-camisale-fallback { display: none; font-size: 1.8rem; font-weight: 800; color: white; }
-        .logo-camisale-fallback span { color: var(--camisale-dark); }
+        .logo-camisale {
+            height: 110px;
+            width: auto;
+            display: block;
+        }
         
         .camisale-nav { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
-        .camisale-nav a { color: var(--camisale-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-        .camisale-nav a:hover { color: white; }
+        .camisale-nav a { color: var(--camisale-dark); text-decoration: none; font-weight: 600; font-size: 1rem; }
+        .camisale-nav a:hover { color: #FFFFFF; }
         
         .btn-camisale {
-            display: inline-block;
             background: var(--camisale-dark);
             color: var(--camisale-gold-light);
             padding: 0.75rem 1.5rem;
@@ -64,83 +64,117 @@
         }
         
         .camisale-hero {
-            background: linear-gradient(135deg, var(--camisale-dark) 0%, #2D3748 100%);
+            background: linear-gradient(135deg, var(--camisale-dark), #2D3748);
             color: white;
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
         }
         
-        .camisale-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; }
+        .camisale-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
         .camisale-hero h1 span { color: var(--camisale-gold-light); }
-        .camisale-hero p { color: #CBD5E1; font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+        .camisale-hero p { color: #CBD5E1; font-size: 1.1rem; }
         
-        .camisale-section { padding: 4rem 2rem; max-width: 1280px; margin: 0 auto; }
-        .camisale-section h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; color: var(--camisale-dark); }
-        .camisale-section h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--camisale-gold); margin: 0.5rem auto 0; border-radius: 2px; }
+        .camisale-section { padding: 3rem 2rem; max-width: 1280px; margin: 0 auto; }
+        .camisale-section h2 { font-size: 2rem; text-align: center; margin-bottom: 2rem; color: var(--camisale-dark); }
         
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .service-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 2px solid #F1F5F9; transition: all 0.2s; }
-        .service-card:hover { transform: translateY(-5px); border-color: var(--camisale-gold); }
-        .service-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--camisale-dark); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .service-card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 2px solid #F1F5F9; }
+        .service-card:hover { border-color: var(--camisale-gold); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
         
-        .why-us { background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%); border-radius: 1.5rem; padding: 3rem; margin-top: 2rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; text-align: center; }
-        .feature-number { font-size: 3rem; font-weight: 800; color: var(--camisale-gold); }
-        
-        .projects-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .projects-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
         .project-link-card {
-            background: white; border-radius: 1rem; padding: 1.8rem 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-decoration: none; color: var(--camisale-dark);
-            display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+            background: white; border-radius: 1rem; padding: 1.5rem;
+            text-decoration: none; color: #1E293B;
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
             cursor: pointer; border: 2px solid #F1F5F9; transition: all 0.2s;
         }
-        .project-link-card:hover { transform: translateY(-5px); border-color: var(--camisale-gold); }
+        .project-link-card:hover { border-color: var(--camisale-gold); transform: translateY(-3px); }
         .project-link-icon { font-size: 2.5rem; }
         
-        .contact-section { background: linear-gradient(135deg, var(--camisale-dark), #2D3748); color: white; border-radius: 1.5rem; padding: 3rem; text-align: center; }
-        .contact-details { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
-        .contact-item { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); padding: 0.75rem 1.25rem; border-radius: 2rem; }
+        .contact-section { background: linear-gradient(135deg, var(--camisale-dark), #2D3748); color: white; border-radius: 1.5rem; padding: 2.5rem; text-align: center; }
+        .contact-details { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
+        .contact-item { background: rgba(255,255,255,0.1); padding: 0.6rem 1.2rem; border-radius: 2rem; }
         .contact-item a { color: var(--camisale-gold-light); text-decoration: none; }
-        footer { text-align: center; padding: 2rem; color: var(--camisale-gray); background: #F8FAFC; }
         
+        footer { text-align: center; padding: 2rem; color: #64748B; background: #F8FAFC; }
+        
+        /* ============ PGI ADMIN ============ */
         #pgi-admin { display: none; background: #f5f5f5; min-height: 100vh; }
         #pgi-admin.show { display: block; }
         
-        #pgi-login { position: fixed; inset: 0; z-index: 9999; background: linear-gradient(135deg, var(--pgi-navy), var(--pgi-navy-light)); display: flex; align-items: center; justify-content: center; }
+        #pgi-login {
+            position: fixed; inset: 0; z-index: 9999;
+            background: linear-gradient(135deg, var(--pgi-navy), var(--pgi-navy-light));
+            display: flex; align-items: center; justify-content: center;
+        }
         #pgi-login.hidden { display: none; }
         
-        .pgi-login-card { background: white; border-radius: 20px; padding: 40px; width: 400px; max-width: 90vw; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .logo-pgi { height: 45px; width: auto; display: block; margin: 0 auto 16px; }
-        .logo-pgi-fallback { display: none; font-size: 1.5rem; font-weight: 800; color: var(--pgi-navy); margin-bottom: 16px; }
-        .logo-pgi-fallback span { color: var(--pgi-accent); }
+        .pgi-login-card {
+            background: white; border-radius: 20px; padding: 40px;
+            width: 400px; max-width: 90vw; text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .logo-pgi { height: 45px; width: auto; margin: 0 auto 16px; display: block; }
         
         .pgi-input-group { margin-bottom: 14px; text-align: left; }
         .pgi-input-group label { font-size: 12px; font-weight: 600; color: var(--pgi-gray); display: block; margin-bottom: 4px; }
-        .pgi-input-group input, .pgi-input-group select { width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 6px; font-size: 14px; font-family: inherit; }
+        .pgi-input-group input, .pgi-input-group select {
+            width: 100%; padding: 12px; border: 2px solid #E2E8F0;
+            border-radius: 6px; font-size: 14px; font-family: inherit;
+        }
         
-        .btn-pgi { width: 100%; padding: 13px; background: var(--pgi-navy); color: white; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .btn-pgi {
+            width: 100%; padding: 13px; background: var(--pgi-navy);
+            color: white; border: none; border-radius: 6px;
+            font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+        }
+        .btn-pgi:hover { background: var(--pgi-navy-light); }
         
-        .pgi-topbar { background: white; padding: 0 24px; height: 65px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .pgi-tabs { background: white; padding: 0 24px; display: flex; gap: 2px; border-bottom: 2px solid #E2E8F0; overflow-x: auto; }
-        .pgi-tab-btn { padding: 12px 16px; border: none; background: transparent; cursor: pointer; font-size: 13px; border-bottom: 3px solid transparent; white-space: nowrap; font-family: inherit; color: var(--pgi-gray); }
+        .pgi-topbar {
+            background: white; padding: 0 24px; height: 65px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .pgi-tabs {
+            background: white; padding: 0 24px; display: flex; gap: 2px;
+            border-bottom: 2px solid #E2E8F0; overflow-x: auto;
+        }
+        .pgi-tab-btn {
+            padding: 12px 16px; border: none; background: transparent;
+            cursor: pointer; font-size: 13px; border-bottom: 3px solid transparent;
+            white-space: nowrap; font-family: inherit; color: var(--pgi-gray);
+        }
         .pgi-tab-btn.active { color: var(--pgi-navy); border-bottom-color: var(--pgi-navy); font-weight: 600; }
+        
         .pgi-content { padding: 24px; max-width: 1300px; margin: 0 auto; }
         .pgi-tab-panel { display: none; }
         .pgi-tab-panel.active { display: block; }
         
+        /* Parking */
         .parking-container { display: flex; gap: 24px; flex-wrap: wrap; }
         .parking-diagram { flex: 1; min-width: 300px; }
         .parking-spots-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 16px; }
-        .parking-spot { border-radius: 12px; padding: 20px 12px; text-align: center; cursor: pointer; transition: all 0.3s; border: 3px solid; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .parking-spot {
+            border-radius: 12px; padding: 20px 12px; text-align: center;
+            cursor: pointer; transition: all 0.3s; border: 3px solid;
+            min-height: 120px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
         .parking-spot.free { background: #E8F5E9; border-color: #4CAF50; }
         .parking-spot.reserved { background: #FFF3E0; border-color: #FF9800; }
         .parking-spot.unavailable { background: #FFEBEE; border-color: #F44336; }
         .parking-spot:hover { transform: scale(1.05); }
         .spot-number { font-size: 24px; font-weight: 800; color: var(--pgi-navy); }
         .spot-status { font-size: 11px; font-weight: 600; text-transform: uppercase; }
-        .spot-info { font-size: 10px; margin-top: 4px; }
-        .parking-form-panel { width: 350px; background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); height: fit-content; }
+        .spot-info { font-size: 10px; margin-top: 4px; line-height: 1.3; }
+        
+        .parking-form-panel {
+            width: 350px; background: white; border-radius: 16px;
+            padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); height: fit-content;
+        }
         
         .legend { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
         .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--pgi-gray); }
@@ -149,12 +183,18 @@
         .legend-dot.reserved { background: #FF9800; }
         .legend-dot.unavailable { background: #F44336; }
         
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1000; display: none; align-items: center; justify-content: center; }
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+            z-index: 1000; display: none; align-items: center; justify-content: center;
+        }
         .modal-overlay.show { display: flex; }
         .modal { background: white; border-radius: 16px; padding: 24px; width: 420px; max-width: 92vw; }
         
-        .supabase-status { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 12px; border-radius: 20px; background: #F1F5F9; }
-        .status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+        .supabase-status {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 12px; padding: 6px 12px; border-radius: 20px; background: #F1F5F9;
+        }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; animation: pulse 2s infinite; }
         .status-dot.online { background: #4CAF50; }
         .status-dot.offline { background: #F44336; }
         .status-dot.testing { background: #FF9800; }
@@ -167,21 +207,19 @@
             .parking-form-panel { width: 100%; }
             .camisale-header { flex-direction: column; text-align: center; }
             .camisale-nav { justify-content: center; }
-            .camisale-hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- CAMISALE HOMEPAGE -->
+<!-- ============ CAMISALE HOMEPAGE ============ -->
 <div id="camisale-site">
     <header class="camisale-header">
         <img src="camisale.jpg" alt="Camisale Logo" class="logo-camisale" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <div class="logo-camisale-fallback">Cami<span>Sale</span>.work</div>
+        <div style="display:none; font-size:2rem; font-weight:800; color:white;">Cami<span style="color:#1E293B;">Sale</span>.work</div>
         <ul class="camisale-nav">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#proyectos">Proyectos</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -191,26 +229,25 @@
     <section class="camisale-hero" id="inicio">
         <h1>Ingeniería y Consultoría para <span>Minería y Telecomunicaciones</span></h1>
         <p>Más de 18 años de experiencia en proyectos de infraestructura crítica.</p>
-        <a href="#contacto" class="btn-camisale" style="font-size:1.1rem; padding:1rem 2rem;">Cotizar Proyecto →</a>
     </section>
     
     <section class="camisale-section" id="servicios">
         <h2>Soluciones para tu operación</h2>
         <div class="services-grid">
-            <div class="service-card"><div class="service-icon">📡</div><h3>Instalaciones Industriales</h3><p>Redes de datos, fibra óptica, telecomunicaciones y energía.</p></div>
-            <div class="service-card"><div class="service-icon">📊</div><h3>Project Management</h3><p>Dirección técnica, control de costos, gestión de riesgos.</p></div>
-            <div class="service-card"><div class="service-icon">⚡</div><h3>Operación y Mantenimiento</h3><p>Soporte 24/7 y continuidad operativa.</p></div>
-        </div>
-    </section>
-    
-    <section class="camisale-section" id="nosotros">
-        <h2>¿Por qué Camisale?</h2>
-        <div class="why-us">
-            <div class="features-grid">
-                <div><div class="feature-number">18+</div><h3>Años</h3><p style="color:#475569;">Claro, Entel, Telefónica</p></div>
-                <div><div class="feature-number">100%</div><h3>Cumplimiento</h3><p style="color:#475569;">Plazo y presupuesto</p></div>
-                <div><div class="feature-number">24/7</div><h3>Soporte</h3><p style="color:#475569;">Acompañamiento</p></div>
-                <div><div class="feature-number">+12</div><h3>Expertos RF</h3><p style="color:#475569;">Ingenieros</p></div>
+            <div class="service-card">
+                <div class="service-icon">📡</div>
+                <h3>Instalaciones Industriales</h3>
+                <p>Redes de datos, fibra óptica, telecomunicaciones y energía.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Project Management</h3>
+                <p>Dirección técnica, control de costos, gestión de riesgos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Operación y Mantenimiento</h3>
+                <p>Soporte 24/7 y continuidad operativa.</p>
             </div>
         </div>
     </section>
@@ -223,28 +260,38 @@
                 <strong>Prime Gestión Inmobiliaria</strong>
                 <span style="font-size:11px; color:#64748B;">Building Admin Dashboard</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('En desarrollo'); return false;">
-                <div class="project-link-icon">🌄</div><strong>Ayllu Peru</strong><span>Turismo</span>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">🌄</div>
+                <strong>Ayllu Peru</strong>
+                <span style="font-size:11px; color:#64748B;">Turismo comunitario</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('En desarrollo'); return false;">
-                <div class="project-link-icon">🌊</div><strong>Aquamar</strong><span>Hídricos</span>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">🌊</div>
+                <strong>Aquamar</strong>
+                <span style="font-size:11px; color:#64748B;">Recursos hídricos</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('En desarrollo'); return false;">
-                <div class="project-link-icon">🤖</div><strong>Agentic RR</strong><span>IA</span>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">🤖</div>
+                <strong>Agentic RR</strong>
+                <span style="font-size:11px; color:#64748B;">RRHH con IA</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('En desarrollo'); return false;">
-                <div class="project-link-icon">📡</div><strong>Pronatel</strong><span>Red rural</span>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">📡</div>
+                <strong>Pronatel</strong>
+                <span style="font-size:11px; color:#64748B;">Red rural</span>
             </a>
-            <a href="#" class="project-link-card" onclick="alert('En desarrollo'); return false;">
-                <div class="project-link-icon">📶</div><strong>Claro 5G</strong><span>Telecom</span>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div class="project-link-icon">📶</div>
+                <strong>Claro 5G</strong>
+                <span style="font-size:11px; color:#64748B;">Telecom</span>
             </a>
         </div>
     </section>
     
     <section class="camisale-section" id="contacto">
         <div class="contact-section">
-            <h2>¿Listo para ejecutar?</h2>
-            <p>Propuesta en 48 horas</p>
+            <h2>¿Listo para ejecutar tu proyecto?</h2>
+            <p style="margin-bottom:1rem;">Contáctanos hoy</p>
             <div class="contact-details">
                 <div class="contact-item">📞 <a href="tel:+51989666606">+51 989 666 606</a></div>
                 <div class="contact-item">✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a></div>
@@ -259,32 +306,46 @@
     </footer>
 </div>
 
-<!-- PGI ADMIN -->
+<!-- ============ PGI BUILDING ADMIN ============ -->
 <div id="pgi-admin">
+    <!-- Login -->
     <div id="pgi-login" class="hidden">
         <div class="pgi-login-card">
             <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="logo-pgi-fallback">Prime<span>Gestión</span> Inmobiliaria</div>
+            <div style="display:none; font-size:1.5rem; font-weight:800; color:#0A192F;">Prime<span style="color:#E11D48;">Gestión</span></div>
             <p style="color:#4A5568; font-size:14px; margin-bottom:20px;">Building Admin Dashboard</p>
-            <div class="pgi-input-group"><label>Usuario</label><input type="text" id="pgi-username" value="admin"></div>
-            <div class="pgi-input-group"><label>Contraseña</label><input type="password" id="pgi-password" value="admin123"></div>
+            
+            <div class="pgi-input-group">
+                <label>Usuario</label>
+                <input type="text" id="pgi-username" value="admin">
+            </div>
+            <div class="pgi-input-group">
+                <label>Contraseña</label>
+                <input type="password" id="pgi-password" value="admin123">
+            </div>
             <button class="btn-pgi" onclick="handlePGILogin()">Ingresar</button>
+            
             <p style="font-size:11px; color:#9E9E9E; margin-top:12px;">Powered by camisale.work</p>
+            
             <div class="supabase-status" style="margin-top:16px; justify-content:center;">
                 <span class="status-dot testing" id="pgi-login-status-dot"></span>
-                <span id="pgi-login-status-text">Verificando...</span>
+                <span id="pgi-login-status-text">Verificando Supabase...</span>
             </div>
         </div>
     </div>
     
+    <!-- Dashboard -->
     <div id="pgi-dashboard" class="hidden">
         <div class="pgi-topbar">
             <div style="display:flex; align-items:center; gap:12px;">
                 <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="logo-pgi-fallback" style="display:none; font-size:1.2rem;">Prime<span style="color:#E11D48;">Gestión</span></div>
+                <div style="display:none; font-weight:700; color:#0A192F;">Prime<span style="color:#E11D48;">Gestión</span></div>
             </div>
             <div style="display:flex; align-items:center; gap:12px;">
-                <div class="supabase-status"><span class="status-dot testing" id="pgi-admin-status-dot"></span><span id="pgi-admin-status-text">Verificando...</span></div>
+                <div class="supabase-status">
+                    <span class="status-dot testing" id="pgi-admin-status-dot"></span>
+                    <span id="pgi-admin-status-text">Verificando...</span>
+                </div>
                 <span id="pgi-user-name" style="font-size:13px; color:#4A5568;"></span>
                 <button onclick="logoutPGI()" style="padding:7px 14px; border:1px solid #E2E8F0; border-radius:6px; background:white; cursor:pointer; color:#4A5568;">Salir</button>
             </div>
@@ -296,14 +357,15 @@
             <button class="pgi-tab-btn" onclick="switchPGITab('tickets')">🎫 Tickets</button>
             <button class="pgi-tab-btn" onclick="switchPGITab('users')">👥 Usuarios</button>
             <button class="pgi-tab-btn" onclick="switchPGITab('reports')">📈 KPIs</button>
-            <button class="pgi-tab-btn" onclick="syncToSupabase()">🔄 Sync</button>
         </div>
         
         <div class="pgi-content">
+            <!-- Dashboard -->
             <div class="pgi-tab-panel active" id="pgi-tab-dashboard">
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px;" id="pgi-dashboard-kpis"></div>
             </div>
             
+            <!-- Parking -->
             <div class="pgi-tab-panel" id="pgi-tab-parking">
                 <div class="parking-container">
                     <div class="parking-diagram">
@@ -311,42 +373,63 @@
                             <h3 style="font-size:18px; color:#0A192F;">🅿️ Estacionamiento de Visitas</h3>
                             <button onclick="openParkingReservation()" style="background:#0A192F; color:white; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; font-weight:600;">+ Nueva Reserva</button>
                         </div>
+                        
                         <div class="legend" style="margin-top:16px;">
                             <div class="legend-item"><span class="legend-dot free"></span> Libre</div>
                             <div class="legend-item"><span class="legend-dot reserved"></span> Reservado</div>
                             <div class="legend-item"><span class="legend-dot unavailable"></span> No disponible</div>
                         </div>
+                        
                         <div class="parking-spots-grid" id="pgi-parking-grid"></div>
                     </div>
+                    
                     <div class="parking-form-panel" id="parking-info-panel">
                         <h4 style="margin-bottom:12px; color:#0A192F;">📋 Información del Puesto</h4>
-                        <p style="color:#4A5568; font-size:13px;">Haz click en un puesto para ver detalles.</p>
+                        <p style="color:#4A5568; font-size:13px;">Haz click en un puesto para ver detalles o en "Nueva Reserva" para crear una.</p>
                     </div>
                 </div>
             </div>
             
+            <!-- Tickets -->
             <div class="pgi-tab-panel" id="pgi-tab-tickets">
                 <button onclick="openPGITicketModal()" style="margin-bottom:12px; background:#0A192F; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
                 <button onclick="showClosedTickets()" style="margin-bottom:12px; margin-left:8px; background:#4A5568; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📁 Tickets Cerrados</button>
                 <div style="overflow-x:auto;">
-                    <table style="width:100%; border-collapse:collapse; font-size:12px; background:white;">
-                        <thead><tr style="background:#F1F5F9;"><th style="padding:12px;">ID</th><th style="padding:12px;">Título</th><th style="padding:12px;">Criticidad</th><th style="padding:12px;">Estado</th><th style="padding:12px;">Acción</th></tr></thead>
+                    <table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:8px; overflow:hidden;">
+                        <thead>
+                            <tr style="background:#F1F5F9;">
+                                <th style="padding:12px; text-align:left; color:#4A5568;">ID</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Título</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Criticidad</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Estado</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Acción</th>
+                            </tr>
+                        </thead>
                         <tbody id="pgi-tickets-tbody"></tbody>
                     </table>
                 </div>
             </div>
             
+            <!-- Usuarios -->
             <div class="pgi-tab-panel" id="pgi-tab-users">
                 <button onclick="openPGIUserModal()" style="margin-bottom:12px; background:#0A192F; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
                 <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#4CAF50; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
                 <div style="overflow-x:auto;">
-                    <table style="width:100%; border-collapse:collapse; font-size:12px; background:white;">
-                        <thead><tr style="background:#F1F5F9;"><th style="padding:12px;">Usuario</th><th style="padding:12px;">Nombre</th><th style="padding:12px;">Rol</th><th style="padding:12px;">Acción</th></tr></thead>
+                    <table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:8px; overflow:hidden;">
+                        <thead>
+                            <tr style="background:#F1F5F9;">
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Usuario</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Nombre</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Rol</th>
+                                <th style="padding:12px; text-align:left; color:#4A5568;">Acción</th>
+                            </tr>
+                        </thead>
                         <tbody id="pgi-users-tbody"></tbody>
                     </table>
                 </div>
             </div>
             
+            <!-- KPIs -->
             <div class="pgi-tab-panel" id="pgi-tab-reports">
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px;" id="pgi-owner-kpis"></div>
             </div>
@@ -354,6 +437,7 @@
     </div>
 </div>
 
+<!-- Modal -->
 <div class="modal-overlay" id="pgi-modal-overlay">
     <div class="modal" id="pgi-modal-content"></div>
 </div>
@@ -361,30 +445,52 @@
 <script>
 // ============ STATE ============
 let pgiState = {
-    users: [], buildings: ['Torre A', 'Torre B', 'Torre C', 'Torre D'],
-    parking: [], tickets: [], closedTickets: [],
-    currentUser: null, currentTab: 'dashboard',
-    nextTicketId: 1003, nextUserId: 10, syncTimer: null,
+    users: [],
+    buildings: ['Torre A', 'Torre B', 'Torre C', 'Torre D'],
+    parking: [],
+    tickets: [],
+    closedTickets: [],
+    currentUser: null,
+    currentTab: 'dashboard',
+    nextTicketId: 1003,
+    nextUserId: 10,
 };
 
+// ============ LOCAL STORAGE ============
 function saveToLocalStorage() {
     try {
-        const data = { users: pgiState.users, parking: pgiState.parking, tickets: pgiState.tickets, closedTickets: pgiState.closedTickets, nextTicketId: pgiState.nextTicketId, nextUserId: pgiState.nextUserId };
-        localStorage.setItem('pgi_admin_data_v3', JSON.stringify(data));
-    } catch(e) { console.error(e); }
+        const data = {
+            users: pgiState.users,
+            parking: pgiState.parking,
+            tickets: pgiState.tickets,
+            closedTickets: pgiState.closedTickets,
+            nextTicketId: pgiState.nextTicketId,
+            nextUserId: pgiState.nextUserId,
+        };
+        localStorage.setItem('pgi_admin_data_v4', JSON.stringify(data));
+        console.log('💾 Guardado en localStorage');
+    } catch (e) {
+        console.error('Error guardando:', e);
+    }
 }
 
 function loadFromLocalStorage() {
     try {
-        const saved = localStorage.getItem('pgi_admin_data_v3');
+        const saved = localStorage.getItem('pgi_admin_data_v4');
         if (saved) {
             const data = JSON.parse(saved);
-            pgiState.users = data.users || []; pgiState.parking = data.parking || [];
-            pgiState.tickets = data.tickets || []; pgiState.closedTickets = data.closedTickets || [];
-            pgiState.nextTicketId = data.nextTicketId || 1003; pgiState.nextUserId = data.nextUserId || 10;
+            pgiState.users = data.users || [];
+            pgiState.parking = data.parking || [];
+            pgiState.tickets = data.tickets || [];
+            pgiState.closedTickets = data.closedTickets || [];
+            pgiState.nextTicketId = data.nextTicketId || 1003;
+            pgiState.nextUserId = data.nextUserId || 10;
+            console.log('📂 Cargado desde localStorage');
             return true;
         }
-    } catch(e) {}
+    } catch (e) {
+        console.error('Error cargando:', e);
+    }
     return false;
 }
 
@@ -409,95 +515,516 @@ function loadDefaultData() {
     saveToLocalStorage();
 }
 
+// ============ SUPABASE SYNC INMEDIATO ============
+async function syncImmediate(entity, action, data) {
+    console.log(`🔄 Sync inmediato: ${action} ${entity}`);
+    
+    try {
+        const headers = {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+        };
+        
+        switch(entity) {
+            case 'user':
+                if (action === 'create' || action === 'update') {
+                    const userBody = JSON.stringify({
+                        username: data.username,
+                        password_hash: data.password,
+                        full_name: data.name,
+                        role: data.role,
+                        building: data.building || 'all',
+                        status: data.status || 'active'
+                    });
+                    
+                    try {
+                        await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+                            method: 'POST', headers, body: userBody
+                        });
+                    } catch (e) {
+                        await fetch(`${SUPABASE_URL}/rest/v1/users?username=eq.${data.username}`, {
+                            method: 'PATCH', headers,
+                            body: JSON.stringify({ full_name: data.name, role: data.role, status: data.status })
+                        });
+                    }
+                } else if (action === 'delete') {
+                    await fetch(`${SUPABASE_URL}/rest/v1/users?username=eq.${data.username}`, {
+                        method: 'DELETE', headers
+                    });
+                }
+                break;
+                
+            case 'ticket':
+                const ticketBody = JSON.stringify({
+                    ticket_number: data.id,
+                    title: data.title,
+                    building: 'Torre A',
+                    status: data.status,
+                    priority: data.priority,
+                    assignee: 'John Doe',
+                    sla_status: data.sla_status || 'ok'
+                });
+                
+                if (action === 'create') {
+                    try {
+                        await fetch(`${SUPABASE_URL}/rest/v1/tickets`, {
+                            method: 'POST', headers, body: ticketBody
+                        });
+                    } catch (e) {
+                        await fetch(`${SUPABASE_URL}/rest/v1/tickets?ticket_number=eq.${data.id}`, {
+                            method: 'PATCH', headers, body: ticketBody
+                        });
+                    }
+                } else if (action === 'update') {
+                    await fetch(`${SUPABASE_URL}/rest/v1/tickets?ticket_number=eq.${data.id}`, {
+                        method: 'PATCH', headers,
+                        body: JSON.stringify({ status: data.status, priority: data.priority })
+                    });
+                }
+                break;
+                
+            case 'parking':
+                const parkingBody = JSON.stringify({
+                    spot_number: data.number,
+                    building: 'Torre A',
+                    status: data.status === 'free' ? 'available' : data.status,
+                    current_resident: data.person || '',
+                    department: data.department || '',
+                    time_slot: data.time || '',
+                    entry_time: data.entryTime || '',
+                    exit_time: data.exitTime || ''
+                });
+                
+                try {
+                    await fetch(`${SUPABASE_URL}/rest/v1/parking_spots`, {
+                        method: 'POST', headers, body: parkingBody
+                    });
+                } catch (e) {
+                    await fetch(`${SUPABASE_URL}/rest/v1/parking_spots?spot_number=eq.${data.number}`, {
+                        method: 'PATCH', headers, body: parkingBody
+                    });
+                }
+                break;
+        }
+        
+        console.log('✅ Sync inmediato completado');
+        updateSupabaseStatus('online');
+    } catch (error) {
+        console.error('❌ Error en sync:', error);
+        updateSupabaseStatus('offline');
+    }
+}
+
+// ============ LOAD FROM SUPABASE ============
 async function loadFromSupabase() {
     console.log('📥 Cargando desde Supabase...');
+    
     try {
-        const ur = await fetch(`${SUPABASE_URL}/rest/v1/users?select=*`, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
-        if (ur.ok) { const du = await ur.json(); if (du.length) pgiState.users = du.map(u => ({ id:u.id, username:u.username, password:u.password_hash||'password', name:u.full_name, role:u.role, building:u.building, status:u.status })); }
+        const headers = {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json'
+        };
         
-        const tr = await fetch(`${SUPABASE_URL}/rest/v1/tickets?status=neq.closed&select=*`, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
-        if (tr.ok) { const dt = await tr.json(); if (dt.length) pgiState.tickets = dt.map(t => ({ id:t.ticket_number, title:t.title, status:t.status, priority:t.priority, sla_status:t.sla_status||'ok', createdAt:t.created_at })); }
+        // Usuarios
+        const ur = await fetch(`${SUPABASE_URL}/rest/v1/users?select=*`, { headers });
+        if (ur.ok) {
+            const du = await ur.json();
+            if (du.length > 0) {
+                pgiState.users = du.map(u => ({
+                    id: u.id, username: u.username, password: u.password_hash || 'password',
+                    name: u.full_name, role: u.role, building: u.building, status: u.status
+                }));
+            }
+        }
         
-        const cr = await fetch(`${SUPABASE_URL}/rest/v1/tickets?status=eq.closed&select=*`, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
-        if (cr.ok) { const dc = await cr.json(); if (dc.length) pgiState.closedTickets = dc.map(t => ({ id:t.ticket_number, title:t.title, status:'closed', priority:t.priority, closedAt:t.updated_at })); }
+        // Tickets abiertos
+        const tr = await fetch(`${SUPABASE_URL}/rest/v1/tickets?status=neq.closed&select=*`, { headers });
+        if (tr.ok) {
+            const dt = await tr.json();
+            if (dt.length > 0) {
+                pgiState.tickets = dt.map(t => ({
+                    id: t.ticket_number, title: t.title, status: t.status,
+                    priority: t.priority, sla_status: t.sla_status || 'ok', createdAt: t.created_at
+                }));
+            }
+        }
         
-        const pr = await fetch(`${SUPABASE_URL}/rest/v1/parking_spots?select=*`, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
-        if (pr.ok) { const dp = await pr.json(); if (dp.length) pgiState.parking = dp.map(p => ({ id:p.id||('pv'+Math.random()), number:p.spot_number, status:p.status==='available'?'free':p.status, department:p.department||'', time:p.time_slot||'', person:p.current_resident||'', entryTime:p.entry_time||'', exitTime:p.exit_time||'' })); }
+        // Tickets cerrados
+        const cr = await fetch(`${SUPABASE_URL}/rest/v1/tickets?status=eq.closed&select=*`, { headers });
+        if (cr.ok) {
+            const dc = await cr.json();
+            if (dc.length > 0) {
+                pgiState.closedTickets = dc.map(t => ({
+                    id: t.ticket_number, title: t.title, status: 'closed',
+                    priority: t.priority, closedAt: t.updated_at
+                }));
+            }
+        }
+        
+        // Parking
+        const pr = await fetch(`${SUPABASE_URL}/rest/v1/parking_spots?select=*`, { headers });
+        if (pr.ok) {
+            const dp = await pr.json();
+            if (dp.length > 0) {
+                pgiState.parking = dp.map(p => ({
+                    id: p.id || ('pv' + Math.random()),
+                    number: p.spot_number,
+                    status: p.status === 'available' ? 'free' : p.status,
+                    department: p.department || '',
+                    time: p.time_slot || '',
+                    person: p.current_resident || '',
+                    entryTime: p.entry_time || '',
+                    exitTime: p.exit_time || ''
+                }));
+            }
+        }
         
         saveToLocalStorage();
-    } catch(e) { console.error(e); }
+    } catch (e) {
+        console.error('Error cargando:', e);
+    }
 }
 
-async function syncToSupabase() {
-    console.log('🔄 Sincronizando...');
+// ============ SUPABASE STATUS ============
+async function testSupabaseConnection() {
     updateSupabaseStatus('testing');
     try {
-        for (const u of pgiState.users) {
-            try { await fetch(`${SUPABASE_URL}/rest/v1/users`, { method:'POST', headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=minimal' }, body:JSON.stringify({ username:u.username, password_hash:u.password, full_name:u.name, role:u.role, building:u.building, status:u.status }) }); }
-            catch(e) { await fetch(`${SUPABASE_URL}/rest/v1/users?username=eq.${u.username}`, { method:'PATCH', headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=minimal' }, body:JSON.stringify({ full_name:u.name, role:u.role }) }); }
-        }
-        for (const t of [...pgiState.tickets, ...pgiState.closedTickets]) {
-            try { await fetch(`${SUPABASE_URL}/rest/v1/tickets`, { method:'POST', headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=minimal' }, body:JSON.stringify({ ticket_number:t.id, title:t.title, building:'Torre A', status:t.status, priority:t.priority, assignee:'John Doe', sla_status:t.sla_status||'ok' }) }); }
-            catch(e) { await fetch(`${SUPABASE_URL}/rest/v1/tickets?ticket_number=eq.${t.id}`, { method:'PATCH', headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=minimal' }, body:JSON.stringify({ status:t.status, priority:t.priority }) }); }
-        }
-        for (const s of pgiState.parking) {
-            const body = JSON.stringify({ spot_number:s.number, building:'Torre A', status:s.status==='free'?'available':s.status, current_resident:s.person||'', department:s.department||'', time_slot:s.time||'', entry_time:s.entryTime||'', exit_time:s.exitTime||'' });
-            try { await fetch(`${SUPABASE_URL}/rest/v1/parking_spots`, { method:'POST', headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=minimal' }, body }); }
-            catch(e) { await fetch(`${SUPABASE_URL}/rest/v1/parking_spots?spot_number=eq.${s.number}`, { method:'PATCH', headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=minimal' }, body }); }
-        }
-        saveToLocalStorage(); updateSupabaseStatus('online');
-    } catch(e) { updateSupabaseStatus('offline'); }
+        const r = await fetch(`${SUPABASE_URL}/rest/v1/users?select=count`, {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+        });
+        if (r.ok) { updateSupabaseStatus('online'); }
+        else { updateSupabaseStatus('offline'); }
+    } catch (e) { updateSupabaseStatus('offline'); }
 }
 
-function startAutoSync() { if(pgiState.syncTimer) clearInterval(pgiState.syncTimer); pgiState.syncTimer = setInterval(() => { syncToSupabase(); }, 120000); }
+function updateSupabaseStatus(s) {
+    document.querySelectorAll('.status-dot').forEach(d => d.className = 'status-dot ' + s);
+    const msgs = { online: '🟢 Online', offline: '🔴 Offline', testing: '🟡 Verificando...' };
+    document.querySelectorAll('[id$="-status-text"]').forEach(t => t.textContent = msgs[s] || '?');
+}
 
-function generateTimeSlots() { const slots=[]; for(let h=0;h<24;h++) for(let m=0;m<60;m+=30) slots.push(`${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`); return slots; }
+// ============ NAVEGACIÓN ============
+function showPGIAdmin() {
+    document.getElementById('camisale-site').style.display = 'none';
+    document.getElementById('pgi-admin').classList.add('show');
+    document.getElementById('pgi-login').classList.remove('hidden');
+    document.getElementById('pgi-dashboard').classList.add('hidden');
+    testSupabaseConnection();
+}
 
-function showPGIAdmin() { document.getElementById('camisale-site').style.display='none'; document.getElementById('pgi-admin').classList.add('show'); document.getElementById('pgi-login').classList.remove('hidden'); document.getElementById('pgi-dashboard').classList.add('hidden'); testSupabaseConnection(); }
-function logoutPGI() { pgiState.currentUser=null; document.getElementById('pgi-login').classList.remove('hidden'); document.getElementById('pgi-dashboard').classList.add('hidden'); document.getElementById('camisale-site').style.display='block'; document.getElementById('pgi-admin').classList.remove('show'); }
+function logoutPGI() {
+    pgiState.currentUser = null;
+    document.getElementById('pgi-login').classList.remove('hidden');
+    document.getElementById('pgi-dashboard').classList.add('hidden');
+    document.getElementById('camisale-site').style.display = 'block';
+    document.getElementById('pgi-admin').classList.remove('show');
+}
 
-function handlePGILogin() { const u=document.getElementById('pgi-username').value.trim(); const p=document.getElementById('pgi-password').value.trim(); const user=pgiState.users.find(x=>x.username===u&&x.password===p); if(user){ pgiState.currentUser=user; document.getElementById('pgi-login').classList.add('hidden'); document.getElementById('pgi-dashboard').classList.remove('hidden'); document.getElementById('pgi-user-name').textContent=user.name; renderPGIAll(); } else alert('Credenciales inválidas'); }
+function handlePGILogin() {
+    const u = document.getElementById('pgi-username').value.trim();
+    const p = document.getElementById('pgi-password').value.trim();
+    const user = pgiState.users.find(x => x.username === u && x.password === p);
+    if (user) {
+        pgiState.currentUser = user;
+        document.getElementById('pgi-login').classList.add('hidden');
+        document.getElementById('pgi-dashboard').classList.remove('hidden');
+        document.getElementById('pgi-user-name').textContent = user.name;
+        renderPGIAll();
+    } else {
+        alert('Credenciales inválidas');
+    }
+}
 
-async function testSupabaseConnection() { updateSupabaseStatus('testing'); try { const r=await fetch(`${SUPABASE_URL}/rest/v1/users?select=count`,{headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}}); if(r.ok){ updateSupabaseStatus('online'); } else updateSupabaseStatus('offline'); } catch(e){ updateSupabaseStatus('offline'); } }
-function updateSupabaseStatus(s){ document.querySelectorAll('.status-dot').forEach(d=>d.className='status-dot '+s); const msgs={online:'🟢 Online',offline:'🔴 Offline',testing:'🟡 Verificando...'}; document.querySelectorAll('[id$="-status-text"]').forEach(t=>t.textContent=msgs[s]||'?'); }
+// ============ RENDER ============
+function renderPGIAll() {
+    renderPGIDashboard();
+    renderPGIParking();
+    renderPGITickets();
+    renderPGIUsers();
+    renderPGIKPIs();
+}
 
-function renderPGIAll(){ renderPGIDashboard(); renderPGIParking(); renderPGITickets(); renderPGIUsers(); renderPGIKPIs(); }
-function renderPGIDashboard(){ const open=pgiState.tickets.filter(t=>t.status==='open').length; const free=pgiState.parking.filter(p=>p.status==='free').length; const res=pgiState.parking.filter(p=>p.status==='reserved').length; document.getElementById('pgi-dashboard-kpis').innerHTML=`<div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${open}</div><div style="font-size:12px;color:#4A5568;">Tickets abiertos</div></div><div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${free}/${pgiState.parking.length}</div><div style="font-size:12px;color:#4A5568;">Parking libre</div></div><div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${res}</div><div style="font-size:12px;color:#4A5568;">Reservas</div></div><div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${pgiState.users.length}</div><div style="font-size:12px;color:#4A5568;">Usuarios</div></div>`; }
+function renderPGIDashboard() {
+    const open = pgiState.tickets.filter(t => t.status === 'open').length;
+    const free = pgiState.parking.filter(p => p.status === 'free').length;
+    const res = pgiState.parking.filter(p => p.status === 'reserved').length;
+    document.getElementById('pgi-dashboard-kpis').innerHTML = `
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${open}</div><div style="font-size:12px;color:#4A5568;">Tickets abiertos</div></div>
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${free}/${pgiState.parking.length}</div><div style="font-size:12px;color:#4A5568;">Parking libre</div></div>
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${res}</div><div style="font-size:12px;color:#4A5568;">Reservas activas</div></div>
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;color:#0A192F;">${pgiState.users.length}</div><div style="font-size:12px;color:#4A5568;">Usuarios</div></div>
+    `;
+}
 
-function renderPGIParking(){ document.getElementById('pgi-parking-grid').innerHTML=pgiState.parking.map(s=>{ const st=s.status==='free'?'Libre':s.status==='reserved'?'Reservado':'No disponible'; const info=s.status==='reserved'&&s.person?`<div class="spot-info"><strong>${s.department}</strong><br>${s.entryTime}-${s.exitTime}<br>${s.person}</div>`:''; return `<div class="parking-spot ${s.status}" onclick="showParkingInfo('${s.id}')"><div class="spot-number">${s.number}</div><div class="spot-status">${st}</div>${info}</div>`; }).join(''); }
+function renderPGIParking() {
+    document.getElementById('pgi-parking-grid').innerHTML = pgiState.parking.map(s => {
+        const st = s.status === 'free' ? 'Libre' : s.status === 'reserved' ? 'Reservado' : 'No disponible';
+        const info = s.status === 'reserved' && s.person ? 
+            `<div class="spot-info"><strong>${s.department}</strong><br>${s.entryTime}-${s.exitTime}<br>${s.person}</div>` : '';
+        return `<div class="parking-spot ${s.status}" onclick="showParkingInfo('${s.id}')"><div class="spot-number">${s.number}</div><div class="spot-status">${st}</div>${info}</div>`;
+    }).join('');
+}
 
-function showParkingInfo(id){ const s=pgiState.parking.find(x=>x.id===id); const p=document.getElementById('parking-info-panel'); if(s.status==='reserved'&&s.person){ p.innerHTML=`<h4>Puesto ${s.number}</h4><div style="background:#FFF3E0;border-radius:8px;padding:16px;"><p><strong>Departamento:</strong> ${s.department}</p><p><strong>Horario:</strong> ${s.entryTime} - ${s.exitTime}</p><p><strong>Persona:</strong> ${s.person}</p></div><button onclick="releaseParkingSpot('${s.id}')" style="margin-top:12px;width:100%;background:#F44336;color:white;border:none;padding:10px;border-radius:6px;cursor:pointer;">Liberar</button>`; } else if(s.status==='unavailable'){ p.innerHTML=`<h4>Puesto ${s.number}</h4><p>No disponible</p>`; } else { p.innerHTML=`<h4>Puesto ${s.number}</h4><p style="color:#4CAF50;">Libre</p><button onclick="openParkingReservation('${s.id}')" style="margin-top:12px;width:100%;background:#0A192F;color:white;border:none;padding:10px;border-radius:6px;cursor:pointer;">Reservar</button>`; } }
+function showParkingInfo(id) {
+    const s = pgiState.parking.find(x => x.id === id);
+    const p = document.getElementById('parking-info-panel');
+    if (s.status === 'reserved' && s.person) {
+        p.innerHTML = `<h4 style="color:#0A192F;">Puesto ${s.number}</h4><div style="background:#FFF3E0;border-radius:8px;padding:16px;"><p><strong>Departamento:</strong> ${s.department}</p><p><strong>Horario:</strong> ${s.entryTime} - ${s.exitTime}</p><p><strong>Persona:</strong> ${s.person}</p></div><button onclick="releaseParkingSpot('${s.id}')" style="margin-top:12px;width:100%;background:#F44336;color:white;border:none;padding:10px;border-radius:6px;cursor:pointer;">Liberar</button>`;
+    } else if (s.status === 'unavailable') {
+        p.innerHTML = `<h4 style="color:#0A192F;">Puesto ${s.number}</h4><p>No disponible</p>`;
+    } else {
+        p.innerHTML = `<h4 style="color:#0A192F;">Puesto ${s.number}</h4><p style="color:#4CAF50;">Libre</p><button onclick="openParkingReservation('${s.id}')" style="margin-top:12px;width:100%;background:#0A192F;color:white;border:none;padding:10px;border-radius:6px;cursor:pointer;">Reservar</button>`;
+    }
+}
 
-function releaseParkingSpot(id){ const s=pgiState.parking.find(x=>x.id===id); if(s){ s.status='free'; s.department=''; s.time=''; s.person=''; s.entryTime=''; s.exitTime=''; saveToLocalStorage(); renderPGIParking(); renderPGIDashboard(); showParkingInfo(id); } }
+function releaseParkingSpot(id) {
+    const s = pgiState.parking.find(x => x.id === id);
+    if (s) {
+        s.status = 'free';
+        s.department = '';
+        s.time = '';
+        s.person = '';
+        s.entryTime = '';
+        s.exitTime = '';
+        saveToLocalStorage();
+        syncImmediate('parking', 'update', s);
+        renderPGIParking();
+        renderPGIDashboard();
+        showParkingInfo(id);
+    }
+}
 
-function openParkingReservation(id){ const slots=generateTimeSlots().map(t=>`<option value="${t}">${t}</option>`).join(''); const modal=document.getElementById('pgi-modal-overlay'); const c=document.getElementById('pgi-modal-content'); c.innerHTML=`<h3 style="margin-bottom:16px;color:#0A192F;">🅿️ Nueva Reserva</h3><div style="margin-bottom:12px;"><label>Puesto</label><select id="parking-spot-select" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;">${pgiState.parking.filter(s=>s.status==='free').map(s=>`<option value="${s.id}" ${s.id===id?'selected':''}>${s.number}</option>`).join('')}</select></div><div style="margin-bottom:12px;"><label>Departamento</label><input type="text" id="parking-department" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Hora Ingreso</label><select id="parking-entry-time" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;">${slots}</select></div><div style="margin-bottom:12px;"><label>Hora Salida</label><select id="parking-exit-time" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;">${slots}</select></div><div style="margin-bottom:12px;"><label>Persona</label><input type="text" id="parking-person" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><button onclick="createParkingReservation()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Reserva</button>`; modal.classList.add('show'); }
+function generateTimeSlots() {
+    const slots = [];
+    for (let h = 0; h < 24; h++) {
+        for (let m = 0; m < 60; m += 30) {
+            slots.push(`${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`);
+        }
+    }
+    return slots;
+}
 
-function createParkingReservation(){ const id=document.getElementById('parking-spot-select').value; const dep=document.getElementById('parking-department').value; const et=document.getElementById('parking-entry-time').value; const xt=document.getElementById('parking-exit-time').value; const per=document.getElementById('parking-person').value; if(!dep||!et||!xt||!per) return alert('Completa todo'); if(xt<=et) return alert('Salida debe ser posterior'); const s=pgiState.parking.find(x=>x.id===id); if(s){ s.status='reserved'; s.department=dep; s.entryTime=et; s.exitTime=xt; s.time=`${et}-${xt}`; s.person=per; saveToLocalStorage(); closeModal(); renderPGIParking(); renderPGIDashboard(); showParkingInfo(id); } }
+function openParkingReservation(id) {
+    const slots = generateTimeSlots().map(t => `<option value="${t}">${t}</option>`).join('');
+    const modal = document.getElementById('pgi-modal-overlay');
+    const c = document.getElementById('pgi-modal-content');
+    c.innerHTML = `
+        <h3 style="margin-bottom:16px;color:#0A192F;">🅿️ Nueva Reserva</h3>
+        <div style="margin-bottom:12px;"><label>Puesto</label><select id="parking-spot-select" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;">${pgiState.parking.filter(s=>s.status==='free').map(s=>`<option value="${s.id}" ${s.id===id?'selected':''}>${s.number}</option>`).join('')}</select></div>
+        <div style="margin-bottom:12px;"><label>Departamento</label><input type="text" id="parking-department" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label>Hora Ingreso</label><select id="parking-entry-time" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;">${slots}</select></div>
+        <div style="margin-bottom:12px;"><label>Hora Salida</label><select id="parking-exit-time" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;">${slots}</select></div>
+        <div style="margin-bottom:12px;"><label>Persona</label><input type="text" id="parking-person" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div>
+        <button onclick="createParkingReservation()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Reserva</button>
+    `;
+    modal.classList.add('show');
+}
 
-function renderPGITickets(){ document.getElementById('pgi-tickets-tbody').innerHTML=pgiState.tickets.map(t=>`<tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:12px;">${t.id}</td><td style="padding:12px;">${t.title}</td><td style="padding:12px;"><span style="padding:3px 10px;border-radius:10px;font-size:11px;background:${t.priority==='alta'?'#FFEBEE':t.priority==='media'?'#FFF3E0':'#E8F5E9'};color:${t.priority==='alta'?'#F44336':t.priority==='media'?'#FF9800':'#4CAF50'};">${t.priority}</span></td><td style="padding:12px;">${t.status}</td><td style="padding:12px;"><button onclick="closeTicket('${t.id}')" style="background:#4CAF50;color:white;border:none;padding:4px 10px;border-radius:4px;cursor:pointer;">Cerrar</button></td></tr>`).join(''); }
+function createParkingReservation() {
+    const id = document.getElementById('parking-spot-select').value;
+    const dep = document.getElementById('parking-department').value;
+    const et = document.getElementById('parking-entry-time').value;
+    const xt = document.getElementById('parking-exit-time').value;
+    const per = document.getElementById('parking-person').value;
+    if (!dep || !et || !xt || !per) return alert('Completa todos los campos');
+    if (xt <= et) return alert('La salida debe ser posterior al ingreso');
+    
+    const s = pgiState.parking.find(x => x.id === id);
+    if (s) {
+        s.status = 'reserved';
+        s.department = dep;
+        s.entryTime = et;
+        s.exitTime = xt;
+        s.time = `${et}-${xt}`;
+        s.person = per;
+        saveToLocalStorage();
+        syncImmediate('parking', 'update', s);
+        closeModal();
+        renderPGIParking();
+        renderPGIDashboard();
+        showParkingInfo(id);
+    }
+}
 
-function closeTicket(id){ const t=pgiState.tickets.find(x=>x.id===id); if(t){ t.status='closed'; t.closedAt=new Date().toISOString(); pgiState.closedTickets.push(t); pgiState.tickets=pgiState.tickets.filter(x=>x.id!==id); saveToLocalStorage(); renderPGITickets(); renderPGIDashboard(); } }
+// ============ TICKETS ============
+function renderPGITickets() {
+    document.getElementById('pgi-tickets-tbody').innerHTML = pgiState.tickets.map(t => `
+        <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:12px;">${t.id}</td>
+            <td style="padding:12px;">${t.title}</td>
+            <td style="padding:12px;"><span style="padding:3px 10px;border-radius:10px;font-size:11px;background:${t.priority==='alta'?'#FFEBEE':t.priority==='media'?'#FFF3E0':'#E8F5E9'};color:${t.priority==='alta'?'#F44336':t.priority==='media'?'#FF9800':'#4CAF50'};">${t.priority}</span></td>
+            <td style="padding:12px;">${t.status}</td>
+            <td style="padding:12px;"><button onclick="closeTicket('${t.id}')" style="background:#4CAF50;color:white;border:none;padding:4px 10px;border-radius:4px;cursor:pointer;">Cerrar</button></td>
+        </tr>
+    `).join('');
+}
 
-function showClosedTickets(){ const modal=document.getElementById('pgi-modal-overlay'); const c=document.getElementById('pgi-modal-content'); c.innerHTML=`<h3 style="margin-bottom:16px;">📁 Tickets Cerrados (${pgiState.closedTickets.length})</h3>${pgiState.closedTickets.length?pgiState.closedTickets.map(t=>`<div style="padding:10px;border-bottom:1px solid #F1F5F9;"><strong>${t.id}</strong> - ${t.title}<br><span style="font-size:11px;">${t.priority} | ${new Date(t.closedAt).toLocaleDateString()}</span></div>`).join(''):'<p>No hay cerrados</p>'}<button onclick="closeModal()" style="margin-top:16px;padding:10px;background:#0A192F;color:white;border:none;border-radius:6px;cursor:pointer;">Cerrar</button>`; modal.classList.add('show'); }
+function closeTicket(id) {
+    const t = pgiState.tickets.find(x => x.id === id);
+    if (t) {
+        t.status = 'closed';
+        t.closedAt = new Date().toISOString();
+        pgiState.closedTickets.push(t);
+        pgiState.tickets = pgiState.tickets.filter(x => x.id !== id);
+        saveToLocalStorage();
+        syncImmediate('ticket', 'update', t);
+        renderPGITickets();
+        renderPGIDashboard();
+    }
+}
 
-function openPGITicketModal(){ const c=document.getElementById('pgi-modal-content'); c.innerHTML=`<h3>🎫 Nuevo Ticket</h3><div style="margin-bottom:12px;"><label>Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Criticidad</label><select id="pgi-ticket-priority" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"><option value="baja">Baja</option><option value="media" selected>Media</option><option value="alta">Alta</option></select></div><button onclick="submitPGITicket()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear</button>`; document.getElementById('pgi-modal-overlay').classList.add('show'); }
-function submitPGITicket(){ const t=document.getElementById('pgi-ticket-title').value; const p=document.getElementById('pgi-ticket-priority').value; if(!t) return alert('Título requerido'); pgiState.tickets.push({ id:'T-'+(pgiState.nextTicketId++), title:t, status:'open', priority:p, sla_status:p==='alta'?'warning':'ok', createdAt:new Date().toISOString() }); saveToLocalStorage(); closeModal(); renderPGITickets(); renderPGIDashboard(); }
+function showClosedTickets() {
+    const modal = document.getElementById('pgi-modal-overlay');
+    const c = document.getElementById('pgi-modal-content');
+    c.innerHTML = `<h3 style="margin-bottom:16px;">📁 Tickets Cerrados (${pgiState.closedTickets.length})</h3>${pgiState.closedTickets.length ? pgiState.closedTickets.map(t=>`<div style="padding:10px;border-bottom:1px solid #F1F5F9;"><strong>${t.id}</strong> - ${t.title}<br><span style="font-size:11px;">${t.priority} | ${new Date(t.closedAt).toLocaleDateString()}</span></div>`).join('') : '<p>No hay cerrados</p>'}<button onclick="closeModal()" style="margin-top:16px;padding:10px;background:#0A192F;color:white;border:none;border-radius:6px;cursor:pointer;">Cerrar</button>`;
+    modal.classList.add('show');
+}
 
-function renderPGIUsers(){ document.getElementById('pgi-users-tbody').innerHTML=pgiState.users.map(u=>`<tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:12px;">${u.username}</td><td style="padding:12px;">${u.name}</td><td style="padding:12px;">${u.role}</td><td style="padding:12px;"><button onclick="deletePGIUser('${u.id}')" style="background:#F44336;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td></tr>`).join(''); }
-function openPGIUserModal(){ const c=document.getElementById('pgi-modal-content'); c.innerHTML=`<h3>👥 Nuevo Usuario</h3><div style="margin-bottom:12px;"><label>Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Rol</label><select id="pgi-new-role" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div><button onclick="submitPGIUser()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear</button>`; document.getElementById('pgi-modal-overlay').classList.add('show'); }
-function submitPGIUser(){ const u=document.getElementById('pgi-new-username').value; const p=document.getElementById('pgi-new-password').value; const n=document.getElementById('pgi-new-name').value; const r=document.getElementById('pgi-new-role').value; pgiState.users.push({ id:'u'+(pgiState.nextUserId++), username:u, password:p, name:n, role:r, building:'all', status:'active' }); saveToLocalStorage(); closeModal(); renderPGIUsers(); }
-function deletePGIUser(id){ pgiState.users=pgiState.users.filter(u=>u.id!==id); saveToLocalStorage(); renderPGIUsers(); }
+function openPGITicketModal() {
+    const c = document.getElementById('pgi-modal-content');
+    c.innerHTML = `<h3 style="margin-bottom:16px;">🎫 Nuevo Ticket</h3><div style="margin-bottom:12px;"><label>Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Criticidad</label><select id="pgi-ticket-priority" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"><option value="baja">Baja</option><option value="media" selected>Media</option><option value="alta">Alta</option></select></div><button onclick="submitPGITicket()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear</button>`;
+    document.getElementById('pgi-modal-overlay').classList.add('show');
+}
 
-function renderPGIKPIs(){ const free=pgiState.parking.filter(p=>p.status==='free').length; const res=pgiState.parking.filter(p=>p.status==='reserved').length; document.getElementById('pgi-owner-kpis').innerHTML=`<div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${pgiState.tickets.length}</div><div>Tickets abiertos</div></div><div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${pgiState.closedTickets.length}</div><div>Cerrados</div></div><div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${free}</div><div>Parking libre</div></div><div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${res}</div><div>Reservas</div></div>`; }
+function submitPGITicket() {
+    const title = document.getElementById('pgi-ticket-title').value;
+    const priority = document.getElementById('pgi-ticket-priority').value;
+    if (!title) return alert('Título requerido');
+    const newTicket = {
+        id: 'T-' + (pgiState.nextTicketId++),
+        title,
+        status: 'open',
+        priority,
+        sla_status: priority === 'alta' ? 'warning' : 'ok',
+        createdAt: new Date().toISOString()
+    };
+    pgiState.tickets.push(newTicket);
+    saveToLocalStorage();
+    syncImmediate('ticket', 'create', newTicket);
+    closeModal();
+    renderPGITickets();
+    renderPGIDashboard();
+}
 
-function switchPGITab(tab){ document.querySelectorAll('.pgi-tab-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.pgi-tab-btn').forEach(b=>b.classList.remove('active')); document.getElementById('pgi-tab-'+tab).classList.add('active'); event.target.classList.add('active'); }
-function closeModal(){ document.getElementById('pgi-modal-overlay').classList.remove('show'); }
-document.getElementById('pgi-modal-overlay').addEventListener('click',function(e){ if(e.target===this) this.classList.remove('show'); });
+// ============ USUARIOS ============
+function renderPGIUsers() {
+    document.getElementById('pgi-users-tbody').innerHTML = pgiState.users.map(u => `
+        <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:12px;">${u.username}</td>
+            <td style="padding:12px;">${u.name}</td>
+            <td style="padding:12px;">${u.role}</td>
+            <td style="padding:12px;"><button onclick="deletePGIUser('${u.id}')" style="background:#F44336;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        </tr>
+    `).join('');
+}
 
-async function exportCSV(){ try{ const r=await fetch(`${SUPABASE_URL}/rest/v1/users?select=*`,{headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`}}); const users=await r.json(); let csv='Username,Nombre,Rol\n'; users.forEach(u=>csv+=`${u.username},${u.full_name},${u.role}\n`); const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='usuarios.csv'; a.click(); }catch(e){ alert('Error'); } }
+function openPGIUserModal() {
+    const c = document.getElementById('pgi-modal-content');
+    c.innerHTML = `<h3 style="margin-bottom:16px;">👥 Nuevo Usuario</h3><div style="margin-bottom:12px;"><label>Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"></div><div style="margin-bottom:12px;"><label>Rol</label><select id="pgi-new-role" style="width:100%;padding:10px;border:2px solid #E2E8F0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div><button onclick="submitPGIUser()" style="background:#0A192F;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear</button>`;
+    document.getElementById('pgi-modal-overlay').classList.add('show');
+}
 
-async function initializeApp(){ loadFromLocalStorage() || loadDefaultData(); await loadFromSupabase(); startAutoSync(); renderPGIAll(); }
-document.addEventListener('DOMContentLoaded',()=>{ initializeApp(); testSupabaseConnection(); });
+function submitPGIUser() {
+    const username = document.getElementById('pgi-new-username').value;
+    const password = document.getElementById('pgi-new-password').value;
+    const name = document.getElementById('pgi-new-name').value;
+    const role = document.getElementById('pgi-new-role').value;
+    const newUser = {
+        id: 'u' + (pgiState.nextUserId++),
+        username, password, name, role,
+        building: 'all', status: 'active'
+    };
+    pgiState.users.push(newUser);
+    saveToLocalStorage();
+    syncImmediate('user', 'create', newUser);
+    closeModal();
+    renderPGIUsers();
+}
+
+function deletePGIUser(id) {
+    const user = pgiState.users.find(u => u.id === id);
+    if (user) {
+        pgiState.users = pgiState.users.filter(u => u.id !== id);
+        saveToLocalStorage();
+        syncImmediate('user', 'delete', user);
+        renderPGIUsers();
+    }
+}
+
+// ============ KPIs ============
+function renderPGIKPIs() {
+    const free = pgiState.parking.filter(p => p.status === 'free').length;
+    const res = pgiState.parking.filter(p => p.status === 'reserved').length;
+    document.getElementById('pgi-owner-kpis').innerHTML = `
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${pgiState.tickets.length}</div><div>Tickets abiertos</div></div>
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${pgiState.closedTickets.length}</div><div>Cerrados</div></div>
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${free}</div><div>Parking libre</div></div>
+        <div style="background:white;border-radius:10px;padding:20px;"><div style="font-size:28px;font-weight:700;">${res}</div><div>Reservas</div></div>
+    `;
+}
+
+// ============ TABS ============
+function switchPGITab(tab) {
+    document.querySelectorAll('.pgi-tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pgi-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('pgi-tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// ============ MODAL ============
+function closeModal() {
+    document.getElementById('pgi-modal-overlay').classList.remove('show');
+}
+document.getElementById('pgi-modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+});
+
+// ============ EXPORT CSV ============
+async function exportCSV() {
+    try {
+        const r = await fetch(`${SUPABASE_URL}/rest/v1/users?select=*`, {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+        });
+        const users = await r.json();
+        let csv = 'Username,Nombre,Rol\n';
+        users.forEach(u => csv += `${u.username},${u.full_name},${u.role}\n`);
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'usuarios.csv';
+        a.click();
+    } catch(e) { alert('Error exportando'); }
+}
+
+// ============ INIT ============
+async function initializeApp() {
+    console.log('🚀 Inicializando...');
+    const hasLocal = loadFromLocalStorage();
+    if (!hasLocal) loadDefaultData();
+    await loadFromSupabase();
+    renderPGIAll();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+    testSupabaseConnection();
+});
+
+// Estado inicial
+document.getElementById('camisale-site').style.display = 'block';
+document.getElementById('pgi-admin').classList.remove('show');
+document.getElementById('pgi-login').classList.add('hidden');
+document.getElementById('pgi-dashboard').classList.add('hidden');
 </script>
+
 </body>
 </html>
