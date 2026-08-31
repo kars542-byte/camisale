@@ -3,354 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Gestión Inmobiliaria | Admin Dashboard</title>
+    <title>Camisale.work | Ingeniería y Consultoría</title>
     
-    <!-- ============ SUPABASE CONFIGURATION ============ -->
     <script>
-        // ⚠️ REEMPLAZA con tus credenciales reales
-        // Formato correcto: https://xxxxx.supabase.co (sin / al final)
-        const SUPABASE_URL = 'https://jvngqoqfregoqgrqojep.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2bmdxb3FmcmVnb3FncnFvamVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4ODYxNDYsImV4cCI6MjEwMzQ2MjE0Nn0.fO7yDpC3pJrs6NSYGNqdN4oT_0IHiggTVTLudNkrqsc';
+        const SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';
+        const SUPABASE_ANON_KEY = 'TU-ANON-KEY';
     </script>
     
     <style>
-        /* ============ ESTILOS GENERALES ============ */
+        /* ============ VARIABLES ============ */
+        :root {
+            --camisale-dark: #0F172A;
+            --camisale-accent: #E11D48;
+            --camisale-gray: #64748B;
+            --pgi-primary: #1a237e;
+            --pgi-accent: #E11D48;
+            --pgi-success: #2e7d32;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #eeeeee;
+            --gray-300: #e0e0e0;
+            --gray-500: #9e9e9e;
+            --gray-600: #757575;
+            --gray-700: #616161;
+            --gray-900: #212121;
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #1E293B; background: #F8FAFC; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; }
         
-        /* ============ PRIME GESTIÓN INMOBILIARIA ============ */
-        .prime-logo { font-size: 1.8rem; font-weight: 800; color: #1a237e; }
-        .prime-logo span { color: #E11D48; }
-        .powered-by { font-size: 0.7rem; color: #9e9e9e; margin-top: 2px; }
+        /* ============ CAMISALE HOMEPAGE ============ */
+        #camisale-site { display: block; }
         
-        /* ============ TOP BAR ============ */
-        .top-bar { background: #0F172A; color: #94A3B8; padding: 0.75rem 0; font-size: 0.875rem; }
-        .top-bar .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .top-bar a { color: #CBD5E1; text-decoration: none; }
+        .camisale-header {
+            background: var(--camisale-dark);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
         
-        /* ============ HEADER ============ */
-        .main-header { background: white; box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1280px; margin: 0 auto; flex-wrap: wrap; gap: 1rem; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #1E293B; font-weight: 500; }
-        .nav-links a:hover { color: #E11D48; }
+        .camisale-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+        }
         
-        /* ============ BOTONES ============ */
-        .btn { display: inline-block; background: #E11D48; color: white; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
-        .btn:hover { background: #BE123C; }
+        .camisale-logo span { color: var(--camisale-accent); }
         
-        /* ============ HERO ============ */
-        .hero { background: linear-gradient(135deg, #0F172A, #1E293B); color: white; padding: 4rem 2rem; }
-        .hero .container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.5rem; }
-        .hero h1 span { color: #FB7185; }
+        .camisale-nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
         
-        /* ============ SECTIONS ============ */
-        .section { padding: 4rem 2rem; max-width: 1280px; margin: 0 auto; }
-        .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .service-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .camisale-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
         
-        /* ============ PROJECTS HUB ============ */
-        .projects-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-        .project-link-card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-decoration: none; color: #1E293B; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; transition: transform 0.2s; cursor: pointer; border: 2px solid transparent; }
-        .project-link-card:hover { transform: translateY(-4px); border-color: #E11D48; }
-        .project-link-icon { font-size: 2rem; }
+        .camisale-nav a:hover { color: var(--camisale-accent); }
         
-        /* ============ INDICADOR SUPABASE ============ */
-        .supabase-status { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 12px; border-radius: 20px; background: #f5f5f5; }
-        .status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
-        .status-dot.online { background: #2e7d32; box-shadow: 0 0 8px #2e7d32; }
-        .status-dot.offline { background: #c62828; box-shadow: 0 0 8px #c62828; }
-        .status-dot.testing { background: #f57f17; box-shadow: 0 0 8px #f57f17; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .camisale-hero {
+            background: linear-gradient(135deg, #0F172A, #1E293B);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
         
-        /* ============ ADMIN DASHBOARD ============ */
-        :root { --primary: #1a237e; --accent: #E11D48; --success: #2e7d32; --warning: #f57f17; --danger: #c62828; --gray-100: #f5f5f5; --gray-200: #eeeeee; --gray-300: #e0e0e0; --gray-500: #9e9e9e; --gray-600: #757575; --gray-700: #616161; --gray-900: #212121; }
-        #login-screen { position: fixed; inset: 0; z-index: 9999; background: linear-gradient(135deg, #0d1445, #1a237e); display: flex; align-items: center; justify-content: center; }
-        #login-screen.hidden { display: none; }
-        .login-card { background: white; border-radius: 20px; padding: 40px; width: 400px; max-width: 90vw; text-align: center; }
-        .login-logo { width: 60px; height: 60px; background: linear-gradient(135deg, #1a237e, #E11D48); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; color: white; font-weight: 700; }
-        .login-input-group { margin-bottom: 14px; text-align: left; }
-        .login-input-group label { font-size: 12px; font-weight: 600; color: #616161; display: block; margin-bottom: 4px; }
-        .login-input-group input { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; }
-        .login-btn { width: 100%; padding: 13px; background: linear-gradient(135deg, #1a237e, #E11D48); color: white; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; }
-        #app { display: none; }
-        #app.show { display: block; }
-        .topbar { background: white; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .building-selector { display: flex; gap: 4px; background: #f5f5f5; padding: 3px 5px; border-radius: 18px; }
-        .building-btn { padding: 6px 14px; border-radius: 15px; border: none; background: transparent; cursor: pointer; font-size: 12px; }
-        .building-btn.active { background: #1a237e; color: white; }
-        .tabs-bar { background: white; padding: 0 24px; display: flex; gap: 2px; border-bottom: 1px solid #eeeeee; overflow-x: auto; }
-        .tab-btn { padding: 12px 16px; border: none; background: transparent; cursor: pointer; font-size: 13px; border-bottom: 3px solid transparent; white-space: nowrap; }
-        .tab-btn.active { color: #1a237e; border-bottom-color: #1a237e; font-weight: 600; }
-        .content-area { padding: 24px; max-width: 1300px; margin: 0 auto; }
-        .tab-panel { display: none; }
-        .tab-panel.active { display: block; }
-        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .kpi-card { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .kpi-value { font-size: 24px; font-weight: 700; }
-        .parking-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
-        .parking-spot { border-radius: 10px; padding: 14px; text-align: center; border: 2px solid; cursor: pointer; }
+        .camisale-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .camisale-hero h1 span { color: #FB7185; }
+        
+        .btn-camisale {
+            display: inline-block;
+            background: var(--camisale-accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .camisale-section {
+            padding: 4rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .camisale-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--camisale-dark);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .projects-hub {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .project-link-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: var(--gray-900);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+            cursor: pointer;
+            border: 2px solid var(--gray-200);
+        }
+        
+        .project-link-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--camisale-accent);
+        }
+        
+        /* ============ PGI ADMIN THEME ============ */
+        #pgi-admin {
+            display: none;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        #pgi-admin.show { display: block; }
+        
+        #pgi-login {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: linear-gradient(135deg, #0d1445, #1a237e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #pgi-login.hidden { display: none; }
+        
+        .pgi-login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 400px;
+            max-width: 90vw;
+            text-align: center;
+        }
+        
+        .pgi-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--pgi-primary);
+            margin-bottom: 8px;
+        }
+        
+        .pgi-logo span { color: var(--pgi-accent); }
+        
+        .pgi-powered-by {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+        
+        .pgi-input-group { margin-bottom: 14px; text-align: left; }
+        
+        .pgi-input-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-700);
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .pgi-input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .btn-pgi {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #1a237e, #E11D48);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .pgi-topbar {
+            background: white;
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .pgi-tabs {
+            background: white;
+            padding: 0 24px;
+            display: flex;
+            gap: 2px;
+            border-bottom: 1px solid var(--gray-200);
+            overflow-x: auto;
+        }
+        
+        .pgi-tab-btn {
+            padding: 12px 16px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 13px;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        
+        .pgi-tab-btn.active {
+            color: var(--pgi-primary);
+            border-bottom-color: var(--pgi-primary);
+            font-weight: 600;
+        }
+        
+        .pgi-content {
+            padding: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .pgi-tab-panel { display: none; }
+        .pgi-tab-panel.active { display: block; }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .kpi-card {
+            background: white;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .kpi-value { font-size: 24px; font-weight: 700; color: var(--pgi-primary); }
+        
+        .parking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+        }
+        
+        .parking-spot {
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            border: 2px solid;
+            cursor: pointer;
+        }
+        
         .parking-spot.available { background: #e8f5e9; border-color: #2e7d32; }
         .parking-spot.reserved { background: #fff8e1; border-color: #f57f17; }
         .parking-spot.occupied { background: #ffebee; border-color: #c62828; }
-        .parking-spot.maintenance { background: #f5f5f5; border-color: #9e9e9e; }
-        .traffic-light { width: 16px; height: 16px; border-radius: 50%; margin: 0 auto 6px; }
+        
+        .traffic-light {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin: 0 auto 6px;
+        }
+        
         .traffic-light.available { background: #2e7d32; }
         .traffic-light.reserved { background: #f57f17; }
         .traffic-light.occupied { background: #c62828; }
-        .traffic-light.maintenance { background: #9e9e9e; }
-        .table-wrapper { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 12px; }
-        th { background: #f5f5f5; padding: 10px; text-align: left; }
-        td { padding: 10px; border-bottom: 1px solid #eeeeee; }
-        .status-badge { padding: 3px 10px; border-radius: 10px; font-size: 10px; font-weight: 600; }
-        .status-badge.open { background: #ffebee; color: #c62828; }
-        .status-badge.in-progress { background: #fff8e1; color: #f57f17; }
-        .status-badge.resolved { background: #e8f5e9; color: #2e7d32; }
-        .status-badge.closed { background: #eeeeee; color: #757575; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1000; display: none; align-items: center; justify-content: center; }
-        .modal-overlay.show { display: flex; }
-        .modal { background: white; border-radius: 16px; padding: 24px; width: 480px; max-width: 92vw; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; }
-        .form-group input, .form-group select { width: 100%; padding: 9px 12px; border: 1.5px solid #e0e0e0; border-radius: 6px; font-size: 13px; }
-        .toast { position: fixed; top: 70px; right: 20px; z-index: 9999; padding: 12px 18px; border-radius: 6px; font-size: 13px; color: white; animation: slideIn 0.3s; }
-        .toast.success { background: #2e7d32; }
-        .toast.error { background: #c62828; }
-        .toast.info { background: #01579b; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        .contact-section { background: #0F172A; color: white; border-radius: 1.5rem; padding: 3rem; text-align: center; }
-        .contact-details { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
-        .contact-item { display: flex; align-items: center; gap: 0.5rem; background: #1E293B; padding: 0.5rem 1rem; border-radius: 2rem; }
-        footer { text-align: center; padding: 2rem; color: #64748B; }
-        @media (max-width: 768px) { .hero .container { grid-template-columns: 1fr; } .nav-container { flex-direction: column; } }
+        
+        .supabase-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: var(--gray-100);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.online { background: #2e7d32; }
+        .status-dot.offline { background: #c62828; }
+        .status-dot.testing { background: #f57f17; }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .camisale-header { flex-direction: column; text-align: center; }
+            .camisale-nav { justify-content: center; }
+            .camisale-hero h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-<!-- ============ LOGIN SCREEN ============ -->
-<div id="login-screen" class="hidden">
-    <div class="login-card">
-        <div class="login-logo">PG</div>
-        <h1 style="font-size:22px; margin-bottom:4px;">Prime Gestión Inmobiliaria</h1>
-        <p style="color:#757575; font-size:13px; margin-bottom:20px;">Centro de operaciones</p>
-        <div class="login-input-group">
-            <label>Usuario</label>
-            <input type="text" id="login-username" value="admin">
-        </div>
-        <div class="login-input-group">
-            <label>Contraseña</label>
-            <input type="password" id="login-password" value="admin123">
-        </div>
-        <button class="login-btn" onclick="handleLogin()">Ingresar</button>
-        <p style="margin-top:12px; font-size:11px; color:#9e9e9e;">Demo: admin/admin123</p>
-        <p class="powered-by" style="margin-top:8px;">Powered by <strong>camisale.work</strong></p>
-        <div class="supabase-status" id="login-supabase-status" style="margin-top:16px; justify-content:center;">
-            <span class="status-dot testing" id="login-status-dot"></span>
-            <span id="login-status-text">Verificando Supabase...</span>
-        </div>
-    </div>
-</div>
-
-<!-- ============ ADMIN DASHBOARD ============ -->
-<div id="app">
-    <div class="topbar">
-        <div style="display:flex; align-items:center; gap:12px;">
-            <div>
-                <div class="prime-logo" style="font-size:1.2rem;">Prime<span style="color:#E11D48;">Gestión</span></div>
-                <div class="powered-by">Powered by camisale.work</div>
-            </div>
-            <div class="building-selector" id="building-selector"></div>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-            <div class="supabase-status" id="admin-supabase-status">
-                <span class="status-dot testing" id="admin-status-dot"></span>
-                <span id="admin-status-text">Verificando...</span>
-            </div>
-            <span id="user-name" style="font-size:13px;"></span>
-            <button onclick="handleLogout()" style="padding:7px 14px; border:1px solid #e0e0e0; border-radius:6px; background:white; cursor:pointer;">Salir</button>
-        </div>
-    </div>
-    <div class="tabs-bar">
-        <button class="tab-btn active" onclick="switchTab('dashboard')">📊 Dashboard</button>
-        <button class="tab-btn" onclick="switchTab('parking')">🅿️ Parking</button>
-        <button class="tab-btn" onclick="switchTab('tickets')">🎫 Tickets</button>
-        <button class="tab-btn" onclick="switchTab('users')">👥 Usuarios</button>
-        <button class="tab-btn" onclick="switchTab('reports')">📈 KPIs</button>
-        <button class="tab-btn" onclick="syncToSupabase()">🔄 Sync</button>
-    </div>
-    <div class="content-area">
-        <div class="tab-panel active" id="tab-dashboard">
-            <div class="kpi-grid" id="dashboard-kpis"></div>
-        </div>
-        <div class="tab-panel" id="tab-parking">
-            <div class="parking-grid" id="parking-grid"></div>
-        </div>
-        <div class="tab-panel" id="tab-tickets">
-            <button onclick="openTicketModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
-            <div class="table-wrapper">
-                <table>
-                    <thead><tr><th>ID</th><th>Título</th><th>Estado</th><th>Prioridad</th><th>Acción</th></tr></thead>
-                    <tbody id="tickets-tbody"></tbody>
-                </table>
-            </div>
-        </div>
-        <div class="tab-panel" id="tab-users">
-            <button onclick="openUserModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
-            <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#2e7d32; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
-            <div class="table-wrapper">
-                <table>
-                    <thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Acción</th></tr></thead>
-                    <tbody id="users-tbody"></tbody>
-                </table>
-            </div>
-        </div>
-        <div class="tab-panel" id="tab-reports">
-            <div class="kpi-grid" id="owner-kpis"></div>
-        </div>
-    </div>
-</div>
-
-<!-- ============ PÁGINA PÚBLICA PRIME GESTIÓN ============ -->
-<div id="public-site">
-    <div class="top-bar">
-        <div class="container">
-            <div>📍 Lima - Perú | Gestión Inmobiliaria Profesional</div>
-            <div>
-                <div class="supabase-status" id="public-supabase-status" style="display:inline-flex;">
-                    <span class="status-dot testing" id="public-status-dot"></span>
-                    <span id="public-status-text">Supabase: Verificando...</span>
-                </div>
-                &nbsp;|&nbsp; 📞 <a href="tel:+51989666606">+51 989 666 606</a> &nbsp;|&nbsp; ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a>
-            </div>
-        </div>
-    </div>
-    <div class="main-header">
-        <div class="nav-container">
-            <div>
-                <div class="prime-logo">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
-                <div class="powered-by">Powered by camisale.work</div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <a href="#contacto" class="btn">Solicitar Propuesta →</a>
-        </div>
-    </div>
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div>
-                <h1>Gestión inmobiliaria <span>profesional</span> para tu edificio</h1>
-                <p>Administración de estacionamientos, áreas comunes, tickets de mantenimiento y más.</p>
-                <a href="#contacto" class="btn">Cotizar Servicio →</a>
-            </div>
-            <div>
-                <div style="background:#1E293B; border-radius:1rem; padding:2rem; text-align:center;">
-                    <div style="font-size:4rem;">🏢</div>
-                    <p style="color:#94A3B8;">Gestión integral de edificios</p>
-                </div>
-            </div>
-        </div>
+<!-- ============ CAMISALE HOMEPAGE ============ -->
+<div id="camisale-site">
+    <header class="camisale-header">
+        <div class="camisale-logo">Cami<span>Sale</span>.work</div>
+        <ul class="camisale-nav">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#contacto" class="btn-camisale">Solicitar Propuesta</a>
+    </header>
+    
+    <section class="camisale-hero" id="inicio">
+        <h1>Gestión de proyectos e <span>instalaciones</span></h1>
+        <p style="color:#CBD5E1; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">
+            Más de 18 años de experiencia en proyectos de telecomunicaciones, energía e infraestructura crítica.
+        </p>
+        <a href="#contacto" class="btn-camisale">Cotizar Proyecto →</a>
     </section>
-    <section id="servicios" class="section">
-        <h2 class="section-title">Nuestros Servicios</h2>
+    
+    <section class="camisale-section" id="servicios">
+        <h2>Soluciones para tu operación</h2>
         <div class="services-grid">
-            <div class="service-card"><h3>🅿️ Estacionamientos</h3><p>Control de espacios y reservas.</p></div>
-            <div class="service-card"><h3>🎫 Tickets</h3><p>Gestión de incidencias y SLA.</p></div>
-            <div class="service-card"><h3>🏊 Áreas Comunes</h3><p>Reservas de piscina, gimnasio, etc.</p></div>
-        </div>
-    </section>
-    <section id="proyectos" class="section">
-        <h2 class="section-title">Accesos Rápidos</h2>
-        <div class="projects-hub">
-            <a href="#" class="project-link-card" onclick="showAdminLogin(); return false;" style="border:2px solid #E11D48;">
-                <div class="project-link-icon">🔐</div>
-                <strong>Panel Admin</strong>
-                <span style="font-size:11px; color:#64748B;">Gestión de edificios</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Portal de residentes en desarrollo'); return false;">
-                <div class="project-link-icon">👥</div>
-                <strong>Portal Residentes</strong>
-                <span style="font-size:11px; color:#64748B;">Acceso residentes</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Reportes en desarrollo'); return false;">
-                <div class="project-link-icon">📊</div>
-                <strong>Reportes</strong>
-                <span style="font-size:11px; color:#64748B;">KPIs y análisis</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Pagos en desarrollo'); return false;">
-                <div class="project-link-icon">💳</div>
-                <strong>Pagos</strong>
-                <span style="font-size:11px; color:#64748B;">Cuotas y facturación</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Mantenimiento en desarrollo'); return false;">
-                <div class="project-link-icon">🔧</div>
-                <strong>Mantenimiento</strong>
-                <span style="font-size:11px; color:#64748B;">Solicitudes</span>
-            </a>
-            <a href="#" class="project-link-card" onclick="alert('Seguridad en desarrollo'); return false;">
-                <div class="project-link-icon">🛡️</div>
-                <strong>Seguridad</strong>
-                <span style="font-size:11px; color:#64748B;">Control de acceso</span>
-            </a>
-        </div>
-    </section>
-    <section id="contacto" class="section">
-        <div class="contact-section">
-            <h2>¿Necesitas gestión para tu edificio?</h2>
-            <p>Contáctanos hoy</p>
-            <div class="contact-details">
-                <div class="contact-item">📞 <a href="tel:+51989666606" style="color:white;">989 666 606</a></div>
-                <div class="contact-item">✉️ <a href="mailto:camisalework@gmail.com" style="color:white;">camisalework@gmail.com</a></div>
-                <div class="contact-item">💬 <a href="https://wa.me/51989666606" style="color:white;">WhatsApp</a></div>
+            <div class="service-card">
+                <h3>📡 Instalaciones Industriales</h3>
+                <p>Redes de datos, fibra óptica, telecomunicaciones y energía.</p>
             </div>
-            <a href="https://wa.me/51989666606" class="btn" style="background:#25D366;">WhatsApp →</a>
+            <div class="service-card">
+                <h3>📊 Project Management</h3>
+                <p>Dirección técnica, control de costos, gestión de riesgos.</p>
+            </div>
+            <div class="service-card">
+                <h3>⚡ Operación y Mantenimiento</h3>
+                <p>Soporte 24/7 y continuidad operativa.</p>
+            </div>
         </div>
     </section>
-    <footer>
-        <p>© 2025 Prime Gestión Inmobiliaria</p>
-        <p class="powered-by">Powered by <strong>camisale.work</strong> - Soluciones de Ingeniería</p>
+    
+    <section class="camisale-section" id="proyectos">
+        <h2>Nuestros Proyectos</h2>
+        <div class="projects-hub">
+            <!-- Link a PGI Admin -->
+            <a href="#" class="project-link-card" onclick="showPGIAdmin(); return false;" style="border-color:#E11D48;">
+                <div style="font-size:2rem;">🏢</div>
+                <strong>Prime Gestión Inmobiliaria</strong>
+                <span style="font-size:11px; color:#64748B;">Building Admin Dashboard</span>
+            </a>
+            
+            <!-- Otros proyectos -->
+            <a href="https://aylluperu.work" target="_blank" class="project-link-card">
+                <div style="font-size:2rem;">🌄</div>
+                <strong>Ayllu Peru</strong>
+                <span style="font-size:11px; color:#64748B;">Turismo comunitario</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div style="font-size:2rem;">🌊</div>
+                <strong>Aquamar</strong>
+                <span style="font-size:11px; color:#64748B;">Recursos hídricos</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div style="font-size:2rem;">🤖</div>
+                <strong>Agentic RR</strong>
+                <span style="font-size:11px; color:#64748B;">RRHH con IA</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div style="font-size:2rem;">📡</div>
+                <strong>Pronatel</strong>
+                <span style="font-size:11px; color:#64748B;">Red rural</span>
+            </a>
+            <a href="#" class="project-link-card" onclick="alert('Proyecto en desarrollo'); return false;">
+                <div style="font-size:2rem;">📶</div>
+                <strong>Claro 5G</strong>
+                <span style="font-size:11px; color:#64748B;">Modernización</span>
+            </a>
+        </div>
+    </section>
+    
+    <section class="camisale-section" id="contacto">
+        <h2>Contacto</h2>
+        <p style="text-align:center; margin-bottom:2rem;">
+            📞 <a href="tel:+51989666606">+51 989 666 606</a> | 
+            ✉️ <a href="mailto:camisalework@gmail.com">camisalework@gmail.com</a>
+        </p>
+        <div style="text-align:center;">
+            <a href="https://wa.me/51989666606" class="btn-camisale" style="background:#25D366;">WhatsApp →</a>
+        </div>
+    </section>
+    
+    <footer style="text-align:center; padding:2rem; color:#64748B;">
+        <p>© 2025 Camisale.work - Soluciones de Ingeniería</p>
     </footer>
 </div>
 
-<!-- ============ MODAL ============ -->
-<div class="modal-overlay" id="modal-overlay">
-    <div class="modal" id="modal-content"></div>
+<!-- ============ PGI BUILDING ADMIN ============ -->
+<div id="pgi-admin">
+    <!-- Login PGI -->
+    <div id="pgi-login" class="hidden">
+        <div class="pgi-login-card">
+            <div class="pgi-logo">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
+            <p style="color:#757575; font-size:14px; margin-bottom:20px;">Building Admin Dashboard</p>
+            
+            <div class="pgi-input-group">
+                <label>Usuario</label>
+                <input type="text" id="pgi-username" value="admin">
+            </div>
+            <div class="pgi-input-group">
+                <label>Contraseña</label>
+                <input type="password" id="pgi-password" value="admin123">
+            </div>
+            <button class="btn-pgi" onclick="handlePGILogin()">Ingresar</button>
+            
+            <p class="pgi-powered-by" style="margin-top:12px;">
+                Powered by <strong>camisale.work</strong>
+            </p>
+            
+            <div class="supabase-status" style="margin-top:16px; justify-content:center;">
+                <span class="status-dot testing" id="pgi-login-status-dot"></span>
+                <span id="pgi-login-status-text">Verificando Supabase...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dashboard PGI -->
+    <div id="pgi-dashboard" class="hidden">
+        <div class="pgi-topbar">
+            <div>
+                <div style="font-weight:700; color:#1a237e;">Prime<span style="color:#E11D48;">Gestión</span> Inmobiliaria</div>
+                <div class="pgi-powered-by">Powered by camisale.work</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div class="supabase-status">
+                    <span class="status-dot testing" id="pgi-admin-status-dot"></span>
+                    <span id="pgi-admin-status-text">Verificando...</span>
+                </div>
+                <span id="pgi-user-name" style="font-size:13px;"></span>
+                <button onclick="logoutPGI()" style="padding:7px 14px; border:1px solid #e0e0e0; border-radius:6px; background:white; cursor:pointer;">Salir</button>
+            </div>
+        </div>
+        
+        <div class="pgi-tabs">
+            <button class="pgi-tab-btn active" onclick="switchPGITab('dashboard')">📊 Dashboard</button>
+            <button class="pgi-tab-btn" onclick="switchPGITab('parking')">🅿️ Parking</button>
+            <button class="pgi-tab-btn" onclick="switchPGITab('tickets')">🎫 Tickets</button>
+            <button class="pgi-tab-btn" onclick="switchPGITab('users')">👥 Usuarios</button>
+            <button class="pgi-tab-btn" onclick="switchPGITab('reports')">📈 KPIs</button>
+            <button class="pgi-tab-btn" onclick="syncToSupabase()">🔄 Sync</button>
+        </div>
+        
+        <div class="pgi-content">
+            <div class="pgi-tab-panel active" id="pgi-tab-dashboard">
+                <div class="kpi-grid" id="pgi-dashboard-kpis"></div>
+            </div>
+            <div class="pgi-tab-panel" id="pgi-tab-parking">
+                <div class="parking-grid" id="pgi-parking-grid"></div>
+            </div>
+            <div class="pgi-tab-panel" id="pgi-tab-tickets">
+                <button onclick="openPGITicketModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                        <thead>
+                            <tr style="background:#f5f5f5;">
+                                <th style="padding:10px; text-align:left;">ID</th>
+                                <th style="padding:10px; text-align:left;">Título</th>
+                                <th style="padding:10px; text-align:left;">Estado</th>
+                                <th style="padding:10px; text-align:left;">Prioridad</th>
+                                <th style="padding:10px; text-align:left;">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pgi-tickets-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pgi-tab-panel" id="pgi-tab-users">
+                <button onclick="openPGIUserModal()" style="margin-bottom:12px; background:#1a237e; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
+                <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#2e7d32; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                        <thead>
+                            <tr style="background:#f5f5f5;">
+                                <th style="padding:10px; text-align:left;">Usuario</th>
+                                <th style="padding:10px; text-align:left;">Nombre</th>
+                                <th style="padding:10px; text-align:left;">Rol</th>
+                                <th style="padding:10px; text-align:left;">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pgi-users-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pgi-tab-panel" id="pgi-tab-reports">
+                <div class="kpi-grid" id="pgi-owner-kpis"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="pgi-modal-overlay" style="position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1000; display:none; align-items:center; justify-content:center;">
+    <div id="pgi-modal-content" style="background:white; border-radius:16px; padding:24px; width:480px; max-width:92vw;"></div>
 </div>
 
 <script>
-// ============ DATOS INICIALES ============
-const DEFAULT_USERS = [
-    { id:'u1', username:'admin', password:'admin123', name:'Administrador', role:'admin', building:'all', status:'active' },
-    { id:'u2', username:'owner', password:'owner123', name:'Propietario', role:'owner', building:'all', status:'active' },
-    { id:'u3', username:'jdoe', password:'jdoe123', name:'John Doe', role:'worker', building:'Tower A', status:'active' },
-];
-
-const DEFAULT_TICKETS = [
-    { id:'T-1001', title:'Fuga de agua', building:'Tower A', status:'open', priority:'urgent', assignee:'John Doe', sla_status:'warning' },
-    { id:'T-1002', title:'Ascensor dañado', building:'Tower B', status:'in-progress', priority:'high', assignee:'John Doe', sla_status:'ok' },
-];
-
-const DEFAULT_PARKING = [
-    { id:'p1', number:'A-01', building:'Tower A', status:'available', resident:'' },
-    { id:'p2', number:'A-02', building:'Tower A', status:'reserved', resident:'Maria' },
-    { id:'p3', number:'A-03', building:'Tower A', status:'occupied', resident:'John' },
-    { id:'p4', number:'B-01', building:'Tower B', status:'available', resident:'' },
-    { id:'p5', number:'B-02', building:'Tower B', status:'reserved', resident:'Lisa' },
-];
-
 // ============ STATE ============
-let state = {
-    users: [...DEFAULT_USERS],
+let pgiState = {
+    users: [
+        { id:'u1', username:'admin', password:'admin123', name:'Administrador', role:'admin', building:'all', status:'active' },
+        { id:'u2', username:'owner', password:'owner123', name:'Propietario', role:'owner', building:'all', status:'active' },
+        { id:'u3', username:'jdoe', password:'jdoe123', name:'John Doe', role:'worker', building:'Torre A', status:'active' },
+    ],
     buildings: ['Torre A', 'Torre B', 'Torre C', 'Torre D'],
-    parking: [...DEFAULT_PARKING],
-    tickets: [...DEFAULT_TICKETS],
-    reservations: [],
+    parking: [
+        { id:'p1', number:'A-01', building:'Torre A', status:'available', resident:'' },
+        { id:'p2', number:'A-02', building:'Torre A', status:'reserved', resident:'Maria' },
+        { id:'p3', number:'A-03', building:'Torre A', status:'occupied', resident:'John' },
+        { id:'p4', number:'B-01', building:'Torre B', status:'available', resident:'' },
+        { id:'p5', number:'B-02', building:'Torre B', status:'reserved', resident:'Lisa' },
+    ],
+    tickets: [
+        { id:'T-1001', title:'Fuga de agua', building:'Torre A', status:'open', priority:'urgent', assignee:'John Doe', sla_status:'warning' },
+        { id:'T-1002', title:'Ascensor dañado', building:'Torre B', status:'in-progress', priority:'high', assignee:'John Doe', sla_status:'ok' },
+    ],
     currentUser: null,
     currentBuilding: 'Torre A',
     currentTab: 'dashboard',
@@ -358,33 +585,48 @@ let state = {
     nextUserId: 10,
 };
 
-// ============ FUNCIÓN TEST CONEXIÓN SUPABASE ============
+// ============ NAVEGACIÓN ============
+function showPGIAdmin() {
+    document.getElementById('camisale-site').style.display = 'none';
+    document.getElementById('pgi-admin').classList.add('show');
+    document.getElementById('pgi-login').classList.remove('hidden');
+    document.getElementById('pgi-dashboard').classList.add('hidden');
+    testSupabaseConnection();
+}
+
+function logoutPGI() {
+    pgiState.currentUser = null;
+    document.getElementById('pgi-login').classList.remove('hidden');
+    document.getElementById('pgi-dashboard').classList.add('hidden');
+    document.getElementById('camisale-site').style.display = 'block';
+    document.getElementById('pgi-admin').classList.remove('show');
+}
+
+// ============ LOGIN ============
+function handlePGILogin() {
+    const username = document.getElementById('pgi-username').value.trim();
+    const password = document.getElementById('pgi-password').value.trim();
+    const user = pgiState.users.find(u => u.username === username && u.password === password);
+    
+    if (user) {
+        pgiState.currentUser = user;
+        document.getElementById('pgi-login').classList.add('hidden');
+        document.getElementById('pgi-dashboard').classList.remove('hidden');
+        document.getElementById('pgi-user-name').textContent = user.name;
+        renderPGIAll();
+        testSupabaseConnection();
+    } else {
+        alert('Credenciales inválidas');
+    }
+}
+
+// ============ SUPABASE ============
 async function testSupabaseConnection() {
     console.log('🔍 Probando conexión a Supabase...');
-    console.log('URL:', SUPABASE_URL);
-    
     updateSupabaseStatus('testing');
     
     try {
-        // Verificar que la URL esté bien formada
-        if (!SUPABASE_URL || SUPABASE_URL === 'https://TU-PROYECTO.supabase.co') {
-            console.error('❌ URL de Supabase no configurada. Reemplaza con tu URL real.');
-            updateSupabaseStatus('offline');
-            return false;
-        }
-        
-        // Verificar que la key esté configurada
-        if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === 'TU-ANON-KEY-AQUI') {
-            console.error('❌ ANON KEY de Supabase no configurada. Reemplaza con tu key real.');
-            updateSupabaseStatus('offline');
-            return false;
-        }
-        
-        // URL correcta para Supabase
-        const endpoint = `${SUPABASE_URL}/rest/v1/users?select=count`;
-        console.log('Endpoint:', endpoint);
-        
-        const response = await fetch(endpoint, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/users?select=count`, {
             method: 'GET',
             headers: {
                 'apikey': SUPABASE_ANON_KEY,
@@ -393,87 +635,240 @@ async function testSupabaseConnection() {
             }
         });
         
-        console.log('Respuesta:', response.status, response.statusText);
-        
         if (response.ok) {
             const data = await response.json();
-            console.log('✅ Conexión exitosa a Supabase!');
-            console.log('📊 Usuarios en Supabase:', data[0]?.count || 0);
+            console.log('✅ Supabase conectado. Usuarios:', data[0]?.count || 0);
             updateSupabaseStatus('online');
-            return true;
         } else {
-            console.error('❌ Error de conexión:', response.status);
-            console.error('Respuesta completa:', await response.text());
+            console.error('❌ Error:', response.status);
             updateSupabaseStatus('offline');
-            return false;
         }
     } catch (error) {
         console.error('❌ Error de conexión:', error);
         updateSupabaseStatus('offline');
-        return false;
     }
 }
 
-// ============ ACTUALIZAR INDICADOR VISUAL ============
 function updateSupabaseStatus(status) {
     const dots = document.querySelectorAll('.status-dot');
-    const texts = document.querySelectorAll('#login-status-text, #admin-status-text, #public-status-text');
+    const texts = document.querySelectorAll('[id$="-status-text"]');
     
     dots.forEach(dot => {
         dot.className = 'status-dot ' + status;
     });
     
-    const statusMessages = {
+    const messages = {
         online: '🟢 Supabase: Online',
         offline: '🔴 Supabase: Offline',
         testing: '🟡 Supabase: Verificando...'
     };
     
     texts.forEach(text => {
-        text.textContent = statusMessages[status] || 'Supabase: Desconocido';
+        text.textContent = messages[status] || 'Supabase: Desconocido';
     });
 }
 
-// ============ SINCRONIZAR CON SUPABASE ============
+// ============ RENDER ============
+function renderPGIAll() {
+    renderPGIDashboard();
+    renderPGIParking();
+    renderPGITickets();
+    renderPGIUsers();
+    renderPGIKPIs();
+}
+
+function renderPGIDashboard() {
+    const openTickets = pgiState.tickets.filter(t => t.status === 'open' || t.status === 'in-progress').length;
+    const totalParking = pgiState.parking.length;
+    const availParking = pgiState.parking.filter(p => p.status === 'available').length;
+    
+    document.getElementById('pgi-dashboard-kpis').innerHTML = `
+        <div class="kpi-card"><div class="kpi-value">${openTickets}</div><div>🎫 Tickets abiertos</div></div>
+        <div class="kpi-card"><div class="kpi-value">${availParking}/${totalParking}</div><div>🅿️ Parking disponible</div></div>
+        <div class="kpi-card"><div class="kpi-value">${pgiState.users.length}</div><div>👥 Usuarios</div></div>
+        <div class="kpi-card"><div class="kpi-value">${pgiState.tickets.filter(t => t.sla_status === 'breached').length}</div><div>📈 SLA incumplidos</div></div>
+    `;
+}
+
+function renderPGIParking() {
+    const spots = pgiState.parking.filter(p => p.building === pgiState.currentBuilding);
+    document.getElementById('pgi-parking-grid').innerHTML = spots.map(s => `
+        <div class="parking-spot ${s.status}" onclick="cyclePGIParking('${s.id}')">
+            <div class="traffic-light ${s.status}"></div>
+            <strong>${s.number}</strong>
+            <div style="font-size:10px;">${s.status}</div>
+            ${s.resident ? `<div style="font-size:10px;">${s.resident}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+function cyclePGIParking(id) {
+    const spot = pgiState.parking.find(p => p.id === id);
+    const statuses = ['available', 'reserved', 'occupied', 'maintenance'];
+    const idx = statuses.indexOf(spot.status);
+    spot.status = statuses[(idx + 1) % statuses.length];
+    if (spot.status === 'available') spot.resident = '';
+    renderPGIParking();
+    renderPGIDashboard();
+}
+
+function renderPGITickets() {
+    document.getElementById('pgi-tickets-tbody').innerHTML = pgiState.tickets.map(t => `
+        <tr style="border-bottom:1px solid #eeeeee;">
+            <td style="padding:10px;">${t.id}</td>
+            <td style="padding:10px;">${t.title}</td>
+            <td style="padding:10px;">${t.status}</td>
+            <td style="padding:10px;">${t.priority}</td>
+            <td style="padding:10px;"><button onclick="deletePGITicket('${t.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        </tr>
+    `).join('');
+}
+
+function renderPGIUsers() {
+    document.getElementById('pgi-users-tbody').innerHTML = pgiState.users.map(u => `
+        <tr style="border-bottom:1px solid #eeeeee;">
+            <td style="padding:10px;">${u.username}</td>
+            <td style="padding:10px;">${u.name}</td>
+            <td style="padding:10px;">${u.role}</td>
+            <td style="padding:10px;"><button onclick="deletePGIUser('${u.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
+        </tr>
+    `).join('');
+}
+
+function renderPGIKPIs() {
+    const total = pgiState.tickets.length;
+    const breaches = pgiState.tickets.filter(t => t.sla_status === 'breached').length;
+    const compliance = total ? Math.round((total - breaches) / total * 100) : 100;
+    document.getElementById('pgi-owner-kpis').innerHTML = `
+        <div class="kpi-card"><div class="kpi-value">${total}</div><div>Tickets totales</div></div>
+        <div class="kpi-card"><div class="kpi-value">${compliance}%</div><div>SLA compliance</div></div>
+        <div class="kpi-card"><div class="kpi-value">${pgiState.users.length}</div><div>Usuarios</div></div>
+    `;
+}
+
+// ============ TABS ============
+function switchPGITab(tab) {
+    pgiState.currentTab = tab;
+    document.querySelectorAll('.pgi-tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pgi-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('pgi-tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// ============ MODALS ============
+function openPGITicketModal() {
+    const modal = document.getElementById('pgi-modal-overlay');
+    const content = document.getElementById('pgi-modal-content');
+    content.innerHTML = `
+        <h3 style="margin-bottom:16px;">Nuevo Ticket</h3>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Título</label><input type="text" id="pgi-ticket-title" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Prioridad</label><select id="pgi-ticket-priority" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"><option value="low">Baja</option><option value="medium" selected>Media</option><option value="high">Alta</option><option value="urgent">Urgente</option></select></div>
+        <button onclick="submitPGITicket()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Ticket</button>
+    `;
+    modal.style.display = 'flex';
+}
+
+function submitPGITicket() {
+    const title = document.getElementById('pgi-ticket-title').value;
+    const priority = document.getElementById('pgi-ticket-priority').value;
+    pgiState.tickets.push({
+        id: 'T-' + (pgiState.nextTicketId++),
+        title,
+        building: pgiState.currentBuilding,
+        status: 'open',
+        priority,
+        assignee: 'John Doe',
+        sla_status: 'ok'
+    });
+    document.getElementById('pgi-modal-overlay').style.display = 'none';
+    renderPGITickets();
+    renderPGIDashboard();
+}
+
+function openPGIUserModal() {
+    const modal = document.getElementById('pgi-modal-overlay');
+    const content = document.getElementById('pgi-modal-content');
+    content.innerHTML = `
+        <h3 style="margin-bottom:16px;">Nuevo Usuario</h3>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Usuario</label><input type="text" id="pgi-new-username" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Contraseña</label><input type="password" id="pgi-new-password" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Nombre</label><input type="text" id="pgi-new-name" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><label style="font-size:12px;font-weight:600;display:block;">Rol</label><select id="pgi-new-role" style="width:100%;padding:9px 12px;border:1.5px solid #e0e0e0;border-radius:6px;"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div>
+        <button onclick="submitPGIUser()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Usuario</button>
+    `;
+    modal.style.display = 'flex';
+}
+
+function submitPGIUser() {
+    const username = document.getElementById('pgi-new-username').value;
+    const password = document.getElementById('pgi-new-password').value;
+    const name = document.getElementById('pgi-new-name').value;
+    const role = document.getElementById('pgi-new-role').value;
+    pgiState.users.push({
+        id: 'u' + (pgiState.nextUserId++),
+        username,
+        password,
+        name,
+        role,
+        building: 'all',
+        status: 'active'
+    });
+    document.getElementById('pgi-modal-overlay').style.display = 'none';
+    renderPGIUsers();
+}
+
+function deletePGITicket(id) {
+    pgiState.tickets = pgiState.tickets.filter(t => t.id !== id);
+    renderPGITickets();
+    renderPGIDashboard();
+}
+
+function deletePGIUser(id) {
+    pgiState.users = pgiState.users.filter(u => u.id !== id);
+    renderPGIUsers();
+}
+
+// Close modal on click outside
+document.getElementById('pgi-modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.style.display = 'none';
+    }
+});
+
+// ============ SYNC ============
 async function syncToSupabase() {
     console.log('🔄 Sincronizando con Supabase...');
     updateSupabaseStatus('testing');
     
     try {
-        for (const user of state.users) {
-            try {
-                await fetch(`${SUPABASE_URL}/rest/v1/users`, {
-                    method: 'POST',
-                    headers: {
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify({
-                        username: user.username,
-                        password_hash: user.password,
-                        full_name: user.name,
-                        role: user.role,
-                        building: user.building,
-                        status: user.status
-                    })
-                });
-            } catch (e) {
-                console.log(`Usuario ${user.username} ya existe o error`);
-            }
+        for (const user of pgiState.users) {
+            await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+                method: 'POST',
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify({
+                    username: user.username,
+                    password_hash: user.password,
+                    full_name: user.name,
+                    role: user.role,
+                    building: user.building,
+                    status: user.status
+                })
+            });
         }
-        console.log('✅ Usuarios sincronizados');
         updateSupabaseStatus('online');
-        showToast('✅ Sincronización completada', 'success');
+        alert('✅ Sincronización completada');
     } catch (error) {
-        console.error('Error en sincronización:', error);
         updateSupabaseStatus('offline');
-        showToast('❌ Error en sincronización', 'error');
+        alert('❌ Error en sincronización');
     }
 }
 
-// ============ EXPORTAR CSV ============
+// ============ EXPORT CSV ============
 async function exportCSV() {
     try {
         const response = await fetch(`${SUPABASE_URL}/rest/v1/users?select=*`, {
@@ -495,250 +890,25 @@ async function exportCSV() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'usuarios_prime.csv';
+        a.download = 'usuarios_pgi.csv';
         a.click();
         URL.revokeObjectURL(url);
-        showToast('✅ CSV exportado', 'success');
     } catch (error) {
-        console.error('Error exportando:', error);
-        showToast('❌ Error exportando CSV', 'error');
+        alert('Error exportando CSV');
     }
 }
-
-// ============ TOAST ============
-function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = 'toast ' + type;
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
-}
-
-// ============ AUTH ============
-function showAdminLogin() {
-    document.getElementById('public-site').style.display = 'none';
-    document.getElementById('login-screen').classList.remove('hidden');
-    testSupabaseConnection();
-}
-
-function handleLogin() {
-    const username = document.getElementById('login-username').value.trim();
-    const password = document.getElementById('login-password').value.trim();
-    const user = state.users.find(u => u.username === username && u.password === password);
-    if (user) {
-        state.currentUser = user;
-        document.getElementById('login-screen').classList.add('hidden');
-        document.getElementById('app').classList.add('show');
-        document.getElementById('public-site').style.display = 'none';
-        document.getElementById('user-name').textContent = user.name;
-        renderAll();
-        testSupabaseConnection();
-    } else {
-        showToast('❌ Credenciales inválidas', 'error');
-    }
-}
-
-function handleLogout() {
-    state.currentUser = null;
-    document.getElementById('app').classList.remove('show');
-    document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('public-site').style.display = 'block';
-}
-
-// ============ RENDER ============
-function renderAll() {
-    renderBuildingSelector();
-    renderDashboard();
-    renderParking();
-    renderTickets();
-    renderUsers();
-    renderOwnerKPIs();
-}
-
-function renderBuildingSelector() {
-    const c = document.getElementById('building-selector');
-    c.innerHTML = '';
-    state.buildings.forEach(b => {
-        const btn = document.createElement('button');
-        btn.className = 'building-btn' + (b === state.currentBuilding ? ' active' : '');
-        btn.textContent = b;
-        btn.onclick = () => { state.currentBuilding = b; renderAll(); };
-        c.appendChild(btn);
-    });
-}
-
-function renderDashboard() {
-    const openTickets = state.tickets.filter(t => t.status === 'open' || t.status === 'in-progress').length;
-    const totalParking = state.parking.length;
-    const availParking = state.parking.filter(p => p.status === 'available').length;
-    
-    document.getElementById('dashboard-kpis').innerHTML = `
-        <div class="kpi-card"><div class="kpi-value">${openTickets}</div><div>🎫 Tickets abiertos</div></div>
-        <div class="kpi-card"><div class="kpi-value">${availParking}/${totalParking}</div><div>🅿️ Parking disponible</div></div>
-        <div class="kpi-card"><div class="kpi-value">${state.users.length}</div><div>👥 Usuarios</div></div>
-        <div class="kpi-card"><div class="kpi-value">${state.tickets.filter(t => t.sla_status === 'breached').length}</div><div>📈 SLA incumplidos</div></div>
-    `;
-}
-
-function renderParking() {
-    const spots = state.parking.filter(p => p.building === state.currentBuilding);
-    document.getElementById('parking-grid').innerHTML = spots.map(s => `
-        <div class="parking-spot ${s.status}" onclick="cycleParking('${s.id}')">
-            <div class="traffic-light ${s.status}"></div>
-            <strong>${s.number}</strong>
-            <div style="font-size:10px;">${s.status}</div>
-            ${s.resident ? `<div style="font-size:10px;">${s.resident}</div>` : ''}
-        </div>
-    `).join('');
-}
-
-function cycleParking(id) {
-    const spot = state.parking.find(p => p.id === id);
-    const statuses = ['available', 'reserved', 'occupied', 'maintenance'];
-    const idx = statuses.indexOf(spot.status);
-    spot.status = statuses[(idx + 1) % statuses.length];
-    if (spot.status === 'available') spot.resident = '';
-    renderParking();
-    renderDashboard();
-}
-
-function renderTickets() {
-    document.getElementById('tickets-tbody').innerHTML = state.tickets.map(t => `
-        <tr>
-            <td>${t.id}</td>
-            <td>${t.title}</td>
-            <td><span class="status-badge ${t.status}">${t.status}</span></td>
-            <td>${t.priority}</td>
-            <td><button onclick="deleteTicket('${t.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
-        </tr>
-    `).join('');
-}
-
-function renderUsers() {
-    document.getElementById('users-tbody').innerHTML = state.users.map(u => `
-        <tr>
-            <td>${u.username}</td>
-            <td>${u.name}</td>
-            <td><span class="status-badge ${u.role === 'admin' ? 'open' : 'resolved'}">${u.role}</span></td>
-            <td><button onclick="deleteUser('${u.id}')" style="background:#c62828;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;">✕</button></td>
-        </tr>
-    `).join('');
-}
-
-function renderOwnerKPIs() {
-    const total = state.tickets.length;
-    const breaches = state.tickets.filter(t => t.sla_status === 'breached').length;
-    const compliance = total ? Math.round((total - breaches) / total * 100) : 100;
-    document.getElementById('owner-kpis').innerHTML = `
-        <div class="kpi-card"><div class="kpi-value">${total}</div><div>Tickets totales</div></div>
-        <div class="kpi-card"><div class="kpi-value">${compliance}%</div><div>SLA compliance</div></div>
-        <div class="kpi-card"><div class="kpi-value">${state.users.length}</div><div>Usuarios</div></div>
-    `;
-}
-
-// ============ TABS ============
-function switchTab(tab) {
-    state.currentTab = tab;
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    event.target.classList.add('active');
-}
-
-// ============ MODALS ============
-function openTicketModal() {
-    document.getElementById('modal-content').innerHTML = `
-        <h3 style="margin-bottom:16px;">Nuevo Ticket</h3>
-        <div class="form-group"><label>Título</label><input type="text" id="ticket-title"></div>
-        <div class="form-group"><label>Prioridad</label><select id="ticket-priority"><option value="low">Baja</option><option value="medium" selected>Media</option><option value="high">Alta</option><option value="urgent">Urgente</option></select></div>
-        <div class="form-group"><label>Asignado</label><input type="text" id="ticket-assignee" value="John Doe"></div>
-        <button onclick="submitTicket()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Ticket</button>
-    `;
-    document.getElementById('modal-overlay').classList.add('show');
-}
-
-function submitTicket() {
-    const title = document.getElementById('ticket-title').value;
-    const priority = document.getElementById('ticket-priority').value;
-    const assignee = document.getElementById('ticket-assignee').value;
-    state.tickets.push({
-        id: 'T-' + (state.nextTicketId++),
-        title,
-        building: state.currentBuilding,
-        status: 'open',
-        priority,
-        assignee,
-        sla_status: 'ok'
-    });
-    document.getElementById('modal-overlay').classList.remove('show');
-    renderTickets();
-    renderDashboard();
-    showToast('✅ Ticket creado', 'success');
-}
-
-function openUserModal() {
-    document.getElementById('modal-content').innerHTML = `
-        <h3 style="margin-bottom:16px;">Nuevo Usuario</h3>
-        <div class="form-group"><label>Usuario</label><input type="text" id="new-username"></div>
-        <div class="form-group"><label>Contraseña</label><input type="password" id="new-password"></div>
-        <div class="form-group"><label>Nombre</label><input type="text" id="new-name"></div>
-        <div class="form-group"><label>Rol</label><select id="new-role"><option value="worker">Trabajador</option><option value="owner">Propietario</option><option value="admin">Administrador</option></select></div>
-        <button onclick="submitUser()" style="background:#1a237e;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Crear Usuario</button>
-    `;
-    document.getElementById('modal-overlay').classList.add('show');
-}
-
-function submitUser() {
-    const username = document.getElementById('new-username').value;
-    const password = document.getElementById('new-password').value;
-    const name = document.getElementById('new-name').value;
-    const role = document.getElementById('new-role').value;
-    state.users.push({
-        id: 'u' + (state.nextUserId++),
-        username,
-        password,
-        name,
-        role,
-        building: 'all',
-        status: 'active'
-    });
-    document.getElementById('modal-overlay').classList.remove('show');
-    renderUsers();
-    showToast('✅ Usuario creado', 'success');
-}
-
-function deleteTicket(id) {
-    state.tickets = state.tickets.filter(t => t.id !== id);
-    renderTickets();
-    renderDashboard();
-}
-
-function deleteUser(id) {
-    state.users = state.users.filter(u => u.id !== id);
-    renderUsers();
-    showToast('🗑️ Usuario eliminado', 'info');
-}
-
-// Close modal on click outside
-document.getElementById('modal-overlay').addEventListener('click', function(e) {
-    if (e.target === this) {
-        this.classList.remove('show');
-    }
-});
 
 // ============ INIT ============
-document.getElementById('public-site').style.display = 'block';
-document.getElementById('login-screen').classList.add('hidden');
+document.getElementById('camisale-site').style.display = 'block';
+document.getElementById('pgi-admin').classList.remove('show');
+document.getElementById('pgi-login').classList.add('hidden');
+document.getElementById('pgi-dashboard').classList.add('hidden');
 
-// Test Supabase connection on load
-document.addEventListener('DOMContentLoaded', () => {
-    testSupabaseConnection();
-});
+// Test connection on load
+testSupabaseConnection();
 
-// Test connection every 60 seconds
-setInterval(() => {
-    testSupabaseConnection();
-}, 60000);
+// Test every 60 seconds
+setInterval(testSupabaseConnection, 60000);
 </script>
 
 </body>
