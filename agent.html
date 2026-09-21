@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Agentic IA - Terminal</title>
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <link rel="stylesheet" href="assets/css/agent.css">
+</head>
+<body>
 
+<!-- DB STATUS BADGE -->
+<div class="db-status-badge testing" id="dbStatusBadge">
+    <span class="db-status-dot testing" id="dbStatusDot"></span>
+    <span id="dbStatusText">Verificando DB...</span>
+</div>
+
+<div class="agent-container">
+    <!-- HEADER ATARI -->
+    <div class="agent-header">
+        <h1>🤖 AGENTIC_IA v1.0</h1>
+        <div class="agent-status">
+            <span class="dot" id="apiDot"></span>
+            <span id="apiStatusText">CONECTANDO...</span>
+        </div>
+    </div>
+
+    <!-- PANTALLA ATARI -->
+    <div class="agent-screen" id="screen">
+        <div class="line system">╔══════════════════════════════════════════════╗</div>
+        <div class="line system">║  AGENTIC_IA - Terminal de Comandos          ║</div>
+        <div class="line system">║  camisale.work · Agentic Engine v1.0        ║</div>
+        <div class="line system">╚══════════════════════════════════════════════╝</div>
+        <div class="line">&nbsp;</div>
+        <div class="line info">Escribe tu instrucción y presiona ENTER o el botón ▶</div>
+        <div class="line">&nbsp;</div>
+        <div class="line prompt">Esperando instrucción...<span class="cursor"></span></div>
+    </div>
+
+    <!-- ÁREA DE INPUT -->
+    <div class="agent-input-area">
+        <div class="agent-input-label">📝 COMANDO PARA LA IA:</div>
+        <div class="agent-input-row">
+            <span class="prompt-symbol">></span>
+            <input type="text" id="promptInput" 
+                   placeholder="Ej: Cambia el título a 'Bienvenido a camisale.work'"
+                   autofocus autocomplete="off">
+            <button class="btn-agent" id="runBtn">▶ Run</button>
+        </div>
+    </div>
+
+    <!-- BARRA DE ACCIONES -->
+    <div class="agent-actions">
+        <button class="btn-agent btn-agent-push" id="pushBtn" disabled>📤 PUSH a GitHub</button>
+        <button class="btn-agent btn-agent-push" id="clearBtn">🗑️ Limpiar</button>
+        <div class="info-box" id="infoBox">
+            💡 Ejecuta un comando y luego haz PUSH para publicar
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="agent-footer">
+        <a href="/">← Volver a camisale.work</a>
+    </div>
+</div>
+
+<!-- BOTÓN FLOTANTE AGENTE -->
+<a href="agent.html" class="agente-flotante" title="Abrir Agente IA">
+    <span class="icono">🤖</span>
+    <span class="texto">IA</span>
+</a>
+
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/agent.js"></script>
+
+</body>
+</html>
