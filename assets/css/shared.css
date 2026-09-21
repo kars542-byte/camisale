@@ -1,4 +1,3 @@
-cat > assets/css/shared.css << 'EOF'
 /* ============ SHARED STYLES - CAMISALE.WORK ============ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; background: #FFFFFF; }
