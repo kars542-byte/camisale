@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏢 Prime Gestión Inmobiliaria - Building Admin</title>
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <link rel="stylesheet" href="assets/css/pgi.css">
+</head>
+<body>
+
+<!-- ============ DB STATUS BADGE ============ -->
+<div class="db-status-badge testing" id="dbStatusBadge">
+    <span class="db-status-dot testing" id="dbStatusDot"></span>
+    <span id="dbStatusText">Verificando DB...</span>
+</div>
+
+<!-- ============ LOGIN ============ -->
+<div id="pgi-login">
+    <div class="pgi-login-card">
+        <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div style="display:none; font-size:1.5rem; font-weight:800; color:#0A192F;">
+            Prime<span style="color:#E11D48;">Gestión</span>
+        </div>
+        <p style="color:#4A5568; font-size:14px; margin-bottom:20px;">Building Admin Dashboard</p>
+
+        <div class="pgi-input-group">
+            <label>Usuario</label>
+            <input type="text" id="pgi-username" value="admin">
+        </div>
+        <div class="pgi-input-group">
+            <label>Contraseña</label>
+            <input type="password" id="pgi-password" value="admin123">
+        </div>
+        <button class="btn-pgi" onclick="handlePGILogin()">Ingresar</button>
+
+        <p style="font-size:11px; color:#9E9E9E; margin-top:12px;">Powered by camisale.work</p>
+
+        <div class="supabase-status" style="margin-top:16px; justify-content:center;">
+            <span class="status-dot testing" id="pgi-login-status-dot"></span>
+            <span id="pgi-login-status-text">Verificando Supabase...</span>
+        </div>
+
+        <div style="margin-top:16px;">
+            <a href="/" style="color:#4A5568; font-size:13px; text-decoration:none;">← Volver a Camisale</a>
+        </div>
+    </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div id="pgi-dashboard" style="display:none;">
+    <div class="pgi-topbar">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <img src="buildadmin/PGI-300x124.png" alt="PGI Logo" class="logo-pgi" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; font-weight:700; color:#0A192F;">
+                Prime<span style="color:#E11D48;">Gestión</span>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+            <div class="supabase-status">
+                <span class="status-dot testing" id="pgi-admin-status-dot"></span>
+                <span id="pgi-admin-status-text">Verificando...</span>
+            </div>
+            <span id="pgi-user-name" style="font-size:13px; color:#4A5568;"></span>
+            <a href="/" style="padding:7px 14px; border:1px solid #E2E8F0; border-radius:6px; background:white; cursor:pointer; color:#4A5568; text-decoration:none; font-size:13px;">Inicio</a>
+            <button onclick="logoutPGI()" style="padding:7px 14px; border:1px solid #E2E8F0; border-radius:6px; background:white; cursor:pointer; color:#4A5568;">Salir</button>
+        </div>
+    </div>
+
+    <div class="pgi-tabs">
+        <button class="pgi-tab-btn active" onclick="switchPGITab('dashboard', event)">📊 Dashboard</button>
+        <button class="pgi-tab-btn" onclick="switchPGITab('parking', event)">🅿️ Parking</button>
+        <button class="pgi-tab-btn" onclick="switchPGITab('tickets', event)">🎫 Tickets</button>
+        <button class="pgi-tab-btn" onclick="switchPGITab('users', event)">👥 Usuarios</button>
+        <button class="pgi-tab-btn" onclick="switchPGITab('reports', event)">📈 KPIs</button>
+    </div>
+
+    <div class="pgi-content">
+        <!-- Dashboard -->
+        <div class="pgi-tab-panel active" id="pgi-tab-dashboard">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px;" id="pgi-dashboard-kpis"></div>
+        </div>
+
+        <!-- Parking -->
+        <div class="pgi-tab-panel" id="pgi-tab-parking">
+            <div class="parking-container">
+                <div class="parking-diagram">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3 style="font-size:18px; color:#0A192F;">🅿️ Estacionamiento de Visitas</h3>
+                        <button onclick="openParkingReservation()" style="background:#0A192F; color:white; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; font-weight:600;">+ Nueva Reserva</button>
+                    </div>
+
+                    <div class="legend" style="margin-top:16px;">
+                        <div class="legend-item"><span class="legend-dot free"></span> Libre</div>
+                        <div class="legend-item"><span class="legend-dot reserved"></span> Reservado</div>
+                        <div class="legend-item"><span class="legend-dot unavailable"></span> No disponible</div>
+                    </div>
+
+                    <div class="parking-spots-grid" id="pgi-parking-grid"></div>
+                </div>
+
+                <div class="parking-form-panel" id="parking-info-panel">
+                    <h4 style="margin-bottom:12px; color:#0A192F;">📋 Información del Puesto</h4>
+                    <p style="color:#4A5568; font-size:13px;">Haz click en un puesto para ver detalles o en "Nueva Reserva" para crear una.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tickets -->
+        <div class="pgi-tab-panel" id="pgi-tab-tickets">
+            <button onclick="openPGITicketModal()" style="margin-bottom:12px; background:#0A192F; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Nuevo Ticket</button>
+            <button onclick="showClosedTickets()" style="margin-bottom:12px; margin-left:8px; background:#4A5568; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📁 Tickets Cerrados</button>
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:8px; overflow:hidden;">
+                    <thead>
+                        <tr style="background:#F1F5F9;">
+                            <th style="padding:12px; text-align:left; color:#4A5568;">ID</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Título</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Criticidad</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Estado</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pgi-tickets-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Usuarios -->
+        <div class="pgi-tab-panel" id="pgi-tab-users">
+            <button onclick="openPGIUserModal()" style="margin-bottom:12px; background:#0A192F; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">+ Agregar Usuario</button>
+            <button onclick="exportCSV()" style="margin-bottom:12px; margin-left:8px; background:#4CAF50; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">📥 Exportar CSV</button>
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:8px; overflow:hidden;">
+                    <thead>
+                        <tr style="background:#F1F5F9;">
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Usuario</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Nombre</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Rol</th>
+                            <th style="padding:12px; text-align:left; color:#4A5568;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pgi-users-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="pgi-tab-panel" id="pgi-tab-reports">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px;" id="pgi-owner-kpis"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="pgi-modal-overlay">
+    <div class="modal" id="pgi-modal-content"></div>
+</div>
+
+<!-- ============ BOTÓN FLOTANTE AGENTE ============ -->
+<a href="agent.html" class="agente-flotante" title="Abrir Agente IA">
+    <span class="icono">🤖</span>
+    <span class="texto">IA</span>
+</a>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/pgi.js"></script>
+
+</body>
+</html>
