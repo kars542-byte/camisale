@@ -1,0 +1,144 @@
+cat > assets/css/ayllu.css << 'EOF'
+/* ============ AYLLU PAGE STYLES ============ */
+body { background: #f0f9f4; min-height: 100vh; }
+
+.ayllu-header {
+    background: linear-gradient(135deg, var(--ayllu-green) 0%, var(--ayllu-green-light) 100%);
+    color: white;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+.ayllu-header h1 { font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+.ayllu-header .btn-back {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.ayllu-header .btn-back:hover { background: rgba(255,255,255,0.3); }
+
+.ayllu-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.ayllu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.ayllu-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--ayllu-green);
+}
+.ayllu-panel h2 {
+    font-size: 1.2rem;
+    color: var(--ayllu-green);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.ayllu-form-group { margin-bottom: 1rem; }
+.ayllu-form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+.ayllu-form-group input,
+.ayllu-form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+.ayllu-form-group input:focus,
+.ayllu-form-group select:focus {
+    outline: none;
+    border-color: var(--ayllu-green-light);
+}
+.btn-ayllu {
+    background: var(--ayllu-green);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-ayllu:hover { background: #1B5E20; transform: translateY(-1px); }
+.btn-ayllu:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+.btn-ayllu-secondary {
+    background: white;
+    color: var(--ayllu-green);
+    border: 2px solid var(--ayllu-green);
+}
+.btn-ayllu-secondary:hover { background: #e8f5e9; }
+
+/* Lista de ventas */
+.ventas-list {
+    background: var(--agentic-dark);
+    color: var(--agentic-green);
+    font-family: 'Courier New', monospace;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border: 2px solid var(--ayllu-green);
+    box-shadow: inset 0 0 20px rgba(0, 255, 157, 0.05);
+}
+.ventas-list .header-line {
+    color: #FFD700;
+    font-weight: bold;
+    border-bottom: 1px dashed #FFD700;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+.ventas-list .venta-line {
+    padding: 4px 0;
+    border-bottom: 1px dotted rgba(0, 255, 157, 0.2);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.ventas-list .venta-line .cliente { color: #00ff9d; }
+.ventas-list .venta-line .cantidad { color: #FFD700; font-weight: bold; }
+.ventas-list .venta-line .fecha { color: #8a9aa8; font-size: 0.85em; }
+.ventas-list .total-line {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px solid #FFD700;
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.ventas-list .empty-state { color: #556; text-align: center; padding: 40px 0; }
+
+@media (max-width: 768px) {
+    .ayllu-grid { grid-template-columns: 1fr; }
+    .ayllu-header { flex-direction: column; gap: 10px; text-align: center; }
+}
+EOF
