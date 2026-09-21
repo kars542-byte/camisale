@@ -1,0 +1,98 @@
+cat > ayllu.html << 'EOF'
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌄 Ayllu Perú - Panel de Ventas</title>
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <link rel="stylesheet" href="assets/css/ayllu.css">
+</head>
+<body>
+
+<!-- DB STATUS BADGE -->
+<div class="db-status-badge testing" id="dbStatusBadge">
+    <span class="db-status-dot testing" id="dbStatusDot"></span>
+    <span id="dbStatusText">Verificando DB...</span>
+</div>
+
+<!-- HEADER -->
+<header class="ayllu-header">
+    <h1>🌄 Ayllu Perú · Panel de Ventas</h1>
+    <a href="/" class="btn-back">← Volver a Camisale</a>
+</header>
+
+<div class="ayllu-container">
+    <div class="ayllu-grid">
+        <!-- PANEL CLIENTES -->
+        <div class="ayllu-panel">
+            <h2>👥 Registrar Nuevo Cliente</h2>
+            <div class="ayllu-form-group">
+                <label>Nombre completo *</label>
+                <input type="text" id="ayllu-cliente-nombre" placeholder="Ej: María Quispe">
+            </div>
+            <div class="ayllu-form-group">
+                <label>Departamento</label>
+                <input type="text" id="ayllu-cliente-dpto" placeholder="Ej: Lima">
+            </div>
+            <div class="ayllu-form-group">
+                <label>Distrito</label>
+                <input type="text" id="ayllu-cliente-distrito" placeholder="Ej: Miraflores">
+            </div>
+            <button class="btn-ayllu" id="btn-add-cliente" onclick="addCliente()">
+                ➕ Guardar Cliente
+            </button>
+            <div id="cliente-msg" style="margin-top:10px; font-size:13px;"></div>
+        </div>
+
+        <!-- PANEL VENTAS -->
+        <div class="ayllu-panel">
+            <h2>🍽️ Registrar Venta del Día</h2>
+            <div class="ayllu-form-group">
+                <label>Cliente *</label>
+                <select id="ayllu-venta-cliente"></select>
+            </div>
+            <div class="ayllu-form-group">
+                <label>Cantidad de platos *</label>
+                <input type="number" id="ayllu-venta-cantidad" min="1" value="1">
+            </div>
+            <div class="ayllu-form-group">
+                <label>Fecha</label>
+                <input type="date" id="ayllu-venta-fecha">
+            </div>
+            <button class="btn-ayllu" id="btn-add-venta" onclick="addVenta()">
+                ➕ Registrar Venta
+            </button>
+            <button class="btn-ayllu btn-ayllu-secondary" onclick="cargarVentasHoy()" style="margin-left:8px;">
+                🔄 Actualizar
+            </button>
+            <div id="venta-msg" style="margin-top:10px; font-size:13px;"></div>
+        </div>
+    </div>
+
+    <!-- VISUALIZACIÓN DE VENTAS -->
+    <div class="ayllu-panel" style="margin-top:1rem;">
+        <h2>📊 Ventas Registradas Hoy <span id="ventas-counter" style="font-size:0.9rem; color:#666; margin-left:auto;"></span></h2>
+        <div class="ventas-list" id="ventas-list">
+            <div class="empty-state">Cargando ventas...</div>
+        </div>
+    </div>
+</div>
+
+<!-- BOTÓN FLOTANTE AGENTE -->
+<a href="agent.html" class="agente-flotante" title="Abrir Agente IA">
+    <span class="icono">🤖</span>
+    <span class="texto">IA</span>
+</a>
+
+<footer>
+    <p>© 2025 Ayllu Perú - Panel de Ventas · Parte de camisale.work</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/ayllu.js"></script>
+
+</body>
+</html>
+EOF
