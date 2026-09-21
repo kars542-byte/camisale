@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌐 Clientes Web - Camisale</title>
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <link rel="stylesheet" href="assets/css/web-clients.css">
+</head>
+<body>
+
+<!-- DB STATUS BADGE -->
+<div class="db-status-badge testing" id="dbStatusBadge">
+    <span class="db-status-dot testing" id="dbStatusDot"></span>
+    <span id="dbStatusText">Verificando DB...</span>
+</div>
+
+<!-- HEADER -->
+<header class="web-header">
+    <h1>🌐 Gestión de Clientes Web</h1>
+    <a href="/" class="btn-back">← Volver a Camisale</a>
+</header>
+
+<div class="web-container">
+    <div class="web-grid">
+        <!-- PANEL NUEVO CLIENTE WEB -->
+        <div class="web-panel">
+            <h2>➕ Nuevo Cliente Web</h2>
+            <div class="web-form-group">
+                <label>Nombre del cliente *</label>
+                <input type="text" id="web-cliente-nombre" placeholder="Ej: Restaurante El Buen Sabor">
+            </div>
+            <div class="web-form-group">
+                <label>Contacto (email o WhatsApp)</label>
+                <input type="text" id="web-cliente-contacto" placeholder="Ej: +51 999 888 777">
+            </div>
+            <div class="web-form-group">
+                <label>Tipo de proyecto</label>
+                <select id="web-cliente-tipo">
+                    <option value="landing">Landing Page</option>
+                    <option value="web-corporativa">Web Corporativa</option>
+                    <option value="ecommerce">E-commerce</option>
+                    <option value="dashboard">Dashboard / App</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                </select>
+            </div>
+            <div class="web-form-group">
+                <label>Estado</label>
+                <select id="web-cliente-estado">
+                    <option value="prospecto">Prospecto</option>
+                    <option value="cotizado">Cotizado</option>
+                    <option value="en-desarrollo">En desarrollo</option>
+                    <option value="activo">Activo</option>
+                    <option value="pausado">Pausado</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
+            <div class="web-form-group">
+                <label>Monto mensual (S/)</label>
+                <input type="number" id="web-cliente-monto" min="0" value="0" step="50">
+            </div>
+            <div class="web-form-group">
+                <label>Notas</label>
+                <textarea id="web-cliente-notas" rows="3" placeholder="Observaciones, requerimientos especiales..."></textarea>
+            </div>
+            <button class="btn-web" id="btn-add-web-cliente" onclick="addWebCliente()">
+                ➕ Guardar Cliente
+            </button>
+            <div id="web-cliente-msg" style="margin-top:10px; font-size:13px;"></div>
+        </div>
+
+        <!-- PANEL RESUMEN -->
+        <div class="web-panel">
+            <h2>📊 Resumen de Cartera</h2>
+            <div class="web-stats-grid">
+                <div class="web-stat">
+                    <div class="web-stat-num" id="stat-total">0</div>
+                    <div class="web-stat-label">Total clientes</div>
+                </div>
+                <div class="web-stat">
+                    <div class="web-stat-num" id="stat-activos">0</div>
+                    <div class="web-stat-label">Activos</div>
+                </div>
+                <div class="web-stat">
+                    <div class="web-stat-num" id="stat-prospectos">0</div>
+                    <div class="web-stat-label">Prospectos</div>
+                </div>
+                <div class="web-stat">
+                    <div class="web-stat-num" id="stat-mrr">S/ 0</div>
+                    <div class="web-stat-label">MRR</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLA DE CLIENTES -->
+    <div class="web-panel" style="margin-top:1rem;">
+        <h2>👥 Cartera de Clientes Web</h2>
+        <div style="overflow-x:auto;">
+            <table class="web-table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Contacto</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Monto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="web-clientes-tbody">
+                    <tr><td colspan="6" style="text-align:center; color:#999;">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- BOTÓN FLOTANTE AGENTE -->
+<a href="agent.html" class="agente-flotante" title="Abrir Agente IA">
+    <span class="icono">🤖</span>
+    <span class="texto">IA</span>
+</a>
+
+<footer>
+    <p>© 2025 Camisale.work - Gestión de Clientes Web</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/web-clients.js"></script>
+
+</body>
+</html>
+EOF
