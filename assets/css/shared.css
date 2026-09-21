@@ -1,0 +1,138 @@
+cat > assets/css/shared.css << 'EOF'
+/* ============ SHARED STYLES - CAMISALE.WORK ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5; background: #FFFFFF; }
+
+:root {
+    --camisale-gold: #D4AF37;
+    --camisale-gold-light: #FFD700;
+    --camisale-dark: #1E293B;
+    --camisale-gray: #475569;
+    --agentic-green: #00ff9d;
+    --agentic-dark: #0a0e14;
+    --ayllu-green: #2E7D32;
+    --ayllu-green-light: #4CAF50;
+    --web-blue: #2563EB;
+    --web-blue-light: #3B82F6;
+    --db-online: #4CAF50;
+    --db-offline: #F44336;
+    --db-testing: #FF9800;
+}
+
+/* ============ HEADER COMÚN ============ */
+.camisale-header {
+    background: linear-gradient(135deg, var(--camisale-gold) 0%, var(--camisale-gold-light) 100%);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo-camisale { height: 110px; width: auto; display: block; }
+.camisale-nav { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+.camisale-nav a { color: var(--camisale-dark); text-decoration: none; font-weight: 600; font-size: 1rem; }
+.camisale-nav a:hover { color: #FFFFFF; }
+
+.btn-camisale {
+    background: var(--camisale-dark);
+    color: var(--camisale-gold-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+.btn-camisale:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+footer { text-align: center; padding: 2rem; color: #64748B; background: #F8FAFC; }
+
+/* ============ DB STATUS BADGE ============ */
+.db-status-badge {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s;
+}
+.db-status-badge.online { border: 2px solid var(--db-online); color: #2E7D32; }
+.db-status-badge.offline { border: 2px solid var(--db-offline); color: #C62828; }
+.db-status-badge.testing { border: 2px solid var(--db-testing); color: #E65100; }
+.db-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: pulse-status 2s infinite;
+}
+.db-status-dot.online { background: var(--db-online); }
+.db-status-dot.offline { background: var(--db-offline); animation: none; }
+.db-status-dot.testing { background: var(--db-testing); }
+@keyframes pulse-status {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* ============ BOTÓN FLOTANTE AGENTE ============ */
+.agente-flotante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--agentic-green) 0%, #00cc7a 100%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--agentic-dark);
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(0, 255, 157, 0.5);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    border: 2px solid rgba(0, 255, 157, 0.7);
+    animation: pulse-agente 2s infinite;
+    cursor: pointer;
+}
+.agente-flotante:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 6px 35px rgba(0, 255, 157, 0.8);
+}
+.agente-flotante .icono { font-size: 28px; line-height: 1; }
+.agente-flotante .texto {
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-top: 2px;
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+}
+@keyframes pulse-agente {
+    0%, 100% { box-shadow: 0 4px 20px rgba(0, 255, 157, 0.5); }
+    50% { box-shadow: 0 4px 40px rgba(0, 255, 157, 0.9); }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+    .camisale-header { flex-direction: column; text-align: center; }
+    .camisale-nav { justify-content: center; }
+    .agente-flotante { width: 60px; height: 60px; bottom: 15px; right: 15px; }
+    .agente-flotante .icono { font-size: 24px; }
+    .agente-flotante .texto { font-size: 8px; }
+    .db-status-badge { top: 10px; right: 10px; font-size: 11px; padding: 6px 12px; }
+}
+EOF
