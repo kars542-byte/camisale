@@ -1,0 +1,145 @@
+/* ============ PGI BUILDING ADMIN STYLES ============ */
+:root {
+    --pgi-navy: #0A192F;
+    --pgi-navy-light: #1a365d;
+    --pgi-gray: #4A5568;
+    --pgi-accent: #E11D48;
+}
+
+body { background: #f5f5f5; min-height: 100vh; }
+
+/* ============ LOGIN ============ */
+#pgi-login {
+    position: fixed; inset: 0; z-index: 999;
+    background: linear-gradient(135deg, var(--pgi-navy), var(--pgi-navy-light));
+    display: flex; align-items: center; justify-content: center;
+}
+#pgi-login.hidden { display: none; }
+
+.pgi-login-card {
+    background: white; border-radius: 20px; padding: 40px;
+    width: 400px; max-width: 90vw; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.logo-pgi { height: 45px; width: auto; margin: 0 auto 16px; display: block; }
+
+.pgi-input-group { margin-bottom: 14px; text-align: left; }
+.pgi-input-group label {
+    font-size: 12px; font-weight: 600; color: var(--pgi-gray);
+    display: block; margin-bottom: 4px;
+}
+.pgi-input-group input, .pgi-input-group select {
+    width: 100%; padding: 12px; border: 2px solid #E2E8F0;
+    border-radius: 6px; font-size: 14px; font-family: inherit;
+}
+.pgi-input-group input:focus { outline: none; border-color: var(--pgi-navy); }
+
+.btn-pgi {
+    width: 100%; padding: 13px; background: var(--pgi-navy);
+    color: white; border: none; border-radius: 6px;
+    font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+}
+.btn-pgi:hover { background: var(--pgi-navy-light); transform: translateY(-1px); }
+
+/* ============ TOPBAR ============ */
+.pgi-topbar {
+    background: white; padding: 0 24px; height: 65px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-wrap: wrap; gap: 10px;
+}
+
+/* ============ TABS ============ */
+.pgi-tabs {
+    background: white; padding: 0 24px; display: flex; gap: 2px;
+    border-bottom: 2px solid #E2E8F0; overflow-x: auto;
+}
+.pgi-tab-btn {
+    padding: 12px 16px; border: none; background: transparent;
+    cursor: pointer; font-size: 13px; border-bottom: 3px solid transparent;
+    white-space: nowrap; font-family: inherit; color: var(--pgi-gray);
+    transition: all 0.2s;
+}
+.pgi-tab-btn:hover { color: var(--pgi-navy); }
+.pgi-tab-btn.active {
+    color: var(--pgi-navy); border-bottom-color: var(--pgi-navy);
+    font-weight: 600;
+}
+
+/* ============ CONTENIDO ============ */
+.pgi-content { padding: 24px; max-width: 1300px; margin: 0 auto; }
+.pgi-tab-panel { display: none; }
+.pgi-tab-panel.active { display: block; }
+
+/* ============ PARKING ============ */
+.parking-container { display: flex; gap: 24px; flex-wrap: wrap; }
+.parking-diagram { flex: 1; min-width: 300px; }
+.parking-spots-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 12px; margin-top: 16px;
+}
+.parking-spot {
+    border-radius: 12px; padding: 20px 12px; text-align: center;
+    cursor: pointer; transition: all 0.3s; border: 3px solid;
+    min-height: 120px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+}
+.parking-spot.free { background: #E8F5E9; border-color: #4CAF50; }
+.parking-spot.reserved { background: #FFF3E0; border-color: #FF9800; }
+.parking-spot.unavailable { background: #FFEBEE; border-color: #F44336; }
+.parking-spot:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.spot-number { font-size: 24px; font-weight: 800; color: var(--pgi-navy); }
+.spot-status { font-size: 11px; font-weight: 600; text-transform: uppercase; }
+.spot-info { font-size: 10px; margin-top: 4px; line-height: 1.3; }
+
+.parking-form-panel {
+    width: 350px; background: white; border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.legend { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--pgi-gray);
+}
+.legend-dot { width: 14px; height: 14px; border-radius: 4px; }
+.legend-dot.free { background: #4CAF50; }
+.legend-dot.reserved { background: #FF9800; }
+.legend-dot.unavailable { background: #F44336; }
+
+/* ============ MODAL ============ */
+.modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    z-index: 1000; display: none; align-items: center; justify-content: center;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+    background: white; border-radius: 16px; padding: 24px;
+    width: 420px; max-width: 92vw; max-height: 90vh; overflow-y: auto;
+}
+
+/* ============ SUPABASE STATUS ============ */
+.supabase-status {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; padding: 6px 12px; border-radius: 20px;
+    background: #F1F5F9;
+}
+.status-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+.status-dot.online { background: #4CAF50; }
+.status-dot.offline { background: #F44336; }
+.status-dot.testing { background: #FF9800; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+    .parking-spots-grid { grid-template-columns: repeat(2, 1fr); }
+    .parking-container { flex-direction: column; }
+    .parking-form-panel { width: 100%; }
+    .pgi-topbar { height: auto; padding: 12px 16px; }
+}
+EOF
