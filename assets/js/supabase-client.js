@@ -67,4 +67,3 @@ document.addEventListener('DOMContentLoaded', () => {
     checkDBStatus();
     setInterval(checkDBStatus, 60000);
 });
-EOF
