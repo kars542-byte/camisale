@@ -148,4 +148,3 @@ body { background: #f0f4ff; min-height: 100vh; }
     .web-grid { grid-template-columns: 1fr; }
     .web-header { flex-direction: column; gap: 10px; text-align: center; }
 }
-EOF
