@@ -2,7 +2,7 @@
 // SUPABASE CLIENT - COMPARTIDO
 // ============================================================
 
-const SUPABASE_URL = 'https://jvngqoqfregogrqojep.supabase.co';
+const SUPABASE_URL = 'https://jvngqoqfregoqgrqojep.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2bmdxb3FmcmVnb3FncnFvamVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4ODYxNDYsImV4cCI6MjEwMzQ2MjE0Nn0.fO7yDpC3pJrs6NSYGNqdN4oT_0IHiggTVTLudNkrqsc';
 
 const SB_HEADERS = {
@@ -16,7 +16,6 @@ const SB_HEADERS_JSON = {
     'Prefer': 'return=representation'
 };
 
-// Helper genérico de fetch
 async function sbFetch(path, options = {}) {
     const url = `${SUPABASE_URL}/rest/v1${path}`;
     const res = await fetch(url, {
@@ -31,9 +30,6 @@ async function sbFetch(path, options = {}) {
     return text ? JSON.parse(text) : null;
 }
 
-// ============================================================
-// HEALTH CHECK
-// ============================================================
 async function checkDBStatus() {
     const badge = document.getElementById('dbStatusBadge');
     const dot = document.getElementById('dbStatusDot');
@@ -62,7 +58,6 @@ async function checkDBStatus() {
     }
 }
 
-// Inicializar chequeo automático
 document.addEventListener('DOMContentLoaded', () => {
     checkDBStatus();
     setInterval(checkDBStatus, 60000);
