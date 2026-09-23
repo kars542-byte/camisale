@@ -551,4 +551,3 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePGI();
     }
 });
-EOF
