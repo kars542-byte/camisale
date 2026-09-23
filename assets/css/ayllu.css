@@ -140,4 +140,3 @@ body { background: #f0f9f4; min-height: 100vh; }
     .ayllu-grid { grid-template-columns: 1fr; }
     .ayllu-header { flex-direction: column; gap: 10px; text-align: center; }
 }
-EOF
