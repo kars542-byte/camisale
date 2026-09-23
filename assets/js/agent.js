@@ -262,4 +262,3 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🎮 Agentic IA - Terminal cargada');
     console.log(`📡 API: ${API_URL || '(no configurada)'}`);
 });
-EOF
